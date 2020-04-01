@@ -1,0 +1,26 @@
+server:
+   port: 8002
+
+spring:
+  application:
+      name: clw-back
+  datasource:
+     url: jdbc:mysql://127.0.0.1/c76-s3-ygl-clw?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+     username: root
+     password: a
+     driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  #实体类的路径
+  type-aliases-package: com.yc.clw.bean
+  configuration:
+     map-underscore-to-camel-case: true
+  
+# 日志配置
+logging:
+  level:
+    com:
+      yc:
+        clw:
+          dao: debug
+          web: warn
