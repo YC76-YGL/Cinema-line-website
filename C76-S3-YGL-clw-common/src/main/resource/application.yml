@@ -16,6 +16,6 @@ logging:
   level:
     com:
       yc:
-        ebuy:
+        clw:
           dao: debug
           web: warn
