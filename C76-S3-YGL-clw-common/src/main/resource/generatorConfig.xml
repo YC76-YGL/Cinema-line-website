@@ -12,7 +12,7 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1/c76-s3-ygl-clw?serverTimezone=UTC&amp;CharacterEncoding=UTF-8&amp;useSSL=false"
+			connectionURL="jdbc:mysql://127.0.0.1/C76-S3-YGL-clw?serverTimezone=UTC&amp;CharacterEncoding=UTF-8&amp;useSSL=false"
 			userId="root" password="a">
 			<property name="nullCatalogMeansCurrent" value="true" />
 		</jdbcConnection>
