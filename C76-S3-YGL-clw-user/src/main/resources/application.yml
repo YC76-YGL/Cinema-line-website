@@ -1,0 +1,29 @@
+
+server:
+   port: 8001
+
+spring:
+  application:
+     name: clw-user
+  datasource:
+     url: jdbc:mysql://127.0.0.1/c76-s3-ygl-clw?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+     username: root
+     password: a
+     driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.yc.clw.bean
+  configuration:
+     map-underscore-to-camel-case: true
+  
+logging:
+  level:
+    com:
+      yc:
+        clw:
+          dao: debug
+          web: warn
+
+feign:
+  hystrix:
+    enabled: true
