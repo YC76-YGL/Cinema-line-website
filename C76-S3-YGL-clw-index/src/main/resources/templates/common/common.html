@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -95,34 +95,10 @@
 								<ul class="dropdown-menu multi-column columns-3">
 									<li>
 									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
+										<ul class="multi-column-dropdown" th:each=" gener : ${generlist}  ">
 											<li><a href="genres.html">动作</a></li>
-											<li><a href="genres.html">传记</a></li>
-											<li><a href="genres.html">犯罪</a></li>
-											<li><a href="genres.html">家庭</a></li>
-											<li><a href="horror.html">恐怖</a></li>
-											<li><a href="genres.html">爱情</a></li>
-											<li><a href="genres.html">体育</a></li>
-											<li><a href="genres.html">战争</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<li><a href="genres.html">冒险</a></li>
-											<li><a href="comedy.html">喜剧</a></li>
-											<li><a href="genres.html">记录</a></li>
-											<li><a href="genres.html">科幻</a></li>
-											<li><a href="genres.html">惊悚</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<li><a href="genres.html">动画</a></li>
-											<li><a href="genres.html">情景</a></li>
-											<li><a href="genres.html">戏剧</a></li>
-											<li><a href="genres.html">历史</a></li>
-											<li><a href="genres.html">音乐</a></li>
-											<li><a href="genres.html">心理</a></li>
+											
+											<li th:text="${gener.name}"><a href="genres.html">动作</a></li>
 										</ul>
 									</div>
 									<div class="clearfix"></div>
