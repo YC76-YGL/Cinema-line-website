@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.yc</groupId>
   <artifactId>C76-S3-YGL-clw-common</artifactId>
@@ -24,13 +26,11 @@
 			<version>5.1.47</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>runtime</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.1.1</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -39,7 +39,8 @@
 				</exclusion> </exclusions> -->
 		</dependency>
 	</dependencies>
-<build>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
