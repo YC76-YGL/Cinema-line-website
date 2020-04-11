@@ -14,5 +14,6 @@
 			<version>5.1.47</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>runtime</scope>
 		</dependency>
+		
 	</dependencies>
 </project>
