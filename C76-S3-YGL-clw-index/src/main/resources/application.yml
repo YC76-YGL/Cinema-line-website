@@ -1,3 +1,7 @@
+spirng: 
+   application: 
+      name: clw-index
+   
 server:
    port: 80
 
