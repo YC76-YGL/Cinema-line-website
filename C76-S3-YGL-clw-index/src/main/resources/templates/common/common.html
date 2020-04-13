@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -59,7 +59,7 @@
 								  <input type="password" name="Password" placeholder="Password" required="">
 								  <input type="email" name="Email" placeholder="Email Address" required="">
 								  <input type="text" name="Phone" placeholder="Phone Number" required="">
-								  <input type="submit" value="Register">
+								  <input type="submit" value="注册">
 								</form>
 							  </div>
 							  <div class="cta"><a href="#">忘记密码?</a></div>
@@ -96,9 +96,23 @@
 									<li>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
-											<li><a href="genres.html">动作</a></li>
-											
-											<li th:each=" gener : ${generlist}  "><a href="genres.html" th:text="${gener.name}">动作</a></li>
+											<li th:each="gen1:${genlist1}">
+											<a th:text="${gen1.name}" href="genres.html">动作</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown" >
+											<li th:each="gen2:${genlist2}">
+											<a th:text="${gen2.name}" href="genres.html">动作</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown" >
+											<li th:each="gen3:${genlist3}">
+											<a th:text="${gen3.name}" href="genres.html">动作</a>
+											</li>
 										</ul>
 									</div>
 									<div class="clearfix"></div>
@@ -113,28 +127,26 @@
 									<li>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">亚洲</a></li>
-												<li><a href="genres.html">法国</a></li>
-												<li><a href="genres.html">德国</a></li>
-												<li><a href="genres.html">美国</a></li>
+												<li th:each="cce1:${cce1list}">
+												<a th:text="${cce1.name}" href="genres.html">亚洲</a>
+												</li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">中国</a></li>
-												<li><a href="genres.html">日本</a></li>
-												<li><a href="genres.html">泰国</a></li>
-												<li><a href="genres.html">俄罗斯</a></li>
+												<li th:each="cce2:${cce2list}">
+												<a th:text="${cce2.name}" href="genres.html">亚洲</a>
+												</li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">欧洲</a></li>
-												<li><a href="genres.html">印度</a></li>
-												<li><a href="genres.html">韩国</a></li>
-												<li><a href="genres.html">英国</a></li>
+												<li th:each="cce3:${cce3list}">
+												<a th:text="${cce3.name}" href="genres.html">亚洲</a>
+												</li>
 											</ul>
 										</div>
+										
 										<div class="clearfix"></div>
 									</li>
 								</ul>
