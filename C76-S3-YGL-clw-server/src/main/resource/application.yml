@@ -4,12 +4,12 @@ spring:
       name: clw-server
 
 server:
-   port: 8000
+   port: 8761
 
-eureka:
-   client:
-      registerWithEureka: false
-      fetchRegistry: false
+#eureka:
+#   client:
+#      registerWithEureka: false
+#      fetchRegistry: false
 
 ---
 spring:

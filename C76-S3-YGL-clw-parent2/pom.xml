@@ -10,10 +10,10 @@
   
   <dependencies>
 		<!-- 加入Eureka 客户端依赖 -->
-		 <!--  <dependency>
+		  <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>  --> 
+		</dependency>  
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -30,7 +30,7 @@
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 		
-		<!-- 导入 ebuy 公共模块 -->
+		<!-- 导入 clw 公共模块 -->
 		<dependency>
 			<groupId>com.yc</groupId>
 			<artifactId>C76-S3-YGL-clw-common</artifactId>
