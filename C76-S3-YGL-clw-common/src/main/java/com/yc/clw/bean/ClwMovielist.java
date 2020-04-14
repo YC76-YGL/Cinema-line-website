@@ -9,9 +9,27 @@ public class ClwMovielist {
 
     private String description;
 
-    private Integer type;
+    private Date createtime;
 
-    private Date time;
+    private String isHot;
+
+    private Integer geners;
+
+    private Integer actor;
+
+    private Integer actor1;
+
+    private String director;
+
+    private Integer country;
+
+    private Integer score;
+
+    private Integer geners1;
+
+    private String image;
+
+    private String other;
 
     public Integer getId() {
         return id;
@@ -37,19 +55,91 @@ public class ClwMovielist {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getType() {
-        return type;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public Date getTime() {
-        return time;
+    public String getIsHot() {
+        return isHot;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setIsHot(String isHot) {
+        this.isHot = isHot == null ? null : isHot.trim();
+    }
+
+    public Integer getGeners() {
+        return geners;
+    }
+
+    public void setGeners(Integer geners) {
+        this.geners = geners;
+    }
+
+    public Integer getActor() {
+        return actor;
+    }
+
+    public void setActor(Integer actor) {
+        this.actor = actor;
+    }
+
+    public Integer getActor1() {
+        return actor1;
+    }
+
+    public void setActor1(Integer actor1) {
+        this.actor1 = actor1;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director == null ? null : director.trim();
+    }
+
+    public Integer getCountry() {
+        return country;
+    }
+
+    public void setCountry(Integer country) {
+        this.country = country;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getGeners1() {
+        return geners1;
+    }
+
+    public void setGeners1(Integer geners1) {
+        this.geners1 = geners1;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other == null ? null : other.trim();
     }
 }

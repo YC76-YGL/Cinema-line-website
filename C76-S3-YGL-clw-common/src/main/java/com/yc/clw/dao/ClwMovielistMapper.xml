@@ -5,8 +5,17 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="is_hot" jdbcType="VARCHAR" property="isHot" />
+    <result column="geners" jdbcType="INTEGER" property="geners" />
+    <result column="actor" jdbcType="INTEGER" property="actor" />
+    <result column="actor1" jdbcType="INTEGER" property="actor1" />
+    <result column="director" jdbcType="VARCHAR" property="director" />
+    <result column="country" jdbcType="INTEGER" property="country" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="geners1" jdbcType="INTEGER" property="geners1" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="other" jdbcType="VARCHAR" property="other" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, type, time
+    id, name, description, createtime, is_hot, geners, actor, actor1, director, country, 
+    score, geners1, image, other
   </sql>
   <select id="selectByExample" parameterType="com.yc.clw.bean.ClwMovielistExample" resultMap="BaseResultMap">
     select
@@ -103,10 +113,16 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into clw_movielist (name, description, type, 
-      time)
-    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{time,jdbcType=TIMESTAMP})
+    insert into clw_movielist (name, description, createtime, 
+      is_hot, geners, actor, 
+      actor1, director, country, 
+      score, geners1, image, 
+      other)
+    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{isHot,jdbcType=VARCHAR}, #{geners,jdbcType=INTEGER}, #{actor,jdbcType=INTEGER}, 
+      #{actor1,jdbcType=INTEGER}, #{director,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{geners1,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
+      #{other,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.clw.bean.ClwMovielist">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -120,11 +136,38 @@
       <if test="description != null">
         description,
       </if>
-      <if test="type != null">
-        type,
+      <if test="createtime != null">
+        createtime,
       </if>
-      <if test="time != null">
-        time,
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="geners != null">
+        geners,
+      </if>
+      <if test="actor != null">
+        actor,
+      </if>
+      <if test="actor1 != null">
+        actor1,
+      </if>
+      <if test="director != null">
+        director,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="geners1 != null">
+        geners1,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="other != null">
+        other,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -134,11 +177,38 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="time != null">
-        #{time,jdbcType=TIMESTAMP},
+      <if test="isHot != null">
+        #{isHot,jdbcType=VARCHAR},
+      </if>
+      <if test="geners != null">
+        #{geners,jdbcType=INTEGER},
+      </if>
+      <if test="actor != null">
+        #{actor,jdbcType=INTEGER},
+      </if>
+      <if test="actor1 != null">
+        #{actor1,jdbcType=INTEGER},
+      </if>
+      <if test="director != null">
+        #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="geners1 != null">
+        #{geners1,jdbcType=INTEGER},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -160,11 +230,38 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.time != null">
-        time = #{record.time,jdbcType=TIMESTAMP},
+      <if test="record.isHot != null">
+        is_hot = #{record.isHot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.geners != null">
+        geners = #{record.geners,jdbcType=INTEGER},
+      </if>
+      <if test="record.actor != null">
+        actor = #{record.actor,jdbcType=INTEGER},
+      </if>
+      <if test="record.actor1 != null">
+        actor1 = #{record.actor1,jdbcType=INTEGER},
+      </if>
+      <if test="record.director != null">
+        director = #{record.director,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null">
+        country = #{record.country,jdbcType=INTEGER},
+      </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.geners1 != null">
+        geners1 = #{record.geners1,jdbcType=INTEGER},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other != null">
+        other = #{record.other,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -176,8 +273,17 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=TIMESTAMP}
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      is_hot = #{record.isHot,jdbcType=VARCHAR},
+      geners = #{record.geners,jdbcType=INTEGER},
+      actor = #{record.actor,jdbcType=INTEGER},
+      actor1 = #{record.actor1,jdbcType=INTEGER},
+      director = #{record.director,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=INTEGER},
+      geners1 = #{record.geners1,jdbcType=INTEGER},
+      image = #{record.image,jdbcType=VARCHAR},
+      other = #{record.other,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,11 +297,38 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="time != null">
-        time = #{time,jdbcType=TIMESTAMP},
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=VARCHAR},
+      </if>
+      <if test="geners != null">
+        geners = #{geners,jdbcType=INTEGER},
+      </if>
+      <if test="actor != null">
+        actor = #{actor,jdbcType=INTEGER},
+      </if>
+      <if test="actor1 != null">
+        actor1 = #{actor1,jdbcType=INTEGER},
+      </if>
+      <if test="director != null">
+        director = #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="geners1 != null">
+        geners1 = #{geners1,jdbcType=INTEGER},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -204,8 +337,17 @@
     update clw_movielist
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP}
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      is_hot = #{isHot,jdbcType=VARCHAR},
+      geners = #{geners,jdbcType=INTEGER},
+      actor = #{actor,jdbcType=INTEGER},
+      actor1 = #{actor1,jdbcType=INTEGER},
+      director = #{director,jdbcType=VARCHAR},
+      country = #{country,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      geners1 = #{geners1,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR},
+      other = #{other,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
