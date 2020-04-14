@@ -17,6 +17,11 @@ mybatis:
   type-aliases-package: com.yc.clw.bean
   configuration:
      map-underscore-to-camel-case: true
+
+#开启服务降级开关
+feign: 
+   hystrix: 
+      enabled: true
   
 # 日志配置
 logging:

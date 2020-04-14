@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
 
-@FeignClient("clw-back")
+@FeignClient(name="clw-back",fallback=GenersAndCountryAction.class)
 public interface IGenersAndCountryAction {
 
 	@GetMapping("lessthangetGeners")

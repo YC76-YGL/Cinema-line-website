@@ -20,4 +20,16 @@ public class ClwCountry {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
+
+	public ClwCountry(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public ClwCountry() {
+		super();
+	}
+    
+    
 }

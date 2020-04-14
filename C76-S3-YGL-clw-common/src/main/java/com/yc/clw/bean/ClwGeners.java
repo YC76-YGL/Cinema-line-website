@@ -20,4 +20,16 @@ public class ClwGeners {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
+
+	public ClwGeners(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public ClwGeners() {
+		super();
+	}
+    
+    
 }
