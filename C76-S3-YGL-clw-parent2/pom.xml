@@ -25,10 +25,10 @@
 		</dependency>
 
 		<!-- 服务熔断与降级依赖 -->
-		<dependency>
+		 <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
+		</dependency> 
 		
 		<!-- 导入 clw 公共模块 -->
 		<dependency>

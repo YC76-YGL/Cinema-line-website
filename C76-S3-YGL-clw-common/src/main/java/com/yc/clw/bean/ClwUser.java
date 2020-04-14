@@ -1,7 +1,14 @@
 package com.yc.clw.bean;
 
-public class ClwUser {
-    private Integer id;
+import java.io.Serializable;
+
+public class ClwUser implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String username;
 
@@ -70,4 +77,28 @@ public class ClwUser {
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
     }
+
+	public ClwUser(Integer id, String username, String password, Integer sex, String email, String mobile,
+			String type) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.sex = sex;
+		this.email = email;
+		this.mobile = mobile;
+		this.type = type;
+	}
+
+	public ClwUser(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
+	public ClwUser() {
+		super();
+	}
+    
+    
 }

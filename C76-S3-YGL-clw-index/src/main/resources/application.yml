@@ -1,25 +1,24 @@
-spirng: 
-   application: 
-      name: clw-index
-   
 server:
    port: 80
-
+   
+   
 spring:
+  application:
+     name: clw-index
   datasource:
-     url: jdbc:mysql://127.0.0.1/C76-S3-YGL-clw?serverTimezone=UTC&;CharacterEncoding=UTF-8&;useSSL=false
+     url: jdbc:mysql://127.0.0.1/C76-S3-ygl-clw?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
      username: root
      password: a
      driver-class-name: com.mysql.jdbc.Driver
 
-mybatis:
+mybatis: 
   #实体类的路径
   type-aliases-package: com.yc.clw.bean
-  configuration:
+  configuration: 
      map-underscore-to-camel-case: true
 
 #开启服务降级开关
-feign: 
+feign:  
    hystrix: 
       enabled: true
   
