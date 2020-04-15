@@ -78,27 +78,8 @@ public class ClwUser implements Serializable {
         this.type = type == null ? null : type.trim();
     }
 
-	public ClwUser(Integer id, String username, String password, Integer sex, String email, String mobile,
-			String type) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.sex = sex;
-		this.email = email;
-		this.mobile = mobile;
-		this.type = type;
-	}
 
-	public ClwUser(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
 
-	public ClwUser() {
-		super();
-	}
     
     
 }

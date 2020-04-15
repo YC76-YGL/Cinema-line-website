@@ -21,7 +21,13 @@ mybatis:
 feign:  
    hystrix: 
       enabled: true
-  
+   command:
+    default:
+      execution:
+        timeout:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 5000
 # 日志配置
 logging:
   level:
@@ -30,3 +36,5 @@ logging:
         clw:
           dao: debug
           web: warn
+          
+          

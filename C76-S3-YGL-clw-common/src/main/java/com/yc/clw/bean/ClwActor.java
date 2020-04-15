@@ -1,7 +1,14 @@
 package com.yc.clw.bean;
 
-public class ClwActor {
-    private Integer id;
+import java.io.Serializable;
+
+public class ClwActor implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String name;
 
@@ -60,4 +67,19 @@ public class ClwActor {
     public void setLooks(String looks) {
         this.looks = looks == null ? null : looks.trim();
     }
+
+	public ClwActor(Integer id, String name, Integer age, String addr, String birth, String looks) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.addr = addr;
+		this.birth = birth;
+		this.looks = looks;
+	}
+
+	public ClwActor() {
+		super();
+	}
+	
 }

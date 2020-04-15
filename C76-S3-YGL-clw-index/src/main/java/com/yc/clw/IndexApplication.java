@@ -14,8 +14,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class IndexApplication {
 
-	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(IndexApplication.class, args);
 	}

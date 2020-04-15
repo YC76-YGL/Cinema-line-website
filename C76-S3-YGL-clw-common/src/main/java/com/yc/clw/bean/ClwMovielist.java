@@ -142,4 +142,31 @@ public class ClwMovielist {
     public void setOther(String other) {
         this.other = other == null ? null : other.trim();
     }
+
+	public ClwMovielist() {
+		super();
+	}
+
+	public ClwMovielist(Integer id, String name, String description, Date createtime, String isHot, Integer geners,
+			Integer actor, Integer actor1, String director, Integer country, Integer score, Integer geners1,
+			String image, String other) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.createtime = createtime;
+		this.isHot = isHot;
+		this.geners = geners;
+		this.actor = actor;
+		this.actor1 = actor1;
+		this.director = director;
+		this.country = country;
+		this.score = score;
+		this.geners1 = geners1;
+		this.image = image;
+		this.other = other;
+	}
+	
+	
+    
 }
