@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,14 +11,14 @@
 		<h1>用户注册</h1>
 	</div>
 	<div class="form-bak">
-		<form method="post" action="#" onsubmit="adaptValue();">
+		<form method="post" action="reg" onsubmit="adaptValue();">
 			<div class="left">
 				<div class="line" id="line_account">
 					<div class="info">
-						<strong>邮箱</strong> <span class="tips">邮箱就是账号</span>
+						<strong>邮箱</strong> <span class="tips">请输入您的邮箱</span>
 					</div>
 					<div class="input">
-						<input type="text" name="account" id="account"
+						<input type="text" name="email" id="account"
 							onblur="v_account();" onkeyup="v_account();" />
 						<div class="none">
 							<span></span>
@@ -31,7 +31,7 @@
 						</span>
 					</div>
 					<div class="input">
-						<input type="text" name="name" id="name" onblur="v_name();"
+						<input type="text" name="username" id="name" onblur="v_name();"
 							onkeyup="v_name();" />
 						<div class="none">
 							<span></span>
@@ -55,7 +55,7 @@
 						<strong>确认密码</strong> <span class="tips">再次输入密码</span>
 					</div>
 					<div class="input">
-						<input type="password" name="repeat" id="repeat"
+						<input type="password" name="repwd" id="repeat"
 							onblur="v_repeat();" onkeyup="v_repeat();" />
 						<div class="none">
 							<span></span>
@@ -71,7 +71,7 @@
 						href="#agreement" onclick="showAgreement();" title="查看用户使用协议">用户使用协议</a>》
 				</div>
 				<div>
-					已经拥有账号，<a href="Login.html">直接登录</a>
+					已经拥有账号，<a href="tologin">直接登录</a>
 				</div>
 				<div>
 					忘记密码，<a href="#">请联系管理员</a>
@@ -86,7 +86,7 @@
 			class="backtotop">返回顶部</a>
 	</div>
 </body>
-</html>
+
 <style>
 * {
 	font-family: "微软雅黑", "黑体", "宋体";
@@ -293,7 +293,8 @@ input[type=submit]:disabled {
 	text-align: center;
 }
 </style>
-<script>
+
+<script type="text/javascript">
 	function enableSubmit(bool) {
 		if (bool)
 			$("#submit").removeAttr("disabled");
@@ -420,3 +421,4 @@ input[type=submit]:disabled {
 		来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a>
 	</p>
 </div>
+</html>

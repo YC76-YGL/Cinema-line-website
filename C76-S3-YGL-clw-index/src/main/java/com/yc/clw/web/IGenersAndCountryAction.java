@@ -33,6 +33,6 @@ public interface IGenersAndCountryAction {
 	@GetMapping("getClwMovielist")
 	public List<ClwMovielist> getClwMovielist();
 	
-	@GetMapping("getIdLessThan")
-	public List<ClwMovielist> getIdMovieLessThan();
+	@GetMapping("getfindnewmovie")
+	public List<ClwMovielist> getfindnewmovie();
 }

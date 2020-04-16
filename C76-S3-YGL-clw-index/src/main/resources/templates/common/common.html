@@ -25,8 +25,8 @@
 					<span th:if="${session.loginedUser} == null">请&nbsp;<a href="tologin" >登录</a></span>
 					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
-					<li><a href="reg.html" data-toggle="modal" data-target="#myModal">注册</a></li>
-					
+					<li><a href="toreg">注册</a></li>
+					<li><a href="logout">退出</a></li>
 					
 				</ul>
 			</div>
@@ -35,7 +35,6 @@
 	</div>
 <!-- //header -->
 
-	
 <!-- //bootstrap-pop-up -->
 <!-- nav -->
 	<div class="movies_nav">
@@ -61,14 +60,14 @@
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
 											<li th:each="gen1:${genlist1}">
-											<a th:text="${gen1.name}" href="genres.html">动作</a>
+											<a th:text="${gen1.name}" th:href="${gen1.name}">动作</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
 											<li th:each="gen2:${genlist2}">
-											<a th:text="${gen2.name}" href="genres.html">动作</a>
+											<a th:text="${gen2.name}" href="${gen2.name}">动作</a>
 											</li>
 										</ul>
 									</div>
@@ -134,14 +133,13 @@
 <div class="general_social_icons">
 	<nav class="social">
 		<ul>
-			<li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
-			<li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
+			<li class="w3_twitter"><a href="#">特推 <i class="fa fa-twitter"></i></a></li>
+			<li class="w3_facebook"><a href="#">脸书 <i class="fa fa-facebook"></i></a></li>
 			<li class="w3_dribbble"><a href="#">Dribbble <i class="fa fa-dribbble"></i></a></li>
-			<li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>				  
+			<li class="w3_g_plus"><a href="#">谷歌+ <i class="fa fa-google-plus"></i></a></li>				  
 		</ul>
   </nav>
 </div>
-	<div class="faq">
 
 <!-- footer -->
 	<div class="footer">

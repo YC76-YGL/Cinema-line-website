@@ -21,8 +21,9 @@ public class ClwUser implements Serializable {
     private String mobile;
 
     private String type;
+    
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 

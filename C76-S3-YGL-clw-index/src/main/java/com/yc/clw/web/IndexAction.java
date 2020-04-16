@@ -34,14 +34,14 @@ public class IndexAction {
 		mav.addObject("cce1list", gaca.lessthangetcounttry());
 		mav.addObject("cce2list", gaca.betweengetcounttry());
 		mav.addObject("cce3list", gaca.greaterthangetcountry());
-		mav.addObject("Movielist",gaca.getIdMovieLessThan());
+		mav.addObject("Movielist",gaca.getfindnewmovie());
 		mav.setViewName("index");
 		return mav;
 	}
 	
-	@GetMapping({"gener","gener.html"})
+	@GetMapping({"genres","genres.html"})
 	public ModelAndView geners(ModelAndView mav) {
-		mav.setViewName("gener");
+		mav.setViewName("genres");
 		return mav;
 	}
 	@GetMapping("tologin")
@@ -56,7 +56,8 @@ public class IndexAction {
 			ClwUser dbuser = uBiz.login(user);
 			// 将用户对象添加到会话
 			mav.addObject("loginedUser", dbuser);
-			mav.setViewName("index");
+			//mav.setViewName("index");
+			return index(mav);
 		} catch (BizException e) {
 			e.printStackTrace();
 			mav.addObject("msg", e.getMessage());
@@ -65,7 +66,30 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@GetMapping("toreg")
+	public ModelAndView toreg(ModelAndView mav) {
+		mav.setViewName("Reg");
+		return mav;
+	}
 	
+	@PostMapping("reg")
+	public ModelAndView reg(ModelAndView mav,ClwUser user,String repwd) {
+		try {
+			uBiz.reg(user,repwd);
+			mav.setViewName("Login");
+		} catch (BizException e) {
+			e.printStackTrace();
+			mav.addObject("msg", e.getMessage());
+			mav.setViewName("Reg");
+		}
+		return mav;
+	}
+	
+//	@GetMapping("logout")
+//	public ModelAndView logout(ModelAndView mav) {
+//		mav.setViewName("index");
+//		return mav;
+//	}
 	
 	
 }

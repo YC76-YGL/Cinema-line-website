@@ -7,10 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageHelper;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwCountryExample;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwGenersExample;
+import com.yc.clw.bean.ClwMovielistExample;
 import com.yc.clw.dao.ClwCountryMapper;
 import com.yc.clw.dao.ClwGenersMapper;
 
@@ -27,6 +29,9 @@ public class ClwGenersAndCountryAction {
 	 */
 	@GetMapping("lessthangetGeners")
 	public List<ClwGeners> lessthangetGeners(){
+//		ClwMovielistExample cmle =new ClwMovielistExample();
+//		cmle.setOrderByClause("id desc");
+//		PageHelper.startPage(1,6);
 		// -----------影片分类从数据库中查出
 		ClwGenersExample cge = new ClwGenersExample();
 		cge.createCriteria().andIdLessThan(7);
