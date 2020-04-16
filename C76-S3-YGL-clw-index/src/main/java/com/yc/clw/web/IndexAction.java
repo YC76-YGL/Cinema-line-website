@@ -50,6 +50,12 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@GetMapping("Administrator")
+	public ModelAndView Administrator(ModelAndView mav) {
+		mav.setViewName("Administrator");
+		return mav;
+	}
+	
 	@PostMapping("login")
 	public ModelAndView login(ClwUser user, ModelAndView mav) {
 		try {
@@ -85,11 +91,17 @@ public class IndexAction {
 		return mav;
 	}
 	
-//	@GetMapping("logout")
-//	public ModelAndView logout(ModelAndView mav) {
-//		mav.setViewName("index");
-//		return mav;
-//	}
+	@GetMapping("logout")
+	public ModelAndView logout(ModelAndView mav) {
+		mav.clear();
+		mav.setViewName("index");
+		return mav;
+	}
+	
+	@GetMapping("search")
+	public ModelAndView search(ModelAndView mav) {
+		return mav;
+	}
 	
 	
 }
