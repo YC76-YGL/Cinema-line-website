@@ -21,13 +21,8 @@
 			<div class="w3l_sign_in_register">
 				<ul>
 					<li>您好</li> 
-					<!-- <li th:if="${session.loginedUser} == null">
-					请&nbsp;<a href="Login.html" >登录</a>
-					</li>
-					<li th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></li>
-					<li><a href="reg.html" data-toggle="modal" data-target="#myModal">注册</a></li> -->
 					<li>
-					<span th:if="${session.loginedUser} == null">请&nbsp;<a href="Login.html" >登录</a></span>
+					<span th:if="${session.loginedUser} == null">请&nbsp;<a href="tologin" >登录</a></span>
 					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
 					<li><a href="reg.html" data-toggle="modal" data-target="#myModal">注册</a></li>

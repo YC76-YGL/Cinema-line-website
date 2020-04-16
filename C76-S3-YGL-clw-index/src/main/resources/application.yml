@@ -1,5 +1,5 @@
 server:
-   port: 80
+   port: 8006
    
    
 spring:
@@ -36,5 +36,11 @@ logging:
         clw:
           dao: debug
           web: warn
+          
+---
+spring:  
+   profiles: index-8007
+server:  
+   port: 8007
           
           

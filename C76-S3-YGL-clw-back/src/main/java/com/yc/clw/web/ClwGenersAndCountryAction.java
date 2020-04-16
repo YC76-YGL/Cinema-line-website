@@ -112,4 +112,9 @@ public class ClwGenersAndCountryAction {
 		
 		return ccelist;
 	}
+	
+	@GetMapping("test")
+	public String test() {
+		return "back test";
+	}
 }

@@ -3,7 +3,7 @@
 # 重复的键值 spring
 
 server:
-   port: 8006
+   port: 80
 
 spring:
   application:

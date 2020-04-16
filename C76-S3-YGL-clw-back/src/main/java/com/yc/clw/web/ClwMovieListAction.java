@@ -25,4 +25,12 @@ public class ClwMovieListAction {
 		return list;
 	}
 	
+	@GetMapping("getIdLessThan")
+	public List<ClwMovielist> getIdLessThan(){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIdLessThan(7);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
 }

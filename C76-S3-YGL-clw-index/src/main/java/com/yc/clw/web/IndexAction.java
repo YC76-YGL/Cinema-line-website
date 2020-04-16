@@ -24,6 +24,7 @@ public class IndexAction {
 	@Resource
 	UserBiz uBiz;
 	
+	
 	@GetMapping({"/","index","index.html"})
 	public ModelAndView index(ModelAndView mav) {
 		//通过远程接口方式调用信息
@@ -33,6 +34,7 @@ public class IndexAction {
 		mav.addObject("cce1list", gaca.lessthangetcounttry());
 		mav.addObject("cce2list", gaca.betweengetcounttry());
 		mav.addObject("cce3list", gaca.greaterthangetcountry());
+		mav.addObject("Movielist",gaca.getIdMovieLessThan());
 		mav.setViewName("index");
 		return mav;
 	}

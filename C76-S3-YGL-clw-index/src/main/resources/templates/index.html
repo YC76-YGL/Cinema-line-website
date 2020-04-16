@@ -95,28 +95,10 @@
 	<!-- banner -->
 	<div id="slidey" style="display: none;">
 		<ul>
-			<li><img src="images/5.jpg" alt=" ">
-			<p class='title'>泰山</p>
-				<p class='description'>泰山,
+			<li th:each="ml:${Movielist}"><img th:src="${ml.image}" alt=" ">
+			<p class='title' th:text="${ml.name}">泰山</p>
+				<p class='description' th:text="${ml.description}">泰山,
 					适应了伦敦生活的泰山(Tarzan)被召回他在丛林的故居,以调查采矿营地的活动.</p></li>
-			<li><img src="images/2.jpg" alt=" ">
-			<p class='title'>最大骑行</p>
-				<p class='description'>六个与禽类DNA遗传杂交的孩子,在全国各地飞行以发现其起源.一路上,他们神秘的过去是
-					...</p></li>
-			<li><img src="images/3.jpg" alt=" ">
-			<p class='title'>独立</p>
-				<p class='description'>当美国总统和公民决定是否信任或开具这些外星人时,人类的命运将悬而未决.</p></li>
-			<li><img src="images/4.jpg" alt=" ">
-			<p class='title'>中央情报局</p>
-				<p class='description'>鲍勃.斯通(DwayneJohnson)因超重而被欺负,十几岁的他看起来很健康又肌肉发达.自称是绝密
-					...</p></li>
-			<li><img src="images/6.jpg" alt=" ">
-			<p class='title'>冰河世纪</p>
-				<p class='description'>在电影的结局中,Scrat一直在努力控制外星人的船,直到他在火星上坠毁,摧毁了地球上的所有生命.</p></li>
-			<li><img src="images/7.jpg" alt=" ">
-			<p class='title'>X战警</p>
-				<p class='description'>1977年,超自然现象的调查员埃德(帕特里克威尔逊)和洛林涡轮(Lorrai最新arren)从一个自我强加的休眠中出来,前往北区的恩菲尔德(Enfield)
-					...</p></li>
 		</ul>
 	</div>
 	<script src="js/jquery.slidey.js"></script>
