@@ -7,12 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.pagehelper.PageHelper;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwCountryExample;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwGenersExample;
-import com.yc.clw.bean.ClwMovielistExample;
 import com.yc.clw.dao.ClwCountryMapper;
 import com.yc.clw.dao.ClwGenersMapper;
 

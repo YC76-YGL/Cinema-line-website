@@ -16,7 +16,18 @@
     <result column="geners1" jdbcType="INTEGER" property="geners1" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="other" jdbcType="VARCHAR" property="other" />
+    <!-- 一对多关联 -->
+    <collection property="children" column="id" select="selectChildren"
+    fetchType="lazy"></collection>
   </resultMap>
+  
+  <!-- <select id="selectChildren" resultMap="BaseResultMap">
+  	select * from easybuy_product_category where parentid = #{pid}
+  </select> -->
+  <select id="selectChildren" resultMap="BaseResultMap">
+  	select * from clw_movielist where gener = #{gid}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

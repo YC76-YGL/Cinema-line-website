@@ -1,9 +1,15 @@
 package com.yc.clw.bean;
 
 import java.util.Date;
+import java.util.List;
 
-public class ClwMovielist {
-    private Integer id;
+public class ClwMovielist implements java.io.Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String name;
 
@@ -30,8 +36,19 @@ public class ClwMovielist {
     private String image;
 
     private String other;
+    
+    private List<ClwMovielist> children;
 
-    public Integer getId() {
+    public List<ClwMovielist> getChildren() {
+		return children;
+	}
+
+
+	public void setChildren(List<ClwMovielist> children) {
+		this.children = children;
+	}
+
+	public Integer getId() {
         return id;
     }
 
