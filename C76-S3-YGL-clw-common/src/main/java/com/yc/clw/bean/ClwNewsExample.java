@@ -1,6 +1,7 @@
 package com.yc.clw.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ClwNewsExample {
@@ -301,6 +302,136 @@ public class ClwNewsExample {
 
         public Criteria andContentNotBetween(String value1, String value2) {
             addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeIsNull() {
+            addCriterion("releasetime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeIsNotNull() {
+            addCriterion("releasetime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeEqualTo(Date value) {
+            addCriterion("releasetime =", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeNotEqualTo(Date value) {
+            addCriterion("releasetime <>", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeGreaterThan(Date value) {
+            addCriterion("releasetime >", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("releasetime >=", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeLessThan(Date value) {
+            addCriterion("releasetime <", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeLessThanOrEqualTo(Date value) {
+            addCriterion("releasetime <=", value, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeIn(List<Date> values) {
+            addCriterion("releasetime in", values, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeNotIn(List<Date> values) {
+            addCriterion("releasetime not in", values, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeBetween(Date value1, Date value2) {
+            addCriterion("releasetime between", value1, value2, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andreleasetimeNotBetween(Date value1, Date value2) {
+            addCriterion("releasetime not between", value1, value2, "releasetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchIsNull() {
+            addCriterion("watch is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchIsNotNull() {
+            addCriterion("watch is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchEqualTo(String value) {
+            addCriterion("watch =", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchNotEqualTo(String value) {
+            addCriterion("watch <>", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchGreaterThan(String value) {
+            addCriterion("watch >", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchGreaterThanOrEqualTo(String value) {
+            addCriterion("watch >=", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchLessThan(String value) {
+            addCriterion("watch <", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchLessThanOrEqualTo(String value) {
+            addCriterion("watch <=", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchLike(String value) {
+            addCriterion("watch like", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchNotLike(String value) {
+            addCriterion("watch not like", value, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchIn(List<String> values) {
+            addCriterion("watch in", values, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchNotIn(List<String> values) {
+            addCriterion("watch not in", values, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchBetween(String value1, String value2) {
+            addCriterion("watch between", value1, value2, "watch");
+            return (Criteria) this;
+        }
+
+        public Criteria andWatchNotBetween(String value1, String value2) {
+            addCriterion("watch not between", value1, value2, "watch");
             return (Criteria) this;
         }
 

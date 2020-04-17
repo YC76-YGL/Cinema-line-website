@@ -103,5 +103,12 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@GetMapping("new")
+	public ModelAndView news(ModelAndView mav) {
+		mav.addObject("latestnew", gaca.latestnew());
+		mav.setViewName("news");
+		return mav;
+	}
+	
 	
 }

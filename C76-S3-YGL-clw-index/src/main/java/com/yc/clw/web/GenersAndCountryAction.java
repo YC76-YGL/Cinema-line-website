@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwMovielist;
+import com.yc.clw.bean.ClwNews;
 
 @Component
 public class GenersAndCountryAction implements IGenersAndCountryAction{
@@ -71,6 +72,13 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 		list.add(new ClwMovielist(2, "教父", "维托·唐·科莱昂是黑手党首领，常干违法的勾当。但同时他也是许多弱小平民的保护神，深得人们爱戴。他还有一个准则，就是决不贩毒害人。为此他拒绝了毒枭素洛佐的要求，并因此激化了与纽约其它几个黑手党家族的矛盾。圣诞前夕，素洛佐劫持了教父的教子汤姆，并派人暗杀教父。教父中枪入院。素洛佐要汤姆设法使逊尼同意毒品买卖，重新谈判。逊尼有勇无谋，他发誓报仇，却无计可施。　\r\n" + 
 				"　　迈克去医院探望父亲，他发现保镖已被收买，而警方亦和素洛佐串通一气。各家族间的火拼一触即发。迈克制定了一个计策诱使素洛佐和警长前来谈判。在一家小餐馆内，迈克用事先藏在厕所内的手枪击毙了素洛佐和警长。　\r\n" + 
 				"　　迈克逃到了西西里，在那里他娶了美丽的阿波萝妮亚为妻，过着田园诗般的生活。而此时，纽约各个黑手党家族间的仇杀却越来越激烈。逊尼也被康妮的丈夫卡洛出卖，被人打得千疮百孔。教父伤愈复出，安排各家族间的和解。听到噩耗的迈克也受到了袭击。被收买的保镖法布里奇奥在迈克的车上装了炸弹。迈克虽幸免于难，却痛失爱妻。", 3, 5, "images/jiaofu.jpg"));
+		return list;
+	}
+
+	@Override
+	public List<ClwNews> latestnew() {
+		List<ClwNews> list =new ArrayList<>();
+		list.add(new ClwNews(1, "11", "11", "11"));
 		return list;
 	}
 
