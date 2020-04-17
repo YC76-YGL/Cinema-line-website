@@ -30,8 +30,8 @@ public class ClwMovieListAction {
 	 * 查询最近的六部电影
 	 * @return
 	 */
-	@GetMapping("getfindnewmovie")
-	public List<ClwMovielist> getfindnewmovie(){
+	@GetMapping("getnewmovie")
+	public List<ClwMovielist> getnewmovie(){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.setOrderByClause("id desc");
 		PageHelper.startPage(1,6);

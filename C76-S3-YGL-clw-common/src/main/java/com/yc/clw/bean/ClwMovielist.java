@@ -183,6 +183,17 @@ public class ClwMovielist implements java.io.Serializable{
 		this.image = image;
 		this.other = other;
 	}
+
+
+	public ClwMovielist(Integer id, String name, String description, Integer geners, Integer country, String image) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.geners = geners;
+		this.country = country;
+		this.image = image;
+	}
 	
 	
     

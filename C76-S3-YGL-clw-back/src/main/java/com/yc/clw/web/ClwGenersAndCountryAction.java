@@ -27,9 +27,7 @@ public class ClwGenersAndCountryAction {
 	 */
 	@GetMapping("lessthangetGeners")
 	public List<ClwGeners> lessthangetGeners(){
-//		ClwMovielistExample cmle =new ClwMovielistExample();
-//		cmle.setOrderByClause("id desc");
-//		PageHelper.startPage(1,6);
+
 		// -----------影片分类从数据库中查出
 		ClwGenersExample cge = new ClwGenersExample();
 		cge.createCriteria().andIdLessThan(7);

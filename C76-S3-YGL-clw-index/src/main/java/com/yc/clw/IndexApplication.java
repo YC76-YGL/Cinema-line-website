@@ -4,6 +4,7 @@ package com.yc.clw;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @MapperScan("com.yc.clw")
 //开启声明式远程服务调用
 @EnableFeignClients
+//服务熔断降级开关
+@EnableCircuitBreaker
 //spirng 回话共享注解
 @EnableRedisHttpSession
 public class IndexApplication {
