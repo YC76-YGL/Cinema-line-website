@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageHelper;
@@ -35,6 +36,22 @@ public class ClwMovieListAction {
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.setOrderByClause("id desc");
 		PageHelper.startPage(1,6);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	@GetMapping("getgenresmovie")
+	public List<ClwMovielist> getgenresmovie(@RequestParam("id")Integer id){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andGenersEqualTo(id);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	@GetMapping("getcountrmovie")
+	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andCountryEqualTo(id);
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}

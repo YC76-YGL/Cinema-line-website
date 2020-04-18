@@ -68,7 +68,11 @@ public class ClwNews implements java.io.Serializable {
 		this.other = other == null ? null : other.trim();
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "ClwNews [id=" + id + ", title=" + title + ", content=" + content + ", createtime=" + createtime
+				+ ", watch=" + watch + ", other=" + other + "]";
+	}
+
 	
 }

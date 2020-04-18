@@ -22,4 +22,11 @@ public class MergingmethoBiz {
 		mav.addObject("cce3list", gaca.greaterthangetcountry());
 		return mav;
 	}
+	
+	public ModelAndView news(ModelAndView mav) {
+		header(mav);
+		mav.addObject("newslist", gaca.getfindall());
+		mav.addObject("latelist", gaca.latestnew());
+		return mav;
+	}
 }

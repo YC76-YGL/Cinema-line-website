@@ -89,10 +89,10 @@
 										<div class="wthree-news-top-left" th:each="gfa : ${newslist}">
 											<div class="col-md-6 w3-agileits-news-left">
 												<div class="col-sm-5 wthree-news-img">
-													<a th:href="'ns&' + ${gfa.id}"><img th:src="${gfa.other}" alt="" /></a>
+													<a th:href="'newsingle?id=' + ${gfa.id}"><img th:src="${gfa.other}" alt="" /></a>
 												</div>
 												<div class="col-sm-7 wthree-news-info">
-													<h5><a href="news-single.html" th:text="${gfa.title}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+													<h5><a th:href="'newsingle?id=' + ${gfa.id}" th:text="${gfa.title}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
 													<p th:text="${gfa.content}">Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</p>
 													<ul>
 														<li th:text="${#dates.format(gfa.createtime,'yyyy年MM月dd日')}"><i class="fa fa-clock-o" aria-hidden="true"></i> 24/09/2016</li>

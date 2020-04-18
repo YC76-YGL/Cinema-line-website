@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageHelper;
@@ -35,8 +36,8 @@ public class ClwNewsAction {
 		return lsit;
 	}
 	
-	@GetMapping("clwnews")
-	public ClwNews clwnews(int id) {
+	@GetMapping("getclwnews")
+	public ClwNews getclwnews(@RequestParam("id")Integer id) {
 		return cnm.selectByPrimaryKey(id);
 	}
 	

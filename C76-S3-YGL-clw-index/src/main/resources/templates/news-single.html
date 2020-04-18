@@ -66,7 +66,6 @@
 <!-- //nav general_social_icons-->
 <div th:replace="common/common::.general_social_icons"></div>
 <!-- faq-banner  -->
-	<div class="faq">
 			<div class="container">
 				<div class="agileits-news-top">
 					<ol class="breadcrumb">
@@ -78,11 +77,11 @@
 				<div class="agileinfo-news-top-grids">
 					<div class="col-md-8 wthree-top-news-left">
 						<div class="wthree-news-left">
-							<div class="wthree-news-left-img">
-								<img src="images/7.jpg" alt="" />
-								<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</h4>
+							<div th:each="nle : ${getclwnews}" class="wthree-news-left-img">
+								<img th:src="${nle.other}" alt="" />
+								<h4 th:text="${nle.title}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</h4>
 								<div class="s-author">
-									<p>Posted By <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin</a> &nbsp;&nbsp; <i class="fa fa-calendar" aria-hidden="true"></i> June 2, 2016 &nbsp;&nbsp; <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> Comments (10)</a></p>
+									<p>发表者 <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin</a> &nbsp;&nbsp; <i class="fa fa-calendar" aria-hidden="true"></i><h6 th:text="${#dates.format(nle.createtime,'yyyy年MM月dd日')}">June 2, 2016 &nbsp;&nbsp;</h6>  <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 评论 (10)</a></p>
 								</div>
 								<div id="fb-root"></div>
 								<div class="news-shar-buttons">
@@ -101,7 +100,7 @@
 											<div class="fb-share-button" data-href="https://www.facebook.com/w3layouts" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fw3layouts&amp;src=sdkpreparse">Share</a></div>
 										</li>
 										<li class="news-twitter">
-											<a href="https://twitter.com/w3layouts" class="twitter-follow-button" data-show-count="false">Follow @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+											<a href="https://twitter.com/w3layouts" class="twitter-follow-button" data-show-count="false">分享 @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 										</li>
 										<li>
 											<a href="https://twitter.com/intent/tweet?screen_name=w3layouts" class="twitter-mention-button" data-show-count="false">Tweet to @w3layouts</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -122,7 +121,7 @@
 									</ul>
 								</div>
 								<div class="w3-agile-news-text">
-									<p>Pellentesque vel urna accumsan, dictum sapien vitae, condimentum tellus. Nulla fermentum enim vitae commodo dapibus. Vivamus diam ligula, accumsan non malesuada et, interdum malesuada turpis. Donec posuere eros eget velit iaculis consequat. Vestibulum ante felis, congue a sapien pharetra, sodales congue magna. Curabitur id varius urna. Morbi finibus, velit sagittis fermentum venenatis, erat risus elementum nibh, at commodo lorem orci sed nulla. Pellentesque eu velit pulvinar, scelerisque lacus ut, semper dolor.
+									<p th:text="${nle.content}">Pellentesque vel urna accumsan, dictum sapien vitae, condimentum tellus. Nulla fermentum enim vitae commodo dapibus. Vivamus diam ligula, accumsan non malesuada et, interdum malesuada turpis. Donec posuere eros eget velit iaculis consequat. Vestibulum ante felis, congue a sapien pharetra, sodales congue magna. Curabitur id varius urna. Morbi finibus, velit sagittis fermentum venenatis, erat risus elementum nibh, at commodo lorem orci sed nulla. Pellentesque eu velit pulvinar, scelerisque lacus ut, semper dolor.
 									<span>Donec semper, nibh et lacinia sollicitudin, nibh dui pellentesque elit, eu placerat leo felis nec nunc. Sed bibendum pretium metus eget euismod. Mauris id lacus lacus. Praesent faucibus nunc eget turpis tristique molestie. Duis dui diam, tristique eu gravida ut, congue eget felis. Proin sapien ligula, volutpat ut ultrices sit amet, dignissim quis urna. </span>
 									Cras fermentum eu dolor in porttitor. Praesent sagittis sollicitudin scelerisque. Vivamus ac erat in ex consectetur imperdiet vel eget sapien. Duis viverra nisi id leo varius, vitae eleifend turpis vulputate. Mauris eget sagittis augue, ut efficitur mauris. Aenean risus nisi, faucibus eget condimentum at, porttitor vel felis. Aliquam eu augue ut tortor gravida iaculis in in orci. Quisque vehicula consectetur sagittis.
 									</p>
@@ -166,7 +165,7 @@
 						<!-- agile-comments -->
 						<div class="agile-news-comments">
 							<div class="agile-news-comments-info">
-								<h4>Comments</h4>
+								<h4>评论区</h4>
 								<div class="fb-comments" data-href="https://w3layouts.com/" data-width="100%" data-numposts="5"></div>
 							</div>
 						</div>
@@ -177,83 +176,12 @@
 					</div>
 					<div class="col-md-4 wthree-news-right">
 						<!-- news-right-top -->
-						<div class="news-right-top">
-							<div class="wthree-news-right-heading">
-								<h3>Updated News</h3>
-							</div>
-							<div class="wthree-news-right-top">
-								<div class="news-grids-bottom">
-									<!-- date -->
-									<div id="design" class="date">
-										<div id="cycler">   
-											<div class="date-text">
-												<a href="news-single.html">August 15,2016</a>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">July 08,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Nullam non turpis sit amet metus tristique egestas et et orci.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">February 15,2016</a>
-												<p>Duis venenatis ac ipsum vel ultricies in placerat quam</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">January 15,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Pellentesque ullamcorper fringilla ipsum, ornare dapibus velit volutpat sit amet.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">September 24,2016</a>
-												<p>In lobortis ipsum mi, ac imperdiet elit pellentesque at.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">August 15,2016</a>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">July 08,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Nullam non turpis sit amet metus tristique egestas et et orci.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">February 15,2016</a>
-												<p>Duis venenatis ac ipsum vel ultricies in placerat quam</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">January 15,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Pellentesque ullamcorper fringilla ipsum, ornare dapibus velit volutpat sit amet.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">September 24,2016</a>
-												<p>In lobortis ipsum mi, ac imperdiet elit pellentesque at.</p>
-											</div>
-										</div>
-										<script>
-										function blinker() {
-											$('.blinking').fadeOut(500);
-											$('.blinking').fadeIn(500);
-										}
-										setInterval(blinker, 1000);
-										</script>
-										<script>
-											function cycle($item, $cycler){
-												setTimeout(cycle, 2000, $item.next(), $cycler);
-												
-												$item.slideUp(1000,function(){
-													$item.appendTo($cycler).show();        
-												});
-												}
-											cycle($('#cycler div:first'),  $('#cycler'));
-										</script>
-									</div>
-									<!-- //date -->
-								</div>
-							</div>
-						</div>
+						<div th:replace="news::.news-right-top"></div>
 						<!-- //news-right-top -->
 						<!-- news-right-bottom -->
 						<div class="news-right-bottom">
 							<div class="wthree-news-right-heading">
-								<h3>Top News</h3>
+								<h3>头条新闻</h3>
 							</div>
 							<div class="news-right-bottom-bg">
 								<div class="news-grids-bottom">
@@ -310,7 +238,7 @@
 				</div>
 			</div>
 				<div class="w3l-latest-movies-grids">
-					<h4 class="latest-text w3_latest_text">Latest Movies</h4>
+					<h4 class="latest-text w3_latest_text">最新电影</h4>
 						<div class="container">
 								<!-- /latest-movies -->
 									<div class="browse-inner">

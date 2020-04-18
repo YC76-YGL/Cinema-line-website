@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,9 +38,27 @@ public class IndexAction {
 		return mav;
 	}
 	
-	@GetMapping({"genres","genres.html"})
-	public ModelAndView geners(ModelAndView mav) {
-		mav.setViewName("genres");
+	@GetMapping("genres")
+	public ModelAndView geners(@RequestParam("id")Integer id,ModelAndView mav) {
+		if(id.equals(0)) {
+			mav.setViewName("Error");
+		}else {
+			mmb.header(mav);
+			mav.addObject("getgenresmovie", gaca.getgenresmovie(id));
+			mav.setViewName("genres");
+		}
+		return mav;
+	}
+	
+	@GetMapping("country")
+	public ModelAndView country(@RequestParam("id")Integer id,ModelAndView mav) {
+		if(id.equals(0)) {
+			mav.setViewName("Error");
+		}else {
+			mmb.header(mav);
+			mav.addObject("getcountrmovie", gaca.getcountrmovie(id));
+			mav.setViewName("genres");
+		}
 		return mav;
 	}
 	
@@ -96,27 +115,25 @@ public class IndexAction {
 		return mav;
 	}
 	
-	@GetMapping({"news-single","news-single.html"})
-	public ModelAndView search(ModelAndView mav) {
-		mav.setViewName("news-single");
-		return mav;
-	}
-	
 	
 	@GetMapping("new")
 	public ModelAndView news(ModelAndView mav) {
-		mmb.header(mav);
-		mav.addObject("newslist", gaca.getfindall());
-		mav.addObject("latelist", gaca.latestnew());
+		mmb.news(mav);
 		mav.setViewName("news");
 		return mav;
 	}
 	
-	@GetMapping("ns")
-	public ModelAndView ns(int id,ModelAndView mav) {
-		mav.addObject("newssingle", gaca.clwnews(id));
-		mmb.header(mav);
-		mav.setViewName("news-single");
+	@GetMapping("newsingle")
+	public ModelAndView newsingle(@RequestParam("id")Integer id,ModelAndView mav) {
+		if(id == 0) {
+			mav.setViewName("Error");
+		}else {
+			mmb.header(mav);
+			mav.addObject("getclwnews", gaca.getclwnews(id));
+			mav.addObject("leatestlist", gaca.latestnew());
+			mav.addObject("latelist", gaca.latestnew());
+			mav.setViewName("news-single");
+		}
 		return mav;
 	}
 	

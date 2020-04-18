@@ -44,7 +44,13 @@ public interface IGenersAndCountryAction {
 	@GetMapping("latestnew")
 	public List<ClwNews> latestnew();
 	
-	@GetMapping("clwnews")
-	public ClwNews clwnews(@RequestParam("id")int id);
+	@GetMapping("getclwnews")
+	public ClwNews getclwnews(@RequestParam("id")Integer id) ;
+	
+	@GetMapping("getgenresmovie")
+	public List<ClwMovielist> getgenresmovie(@RequestParam("id")Integer id);
+	
+	@GetMapping("getcountrmovie")
+	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id);
 	
 }

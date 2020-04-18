@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
@@ -87,7 +88,18 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 	}
 
 	@Override
-	public ClwNews clwnews(int id) {
+	public ClwNews getclwnews(@RequestParam("id")Integer id) {
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getgenresmovie(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getcountrmovie(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
