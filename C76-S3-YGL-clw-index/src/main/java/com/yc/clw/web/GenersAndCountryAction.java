@@ -74,13 +74,24 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 				"　　迈克逃到了西西里，在那里他娶了美丽的阿波萝妮亚为妻，过着田园诗般的生活。而此时，纽约各个黑手党家族间的仇杀却越来越激烈。逊尼也被康妮的丈夫卡洛出卖，被人打得千疮百孔。教父伤愈复出，安排各家族间的和解。听到噩耗的迈克也受到了袭击。被收买的保镖法布里奇奥在迈克的车上装了炸弹。迈克虽幸免于难，却痛失爱妻。", 3, 5, "images/jiaofu.jpg"));
 		return list;
 	}
+	
+	@Override
+	public List<ClwNews> getfindall() {
+		return null;
+	}
 
 	@Override
 	public List<ClwNews> latestnew() {
-		List<ClwNews> list =new ArrayList<>();
-		list.add(new ClwNews(1, "11", "11", "11"));
-		return list;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	@Override
+	public ClwNews clwnews(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 }

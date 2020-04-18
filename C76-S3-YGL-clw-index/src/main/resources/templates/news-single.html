@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Single</title>
+<title>一部电影 - 新闻 - 信息  </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,8 +47,6 @@
 <!-- header -->
 <div th:replace="common/common::.header"></div>
 <!-- //header -->
-<!-- bootstrap-pop-up -->
-<div th:replace="common/common::.ygl"></div>
 	<script>
 		$('.toggle').click(function(){
 		  // Switches the Icon
@@ -65,25 +63,16 @@
 <!-- //bootstrap-pop-up -->
 <!-- nav -->
 <div th:replace="common/common::.movies_nav"></div>
-<!-- //nav -->
-<div class="general_social_icons">
-	<nav class="social">
-		<ul>
-			<li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
-			<li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
-			<li class="w3_dribbble"><a href="#">Dribbble <i class="fa fa-dribbble"></i></a></li>
-			<li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>				  
-		</ul>
-  </nav>
-</div>
-<!-- faq-banner -->
+<!-- //nav general_social_icons-->
+<div th:replace="common/common::.general_social_icons"></div>
+<!-- faq-banner  -->
 	<div class="faq">
 			<div class="container">
 				<div class="agileits-news-top">
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					   <li><a href="news.html">News</a></li>
-					  <li class="active">Single</li>
+					  <li><a href="index.html">首页</a></li>
+					   <li><a href="new">新闻</a></li>
+					  <li class="active">信息</li>
 					</ol>
 				</div>
 				<div class="agileinfo-news-top-grids">
@@ -141,7 +130,7 @@
 							</div>
 						</div>
 						<div class="wthree-related-news-left">
-							<h4>Related News</h4>
+							<h4>相关新闻</h4>
 							<div class="wthree-news-top-left">
 								<div class="col-md-6 w3-agileits-news-left">
 									<div class="col-sm-5 wthree-news-img">

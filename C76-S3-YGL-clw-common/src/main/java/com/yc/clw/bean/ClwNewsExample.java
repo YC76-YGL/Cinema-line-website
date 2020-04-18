@@ -305,63 +305,63 @@ public class ClwNewsExample {
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeIsNull() {
-            addCriterion("releasetime is null");
+        public Criteria andcreatetimeIsNull() {
+            addCriterion("createtime is null");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeIsNotNull() {
-            addCriterion("releasetime is not null");
+        public Criteria andcreatetimeIsNotNull() {
+            addCriterion("createtime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeEqualTo(Date value) {
-            addCriterion("releasetime =", value, "releasetime");
+        public Criteria andcreatetimeEqualTo(Date value) {
+            addCriterion("createtime =", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeNotEqualTo(Date value) {
-            addCriterion("releasetime <>", value, "releasetime");
+        public Criteria andcreatetimeNotEqualTo(Date value) {
+            addCriterion("createtime <>", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeGreaterThan(Date value) {
-            addCriterion("releasetime >", value, "releasetime");
+        public Criteria andcreatetimeGreaterThan(Date value) {
+            addCriterion("createtime >", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("releasetime >=", value, "releasetime");
+        public Criteria andcreatetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("createtime >=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeLessThan(Date value) {
-            addCriterion("releasetime <", value, "releasetime");
+        public Criteria andcreatetimeLessThan(Date value) {
+            addCriterion("createtime <", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeLessThanOrEqualTo(Date value) {
-            addCriterion("releasetime <=", value, "releasetime");
+        public Criteria andcreatetimeLessThanOrEqualTo(Date value) {
+            addCriterion("createtime <=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeIn(List<Date> values) {
-            addCriterion("releasetime in", values, "releasetime");
+        public Criteria andcreatetimeIn(List<Date> values) {
+            addCriterion("createtime in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeNotIn(List<Date> values) {
-            addCriterion("releasetime not in", values, "releasetime");
+        public Criteria andcreatetimeNotIn(List<Date> values) {
+            addCriterion("createtime not in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeBetween(Date value1, Date value2) {
-            addCriterion("releasetime between", value1, value2, "releasetime");
+        public Criteria andcreatetimeBetween(Date value1, Date value2) {
+            addCriterion("createtime between", value1, value2, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andreleasetimeNotBetween(Date value1, Date value2) {
-            addCriterion("releasetime not between", value1, value2, "releasetime");
+        public Criteria andcreatetimeNotBetween(Date value1, Date value2) {
+            addCriterion("createtime not between", value1, value2, "createtime");
             return (Criteria) this;
         }
 

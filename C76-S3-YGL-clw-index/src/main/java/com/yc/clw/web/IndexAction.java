@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.biz.BizException;
+import com.yc.clw.biz.MergingmethoBiz;
 import com.yc.clw.biz.UserBiz;
 
 
@@ -24,16 +25,13 @@ public class IndexAction {
 	@Resource
 	UserBiz uBiz;
 	
+	@Resource
+	MergingmethoBiz mmb;
 	
 	@GetMapping({"/","index","index.html"})
 	public ModelAndView index(ModelAndView mav) {
 		//通过远程接口方式调用信息
-		mav.addObject("genlist1", gaca.lessthangetGeners());
-		mav.addObject("genlist2", gaca.betweengetGeners());
-		mav.addObject("genlist3", gaca.greatthangetGeners());
-		mav.addObject("cce1list", gaca.lessthangetcounttry());
-		mav.addObject("cce2list", gaca.betweengetcounttry());
-		mav.addObject("cce3list", gaca.greaterthangetcountry());
+		mmb.header(mav);
 		mav.addObject("Movielist",gaca.getnewmovie());
 		mav.setViewName("index");
 		return mav;
@@ -44,6 +42,7 @@ public class IndexAction {
 		mav.setViewName("genres");
 		return mav;
 	}
+	
 	@GetMapping("tologin")
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("Login");
@@ -62,8 +61,7 @@ public class IndexAction {
 			ClwUser dbuser = uBiz.login(user);
 			// 将用户对象添加到会话
 			mav.addObject("loginedUser", dbuser);
-			//mav.setViewName("index");
-			return index(mav);
+			mmb.header(mav);
 		} catch (BizException e) {
 			e.printStackTrace();
 			mav.addObject("msg", e.getMessage());
@@ -98,17 +96,28 @@ public class IndexAction {
 		return mav;
 	}
 	
-	@GetMapping("search")
+	@GetMapping({"news-single","news-single.html"})
 	public ModelAndView search(ModelAndView mav) {
+		mav.setViewName("news-single");
 		return mav;
 	}
 	
+	
 	@GetMapping("new")
 	public ModelAndView news(ModelAndView mav) {
-		mav.addObject("latestnew", gaca.latestnew());
+		mmb.header(mav);
+		mav.addObject("newslist", gaca.getfindall());
+		mav.addObject("latelist", gaca.latestnew());
 		mav.setViewName("news");
 		return mav;
 	}
 	
+	@GetMapping("ns")
+	public ModelAndView ns(int id,ModelAndView mav) {
+		mav.addObject("newssingle", gaca.clwnews(id));
+		mmb.header(mav);
+		mav.setViewName("news-single");
+		return mav;
+	}
 	
 }

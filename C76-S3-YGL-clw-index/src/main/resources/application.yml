@@ -27,7 +27,7 @@ feign:
         timeout:
           isolation:
             thread:
-              timeoutInMilliseconds: 10000
+              timeoutInMilliseconds: 30000
 # 日志配置
 logging:
   level:

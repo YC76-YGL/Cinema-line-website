@@ -34,10 +34,4 @@ public class ClwNewsAction {
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;
 	}
-	
-	@GetMapping("clwnews")
-	public ClwNews clwnews(int id) {
-		return cnm.selectByPrimaryKey(id);
-	}
-	
 }

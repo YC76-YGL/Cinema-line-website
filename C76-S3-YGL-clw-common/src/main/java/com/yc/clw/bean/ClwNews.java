@@ -14,7 +14,7 @@ public class ClwNews implements java.io.Serializable {
 
 	private String content;
 
-	private Date releasetime;
+	private Date createtime;
 
 	private String watch;
 
@@ -44,13 +44,13 @@ public class ClwNews implements java.io.Serializable {
 		this.content = content == null ? null : content.trim();
 	}
 
-	public Date getreleasetime() {
-		return releasetime;
+	public Date getCreatetime() {
+		return createtime;
 	}
 
-	public void setreleasetime(Date releasetime) {
-        this.releasetime = releasetime;
-    }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
 	public String getWatch() {
 		return watch;
@@ -68,23 +68,6 @@ public class ClwNews implements java.io.Serializable {
 		this.other = other == null ? null : other.trim();
 	}
 
-	public ClwNews(Integer id, String title, String content, Date releasetime, String watch, String other) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.releasetime = releasetime;
-		this.watch = watch;
-		this.other = other;
-	}
-
-	public ClwNews(Integer id, String title, String content, String watch) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.watch = watch;
-	}
 	
 	
 	

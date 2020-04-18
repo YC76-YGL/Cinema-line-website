@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
@@ -37,6 +38,13 @@ public interface IGenersAndCountryAction {
 	@GetMapping("getnewmovie")
 	public List<ClwMovielist> getnewmovie();
 	
+	@GetMapping("getfindall")
+	public List<ClwNews> getfindall();
+	
 	@GetMapping("latestnew")
 	public List<ClwNews> latestnew();
+	
+	@GetMapping("clwnews")
+	public ClwNews clwnews(@RequestParam("id")int id);
+	
 }

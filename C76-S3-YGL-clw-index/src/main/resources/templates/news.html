@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>一部电影 - 新闻</title>
 <!-- for-mobile-apps -->
@@ -85,54 +85,39 @@
 									id="w3bsd-tab" data-toggle="tab" aria-controls="w3bsd">电影新闻</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content">
-								<div role="tabpanel" class="tab-pane fade in active" id="home1"
-									aria-labelledby="home1-tab">
-									<div class="wthree-news-top-left" th:each="ln:${latestnew}">
-									<!-- 一个div分两个新闻 -->
-										<div class="col-md-6 w3-agileits-news-left">
-											<div class="col-sm-5 wthree-news-img">
-												<a href="news-single.html"><img th:src="${ln.other}"
-													alt="" /></a>
+									<div role="tabpanel" class="tab-pane fade in active" id="home1" aria-labelledby="home1-tab">
+										<div class="wthree-news-top-left" th:each="gfa : ${newslist}">
+											<div class="col-md-6 w3-agileits-news-left">
+												<div class="col-sm-5 wthree-news-img">
+													<a th:href="'ns&' + ${gfa.id}"><img th:src="${gfa.other}" alt="" /></a>
+												</div>
+												<div class="col-sm-7 wthree-news-info">
+													<h5><a href="news-single.html" th:text="${gfa.title}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+													<p th:text="${gfa.content}">Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</p>
+													<ul>
+														<li th:text="${#dates.format(gfa.createtime,'yyyy年MM月dd日')}"><i class="fa fa-clock-o" aria-hidden="true"></i> 24/09/2016</li>
+														<li th:text="${gfa.watch}"><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
+													</ul>
+												</div>
+												<div class="clearfix"> </div>
 											</div>
-											<div class="col-sm-7 wthree-news-info">
-												<h5>
-													<a href="news-single.html" th:text="${ln.title}">
-													</a>
-												</h5>
-												<p th:text="${ln.content}">Sed tristique mattis fermentum. Etiam semper aliquet
-													massa, id tempus massa mattis eget.</p>
-												<ul>
-												<!-- th:text="${ln.releasetime}" -->
-													<li><i class="fa fa-clock-o" aria-hidden="true"></i>
-														24/09/2016</li>
-													<li th:text="${ln.watch}"><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
+											<!-- <div class="col-md-6 w3-agileits-news-left">
+												<div class="col-sm-5 wthree-news-img">
+													<a href="news-single.html"><img src="images/m2.jpg" alt="" /></a>
+												</div>
+												<div class="col-sm-7 wthree-news-info">
+													<h5><a href="news-single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+													<p>Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</p>
+													<ul>
+														<li><i class="fa fa-clock-o" aria-hidden="true"></i> 24/09/2016</li>
+														<li><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
+													</ul>
+												</div>
+												<div class="clearfix"> </div>
+											</div> -->
+											<div class="clearfix"> </div>
 										</div>
-										<div class="col-md-6 w3-agileits-news-left">
-											<div class="col-sm-5 wthree-news-img">
-												<a href="news-single.html"><img src="images/m2.jpg"
-													alt="" /></a>
-											</div>
-											<div class="col-sm-7 wthree-news-info">
-												<h5>
-													<a href="news-single.html">Lorem ipsum dolor sit amet,
-														consectetur adipiscing elit.</a>
-												</h5>
-												<p>Sed tristique mattis fermentum. Etiam semper aliquet
-													massa, id tempus massa mattis eget.</p>
-												<ul>
-													<li><i class="fa fa-clock-o" aria-hidden="true"></i>
-														24/09/2016</li>
-													<li><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="clearfix"></div>
 									</div>
-								</div>
 								<div role="tabpanel" class="tab-pane fade" id="w3bsd"
 									aria-labelledby="w3bsd-tab">
 									<div class="wthree-news-top-left">
@@ -452,45 +437,9 @@
 									<!-- date -->
 									<div id="design" class="date">
 										<div id="cycler">   
-											<div class="date-text">
-												<a href="news-single.html">August 15,2016</a>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">July 08,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Nullam non turpis sit amet metus tristique egestas et et orci.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">February 15,2016</a>
-												<p>Duis venenatis ac ipsum vel ultricies in placerat quam</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">January 15,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Pellentesque ullamcorper fringilla ipsum, ornare dapibus velit volutpat sit amet.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">September 24,2016</a>
-												<p>In lobortis ipsum mi, ac imperdiet elit pellentesque at.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">August 15,2016</a>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">July 08,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Nullam non turpis sit amet metus tristique egestas et et orci.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">February 15,2016</a>
-												<p>Duis venenatis ac ipsum vel ultricies in placerat quam</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">January 15,2016 <span class="blinking"><img src="images/new.png" alt="" /></span></a>
-												<p>Pellentesque ullamcorper fringilla ipsum, ornare dapibus velit volutpat sit amet.</p>
-											</div>
-											<div class="date-text">
-												<a href="news-single.html">September 24,2016</a>
-												<p>In lobortis ipsum mi, ac imperdiet elit pellentesque at.</p>
+											<div th:each="ln : ${latelist}" class="date-text">
+												<a href="news-single" th:text="${#dates.format(ln.createtime,'yyyy年MM月dd日')}">August 15,2016</a>
+												<p th:text="${ln.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 											</div>
 										</div>
 										<script>
