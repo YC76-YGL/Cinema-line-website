@@ -160,40 +160,16 @@ public class ClwMovielist implements java.io.Serializable{
         this.other = other == null ? null : other.trim();
     }
 
-	public ClwMovielist() {
-		super();
-	}
 
-	public ClwMovielist(Integer id, String name, String description, Date createtime, String isHot, Integer geners,
-			Integer actor, Integer actor1, String director, Integer country, Integer score, Integer geners1,
-			String image, String other) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.createtime = createtime;
-		this.isHot = isHot;
-		this.geners = geners;
-		this.actor = actor;
-		this.actor1 = actor1;
-		this.director = director;
-		this.country = country;
-		this.score = score;
-		this.geners1 = geners1;
-		this.image = image;
-		this.other = other;
+	@Override
+	public String toString() {
+		return "ClwMovielist [id=" + id + ", name=" + name + ", description=" + description + ", createtime="
+				+ createtime + ", isHot=" + isHot + ", geners=" + geners + ", actor=" + actor + ", actor1=" + actor1
+				+ ", director=" + director + ", country=" + country + ", score=" + score + ", geners1=" + geners1
+				+ ", image=" + image + ", other=" + other + "]";
 	}
 
 
-	public ClwMovielist(Integer id, String name, String description, Integer geners, Integer country, String image) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.geners = geners;
-		this.country = country;
-		this.image = image;
-	}
 	
 	
     

@@ -44,7 +44,7 @@ public class IndexAction {
 			mav.setViewName("Error");
 		}else {
 			mmb.header(mav);
-			mav.addObject("getgenresmovie", gaca.getgenresmovie(id));
+			mav.addObject("getmovie", gaca.getgenresmovie(id));
 			mav.setViewName("genres");
 		}
 		return mav;
@@ -56,7 +56,7 @@ public class IndexAction {
 			mav.setViewName("Error");
 		}else {
 			mmb.header(mav);
-			mav.addObject("getcountrmovie", gaca.getcountrmovie(id));
+			mav.addObject("getmovie", gaca.getcountrmovie(id));
 			mav.setViewName("genres");
 		}
 		return mav;

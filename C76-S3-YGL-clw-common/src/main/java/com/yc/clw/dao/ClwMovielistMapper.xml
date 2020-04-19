@@ -16,7 +16,12 @@
     <result column="geners1" jdbcType="INTEGER" property="geners1" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="other" jdbcType="VARCHAR" property="other" />
+    
+    <!-- <collection property="children" column="id" select="selectChildren">
+    
+    </collection> -->
   </resultMap>
+  <!-- <select id="selectChildren" resultMap="BaseResultMap"></select> -->
   
   <sql id="Example_Where_Clause">
     <where>

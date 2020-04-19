@@ -60,21 +60,21 @@
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
 											<li th:each="gen1:${genlist1}">
-											<a th:text="${gen1.name}" th:href="'genres?' + ${gen1.id}">动作</a>
+											<a th:text="${gen1.name}" th:href="'genres?id=' + ${gen1.id}">动作</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
 											<li th:each="gen2:${genlist2}">
-											<a th:text="${gen2.name}" th:href="'genres?' + ${gen2.id}">动作</a>
+											<a th:text="${gen2.name}" th:href="'genres?id=' + ${gen2.id}">动作</a>
 											</li>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown" >
 											<li th:each="gen3:${genlist3}">
-											<a th:text="${gen3.name}" th:href="'genres?' + ${gen3.id}">动作</a>
+											<a th:text="${gen3.name}" th:href="'genres?id=' + ${gen3.id}">动作</a>
 											</li>
 										</ul>
 									</div>
@@ -91,21 +91,21 @@
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li th:each="cce1:${cce1list}">
-												<a th:text="${cce1.name}" th:href="'country?' + ${cce1.id}">亚洲</a>
+												<a th:text="${cce1.name}" th:href="'country?id=' + ${cce1.id}">亚洲</a>
 												</li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li th:each="cce2:${cce2list}">
-												<a th:text="${cce2.name}" th:href="'country?' + ${cce2.id}">亚洲</a>
+												<a th:text="${cce2.name}" th:href="'country?id=' + ${cce2.id}">亚洲</a>
 												</li>
 											</ul>
 										</div>
 										<div class="col-sm-4">
 											<ul class="multi-column-dropdown">
 												<li th:each="cce3:${cce3list}">
-												<a th:text="${cce3.name}" th:href="'country?' + ${cce3.id}">亚洲</a>
+												<a th:text="${cce3.name}" th:href="'country?id=' + ${cce3.id}">亚洲</a>
 												</li>
 											</ul>
 										</div>

@@ -1,78 +1,99 @@
 package com.yc.clw.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ClwNews implements java.io.Serializable {
-	/**
+public class ClwNews implements Serializable {
+    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
-	private String title;
+    private String title;
 
-	private String content;
+    private String content;
 
-	private Date createtime;
+    private String content1;
 
-	private String watch;
+    private Date createtime;
 
-	private String other;
+    private String watch;
 
-	public Integer getId() {
-		return id;
-	}
+    private String other;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private Integer user;
 
-	public String getTitle() {
-		return title;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title == null ? null : title.trim();
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setContent(String content) {
-		this.content = content == null ? null : content.trim();
-	}
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
 
-	public Date getCreatetime() {
-		return createtime;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
 
-	public String getWatch() {
-		return watch;
-	}
+    public String getContent1() {
+        return content1;
+    }
 
-	public void setWatch(String watch) {
-		this.watch = watch == null ? null : watch.trim();
-	}
+    public void setContent1(String content1) {
+        this.content1 = content1 == null ? null : content1.trim();
+    }
 
-	public String getOther() {
-		return other;
-	}
+    public Date getCreatetime() {
+        return createtime;
+    }
 
-	public void setOther(String other) {
-		this.other = other == null ? null : other.trim();
-	}
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getWatch() {
+        return watch;
+    }
+
+    public void setWatch(String watch) {
+        this.watch = watch == null ? null : watch.trim();
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other == null ? null : other.trim();
+    }
+
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer user) {
+        this.user = user;
+    }
 
 	@Override
 	public String toString() {
-		return "ClwNews [id=" + id + ", title=" + title + ", content=" + content + ", createtime=" + createtime
-				+ ", watch=" + watch + ", other=" + other + "]";
+		return "ClwNews [id=" + id + ", title=" + title + ", content=" + content + ", content1=" + content1
+				+ ", createtime=" + createtime + ", watch=" + watch + ", other=" + other + ", user=" + user + "]";
 	}
-
-	
+    
+    
 }

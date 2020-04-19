@@ -5,9 +5,11 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="content1" jdbcType="VARCHAR" property="content1" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="watch" jdbcType="VARCHAR" property="watch" />
     <result column="other" jdbcType="VARCHAR" property="other" />
+    <result column="user" jdbcType="INTEGER" property="user" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, content, createtime, watch, other
+    id, title, content, content1, createtime, watch, other, user
   </sql>
   <select id="selectByExample" parameterType="com.yc.clw.bean.ClwNewsExample" resultMap="BaseResultMap">
     select
@@ -104,9 +106,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into clw_news (title, content, createtime, watch, other)
-    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{watch,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR})
+    insert into clw_news (title, content, content1, 
+      createtime, watch, other, 
+      user)
+    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{content1,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{watch,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, 
+      #{user,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.clw.bean.ClwNews">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -120,6 +125,9 @@
       <if test="content != null">
         content,
       </if>
+      <if test="content1 != null">
+        content1,
+      </if>
       <if test="createtime != null">
         createtime,
       </if>
@@ -129,6 +137,9 @@
       <if test="other != null">
         other,
       </if>
+      <if test="user != null">
+        user,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="title != null">
@@ -136,6 +147,9 @@
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="content1 != null">
+        #{content1,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
@@ -145,6 +159,9 @@
       </if>
       <if test="other != null">
         #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -166,6 +183,9 @@
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
+      <if test="record.content1 != null">
+        content1 = #{record.content1,jdbcType=VARCHAR},
+      </if>
       <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
@@ -174,6 +194,9 @@
       </if>
       <if test="record.other != null">
         other = #{record.other,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user != null">
+        user = #{record.user,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,9 +208,11 @@
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
+      content1 = #{record.content1,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       watch = #{record.watch,jdbcType=VARCHAR},
-      other = #{record.other,jdbcType=VARCHAR}
+      other = #{record.other,jdbcType=VARCHAR},
+      user = #{record.user,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -201,6 +226,9 @@
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="content1 != null">
+        content1 = #{content1,jdbcType=VARCHAR},
+      </if>
       <if test="createtime != null">
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
@@ -210,6 +238,9 @@
       <if test="other != null">
         other = #{other,jdbcType=VARCHAR},
       </if>
+      <if test="user != null">
+        user = #{user,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -217,9 +248,11 @@
     update clw_news
     set title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
+      content1 = #{content1,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       watch = #{watch,jdbcType=VARCHAR},
-      other = #{other,jdbcType=VARCHAR}
+      other = #{other,jdbcType=VARCHAR},
+      user = #{user,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
