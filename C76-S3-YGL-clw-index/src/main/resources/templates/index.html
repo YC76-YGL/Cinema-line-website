@@ -95,7 +95,7 @@
 	<!-- banner -->
 	<div id="slidey" style="display: none;">
 		<ul>
-			<li th:each="ml:${Movielist}"><img th:src="${ml.image}" alt=" ">
+			<li th:each="ml:${Movielist}"><img th:src="${#strings.substringAfter(ml.image,'-') == null ? ml.image : #strings.substringBefore(ml.image,'-')}" alt=" ">
 			<p class='title' th:text="${ml.name}">泰山</p>
 				<p class='description' th:text="${ml.description}">泰山,
 					适应了伦敦生活的泰山(Tarzan)被召回他在丛林的故居,以调查采矿营地的活动.</p></li>

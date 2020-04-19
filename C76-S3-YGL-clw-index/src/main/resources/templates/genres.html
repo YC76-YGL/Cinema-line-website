@@ -9,8 +9,10 @@
 <script type="application/x-javascript">
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 </script>
@@ -116,21 +118,22 @@
 					</div>
 					<div class="container">
 						<div class="browse-inner">
-							<div class="col-md-2 w3l-movie-gride-agile" th:each="gm : ${getmovie}">
+						<!-- 图片大小必须是182 * 268 ${#strings.substringAfter(name,prefix)} -->
+							<div th:each="gm : ${getmovie}" class="col-md-2 w3l-movie-gride-agile">
 								<a href="single.html" class="hvr-shutter-out-horizontal"><img
-									th:src="${gm.image}" title="album-name" alt=" " />
+									th:src="${#strings.substringAfter(gm.image,'-') == null ? gm.image : #strings.substringAfter(gm.image,'-')}" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
 									</div> </a>
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a th:text="${gm.name}" href="single.html">Light B/t Oceans</a>
+											<a th:text="${gm.name}" href="single.html">The BFG</a>
 										</h6>
 									</div>
 									<div class="mid-2">
 
-										<p >2016</p>
+										<p th:text="${#dates.format(gm.createtime,('yyyy年'))}">2016</p>
 										<div class="block-stars">
 											<ul class="w3l-ratings">
 												<li><a href="#"><i class="fa fa-star"
@@ -139,15 +142,13 @@
 														aria-hidden="true"></i></a></li>
 												<li><a href="#"><i class="fa fa-star"
 														aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star-half-o"
+												<li><a href="#"><i class="fa fa-star-o"
 														aria-hidden="true"></i></a></li>
 												<li><a href="#"><i class="fa fa-star-o"
 														aria-hidden="true"></i></a></li>
 
-
 											</ul>
 										</div>
-										
 										<div class="clearfix"></div>
 									</div>
 
@@ -199,7 +200,123 @@
 									<p>最新</p>
 								</div>
 							</div>
+							<div class="col-md-2 w3l-movie-gride-agile">
+								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									src="images/c10.jpg" title="album-name" alt=" " />
+									<div class="w3l-action-icon">
+										<i class="fa fa-play-circle" aria-hidden="true"></i>
+									</div> </a>
+								<div class="mid-1">
+									<div class="w3l-movie-text">
+										<h6>
+											<a href="single.html">Nine Leaves</a>
+										</h6>
+									</div>
+									<div class="mid-2">
 
+										<p>2016</p>
+										<div class="block-stars">
+											<ul class="w3l-ratings">
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-half-o"
+														aria-hidden="true"></i></a></li>
+
+
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+								</div>
+								<div class="ribben two">
+									<p>NEW</p>
+								</div>
+							</div>
+							<div class="col-md-2 w3l-movie-gride-agile">
+								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									src="images/c11.jpg" title="album-name" alt=" " />
+									<div class="w3l-action-icon">
+										<i class="fa fa-play-circle" aria-hidden="true"></i>
+									</div> </a>
+								<div class="mid-1">
+									<div class="w3l-movie-text">
+										<h6>
+											<a href="single.html">Billy Lynn’s </a>
+										</h6>
+									</div>
+									<div class="mid-2">
+
+										<p>2016</p>
+										<div class="block-stars">
+											<ul class="w3l-ratings">
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+
+
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+								</div>
+								<div class="ribben two">
+									<p>NEW</p>
+								</div>
+							</div>
+							<div class="col-md-2 w3l-movie-gride-agile">
+								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									src="images/c12.jpg" title="album-name" alt=" " />
+									<div class="w3l-action-icon">
+										<i class="fa fa-play-circle" aria-hidden="true"></i>
+									</div> </a>
+								<div class="mid-1">
+									<div class="w3l-movie-text">
+										<h6>
+											<a href="single.html">War on Everyone</a>
+										</h6>
+									</div>
+									<div class="mid-2">
+
+										<p>2016</p>
+										<div class="block-stars">
+											<ul class="w3l-ratings">
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-o"
+														aria-hidden="true"></i></a></li>
+
+
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+								</div>
+								<div class="ribben two">
+									<p>NEW</p>
+								</div>
+							</div>
 							<div class="clearfix"></div>
 						</div>
 						<!-- //latest-movies1 -->
