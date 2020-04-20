@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -78,12 +79,18 @@ public class IndexAction {
 	}
 	
 	@PostMapping("login")
-	public ModelAndView login(ClwUser user, ModelAndView mav) {
+	public ModelAndView login(ClwUser user, ModelAndView mav,
+			@SessionAttribute(name = "uri",required = false)String uri) {
 		try {
 			ClwUser dbuser = uBiz.login(user);
 			// 将用户对象添加到会话
 			mav.addObject("loginedUser", dbuser);
 			mmb.header(mav);
+			if(uri != null) {
+				mav.setViewName("redirect:"+uri);
+			}else {
+				mav.setViewName("index");
+			}
 		} catch (BizException e) {
 			e.printStackTrace();
 			mav.addObject("msg", e.getMessage());
