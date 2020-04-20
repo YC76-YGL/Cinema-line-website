@@ -1,9 +1,9 @@
 package com.yc.clw.bean;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-public class ClwMovielist implements java.io.Serializable{
+public class ClwMovielist implements Serializable {
     /**
 	 * 
 	 */
@@ -19,11 +19,11 @@ public class ClwMovielist implements java.io.Serializable{
 
     private String isHot;
 
-    private Integer geners;
+    private String geners;
 
-    private Integer actor;
+    private String actor;
 
-    private Integer actor1;
+    private Double rating;
 
     private String director;
 
@@ -36,19 +36,8 @@ public class ClwMovielist implements java.io.Serializable{
     private String image;
 
     private String other;
-    
-    private List<ClwMovielist> children;
 
-    public List<ClwMovielist> getChildren() {
-		return children;
-	}
-
-
-	public void setChildren(List<ClwMovielist> children) {
-		this.children = children;
-	}
-
-	public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -88,28 +77,28 @@ public class ClwMovielist implements java.io.Serializable{
         this.isHot = isHot == null ? null : isHot.trim();
     }
 
-    public Integer getGeners() {
+    public String getGeners() {
         return geners;
     }
 
-    public void setGeners(Integer geners) {
-        this.geners = geners;
+    public void setGeners(String geners) {
+        this.geners = geners == null ? null : geners.trim();
     }
 
-    public Integer getActor() {
+    public String getActor() {
         return actor;
     }
 
-    public void setActor(Integer actor) {
-        this.actor = actor;
+    public void setActor(String actor) {
+        this.actor = actor == null ? null : actor.trim();
     }
 
-    public Integer getActor1() {
-        return actor1;
+    public Double getRating() {
+        return rating;
     }
 
-    public void setActor1(Integer actor1) {
-        this.actor1 = actor1;
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public String getDirector() {
@@ -160,17 +149,13 @@ public class ClwMovielist implements java.io.Serializable{
         this.other = other == null ? null : other.trim();
     }
 
-
 	@Override
 	public String toString() {
 		return "ClwMovielist [id=" + id + ", name=" + name + ", description=" + description + ", createtime="
-				+ createtime + ", isHot=" + isHot + ", geners=" + geners + ", actor=" + actor + ", actor1=" + actor1
+				+ createtime + ", isHot=" + isHot + ", geners=" + geners + ", actor=" + actor + ", rating=" + rating
 				+ ", director=" + director + ", country=" + country + ", score=" + score + ", geners1=" + geners1
 				+ ", image=" + image + ", other=" + other + "]";
 	}
-
-
-	
-	
+    
     
 }

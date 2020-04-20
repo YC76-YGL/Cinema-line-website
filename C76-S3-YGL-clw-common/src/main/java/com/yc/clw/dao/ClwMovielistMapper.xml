@@ -7,22 +7,16 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="is_hot" jdbcType="VARCHAR" property="isHot" />
-    <result column="geners" jdbcType="INTEGER" property="geners" />
-    <result column="actor" jdbcType="INTEGER" property="actor" />
-    <result column="actor1" jdbcType="INTEGER" property="actor1" />
+    <result column="geners" jdbcType="VARCHAR" property="geners" />
+    <result column="actor" jdbcType="VARCHAR" property="actor" />
+    <result column="rating" jdbcType="DOUBLE" property="rating" />
     <result column="director" jdbcType="VARCHAR" property="director" />
     <result column="country" jdbcType="INTEGER" property="country" />
     <result column="score" jdbcType="INTEGER" property="score" />
     <result column="geners1" jdbcType="INTEGER" property="geners1" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="other" jdbcType="VARCHAR" property="other" />
-    
-    <!-- <collection property="children" column="id" select="selectChildren">
-    
-    </collection> -->
   </resultMap>
-  <!-- <select id="selectChildren" resultMap="BaseResultMap"></select> -->
-  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -82,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, createtime, is_hot, geners, actor, actor1, director, country, 
+    id, name, description, createtime, is_hot, geners, actor, rating, director, country, 
     score, geners1, image, other
   </sql>
   <select id="selectByExample" parameterType="com.yc.clw.bean.ClwMovielistExample" resultMap="BaseResultMap">
@@ -121,12 +115,12 @@
     </selectKey>
     insert into clw_movielist (name, description, createtime, 
       is_hot, geners, actor, 
-      actor1, director, country, 
+      rating, director, country, 
       score, geners1, image, 
       other)
     values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{isHot,jdbcType=VARCHAR}, #{geners,jdbcType=INTEGER}, #{actor,jdbcType=INTEGER}, 
-      #{actor1,jdbcType=INTEGER}, #{director,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{isHot,jdbcType=VARCHAR}, #{geners,jdbcType=VARCHAR}, #{actor,jdbcType=VARCHAR}, 
+      #{rating,jdbcType=DOUBLE}, #{director,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
       #{score,jdbcType=INTEGER}, #{geners1,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
       #{other,jdbcType=VARCHAR})
   </insert>
@@ -154,8 +148,8 @@
       <if test="actor != null">
         actor,
       </if>
-      <if test="actor1 != null">
-        actor1,
+      <if test="rating != null">
+        rating,
       </if>
       <if test="director != null">
         director,
@@ -190,13 +184,13 @@
         #{isHot,jdbcType=VARCHAR},
       </if>
       <if test="geners != null">
-        #{geners,jdbcType=INTEGER},
+        #{geners,jdbcType=VARCHAR},
       </if>
       <if test="actor != null">
-        #{actor,jdbcType=INTEGER},
+        #{actor,jdbcType=VARCHAR},
       </if>
-      <if test="actor1 != null">
-        #{actor1,jdbcType=INTEGER},
+      <if test="rating != null">
+        #{rating,jdbcType=DOUBLE},
       </if>
       <if test="director != null">
         #{director,jdbcType=VARCHAR},
@@ -243,13 +237,13 @@
         is_hot = #{record.isHot,jdbcType=VARCHAR},
       </if>
       <if test="record.geners != null">
-        geners = #{record.geners,jdbcType=INTEGER},
+        geners = #{record.geners,jdbcType=VARCHAR},
       </if>
       <if test="record.actor != null">
-        actor = #{record.actor,jdbcType=INTEGER},
+        actor = #{record.actor,jdbcType=VARCHAR},
       </if>
-      <if test="record.actor1 != null">
-        actor1 = #{record.actor1,jdbcType=INTEGER},
+      <if test="record.rating != null">
+        rating = #{record.rating,jdbcType=DOUBLE},
       </if>
       <if test="record.director != null">
         director = #{record.director,jdbcType=VARCHAR},
@@ -281,9 +275,9 @@
       description = #{record.description,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       is_hot = #{record.isHot,jdbcType=VARCHAR},
-      geners = #{record.geners,jdbcType=INTEGER},
-      actor = #{record.actor,jdbcType=INTEGER},
-      actor1 = #{record.actor1,jdbcType=INTEGER},
+      geners = #{record.geners,jdbcType=VARCHAR},
+      actor = #{record.actor,jdbcType=VARCHAR},
+      rating = #{record.rating,jdbcType=DOUBLE},
       director = #{record.director,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER},
@@ -310,13 +304,13 @@
         is_hot = #{isHot,jdbcType=VARCHAR},
       </if>
       <if test="geners != null">
-        geners = #{geners,jdbcType=INTEGER},
+        geners = #{geners,jdbcType=VARCHAR},
       </if>
       <if test="actor != null">
-        actor = #{actor,jdbcType=INTEGER},
+        actor = #{actor,jdbcType=VARCHAR},
       </if>
-      <if test="actor1 != null">
-        actor1 = #{actor1,jdbcType=INTEGER},
+      <if test="rating != null">
+        rating = #{rating,jdbcType=DOUBLE},
       </if>
       <if test="director != null">
         director = #{director,jdbcType=VARCHAR},
@@ -345,9 +339,9 @@
       description = #{description,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       is_hot = #{isHot,jdbcType=VARCHAR},
-      geners = #{geners,jdbcType=INTEGER},
-      actor = #{actor,jdbcType=INTEGER},
-      actor1 = #{actor1,jdbcType=INTEGER},
+      geners = #{geners,jdbcType=VARCHAR},
+      actor = #{actor,jdbcType=VARCHAR},
+      rating = #{rating,jdbcType=DOUBLE},
       director = #{director,jdbcType=VARCHAR},
       country = #{country,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},

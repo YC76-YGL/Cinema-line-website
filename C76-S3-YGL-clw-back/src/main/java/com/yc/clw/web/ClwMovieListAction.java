@@ -43,7 +43,7 @@ public class ClwMovieListAction {
 	@GetMapping("getgenresmovie")
 	public List<ClwMovielist> getgenresmovie(@RequestParam("id")Integer id){
 		ClwMovielistExample cmle =new ClwMovielistExample();
-		cmle.createCriteria().andGenersEqualTo(id);
+		cmle.createCriteria().andGenersLike(id.toString());
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}
@@ -56,4 +56,19 @@ public class ClwMovieListAction {
 		return list;
 	}
 	
+	@GetMapping("seachmovie")
+	public List<ClwMovielist> getseachmovie(@RequestParam("name")String name){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andNameLike(name);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	@GetMapping("getidmovie")
+	public List<ClwMovielist> getnamemovie(@RequestParam("id")Integer id){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIdEqualTo(id);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
 }

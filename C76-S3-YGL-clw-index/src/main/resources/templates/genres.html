@@ -120,7 +120,7 @@
 						<div class="browse-inner">
 						<!-- 图片大小必须是182 * 268 ${#strings.substringAfter(name,prefix)} -->
 							<div th:each="gm : ${getmovie}" class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a th:href="'single?id=' + ${gm.id}" class="hvr-shutter-out-horizontal"><img
 									th:src="${#strings.substringAfter(gm.image,'-') == null ? gm.image : #strings.substringAfter(gm.image,'-')}" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -128,7 +128,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a th:text="${gm.name}" href="single.html">The BFG</a>
+											<a th:text="${gm.name}" href="single">The BFG</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -162,7 +162,7 @@
 						<!-- /latest-movies1 -->
 						<div class="browse-inner-come-agile-w3">
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/c7.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -170,7 +170,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">Mike-Dave</a>
+											<a href="single">Mike-Dave</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -201,7 +201,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/c10.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -209,7 +209,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">Nine Leaves</a>
+											<a href="single">Nine Leaves</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -240,7 +240,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/c11.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -248,7 +248,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">Billy Lynn’s </a>
+											<a href="single">Billy Lynn’s </a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -279,7 +279,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/c12.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -287,7 +287,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">War on Everyone</a>
+											<a href="single">War on Everyone</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -323,7 +323,7 @@
 						<!-- /latest-movies1 -->
 						<div class="browse-inner">
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/m7.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -331,7 +331,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">Light B/t Oceans</a>
+											<a href="single">Light B/t Oceans</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -368,7 +368,7 @@
 						<!-- //latest-movies1 -->
 						<div class="browse-inner-come-agile-w3">
 							<div class="col-md-2 w3l-movie-gride-agile">
-								<a href="single.html" class="hvr-shutter-out-horizontal"><img
+								<a href="single" class="hvr-shutter-out-horizontal"><img
 									src="images/c10.jpg" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -376,7 +376,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="single.html">Nine Leaves</a>
+											<a href="single">Nine Leaves</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -434,7 +434,7 @@
 						<div id="owl-demo" class="owl-carousel owl-theme">
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m13.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -443,7 +443,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Citizen Soldier</a>
+												<a href="single">Citizen Soldier</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -472,7 +472,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m11.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -481,7 +481,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">X-Men</a>
+												<a href="single">X-Men</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -510,7 +510,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m12.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -519,7 +519,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Greater</a>
+												<a href="single">Greater</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -548,7 +548,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m7.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -557,7 +557,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Light B/t Oceans</a>
+												<a href="single">Light B/t Oceans</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -586,7 +586,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m8.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -595,7 +595,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">The BFG</a>
+												<a href="single">The BFG</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -624,7 +624,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m9.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -633,7 +633,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Central Intelligence</a>
+												<a href="single">Central Intelligence</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -662,7 +662,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m10.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -671,7 +671,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Don't Think Twice</a>
+												<a href="single">Don't Think Twice</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -700,7 +700,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m17.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -709,7 +709,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">Peter</a>
+												<a href="single">Peter</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
@@ -738,7 +738,7 @@
 							</div>
 							<div class="item">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single.html" class="hvr-shutter-out-horizontal"><img
+									<a href="single" class="hvr-shutter-out-horizontal"><img
 										src="images/m15.jpg" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
@@ -747,7 +747,7 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single.html">God’s Compass</a>
+												<a href="single">God’s Compass</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">

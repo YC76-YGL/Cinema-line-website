@@ -53,4 +53,10 @@ public interface IGenersAndCountryAction {
 	@GetMapping("getcountrmovie")
 	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id);
 	
+	@GetMapping("seachmovie")
+	public List<ClwMovielist> getseachmovie(@RequestParam("name")String name);
+	
+	@GetMapping("getidmovie")
+	public List<ClwMovielist> getidmovie(@RequestParam("id")Integer id);
+	
 }

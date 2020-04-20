@@ -73,7 +73,7 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 		cml.setDescription("故事发生在1947年，银行家安迪（Andy）被指控枪杀了妻子及其情人，\r\n" + 
 				" 安迪被判无期徒刑，这意味着他将在肖申克监狱中渡过余生。\r\n" + 
 				"瑞德（Red）1927年因谋杀罪被判无期徒刑，数次假释都未获成功。他成为了肖申克监狱中的“权威人物”，只要你付得起钱，他几乎有办法搞到任何你想要的东西：香烟、糖果、酒，甚至是大麻。每当有新囚犯来的时候，大家就赌谁会在第一个夜晚哭泣。瑞德认为弱不禁风、书生气十足的安迪一定会哭，结果安迪的沉默使他输掉了两包烟，但同时也使瑞德对他另眼相看");
-		cml.setGeners(3);
+		cml.setGeners("3");
 		cml.setCountry(5);
 		cml.setImage("images/timg.jpg");
 		list.add(cml);
@@ -83,7 +83,6 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 		cml1.setDescription("维托·唐·科莱昂是黑手党首领，常干违法的勾当。但同时他也是许多弱小平民的保护神，深得人们爱戴。他还有一个准则，就是决不贩毒害人。为此他拒绝了毒枭素洛佐的要求，并因此激化了与纽约其它几个黑手党家族的矛盾。圣诞前夕，素洛佐劫持了教父的教子汤姆，并派人暗杀教父。教父中枪入院。素洛佐要汤姆设法使逊尼同意毒品买卖，重新谈判。逊尼有勇无谋，他发誓报仇，却无计可施。　\r\n" + 
 				"　　迈克去医院探望父亲，他发现保镖已被收买，而警方亦和素洛佐串通一气。各家族间的火拼一触即发。迈克制定了一个计策诱使素洛佐和警长前来谈判。在一家小餐馆内，迈克用事先藏在厕所内的手枪击毙了素洛佐和警长。　\r\n" + 
 				"　　迈克逃到了西西里，在那里他娶了美丽的阿波萝妮亚为妻，过着田园诗般的生活。而此时，纽约各个黑手党家族间的仇杀却越来越激烈。逊尼也被康妮的丈夫卡洛出卖，被人打得千疮百孔。教父伤愈复出，安排各家族间的和解。听到噩耗的迈克也受到了袭击。被收买的保镖法布里奇奥在迈克的车上装了炸弹。迈克虽幸免于难，却痛失爱妻。");
-		cml1.setGeners(3);
 		cml1.setCountry(5);
 		cml1.setImage("images/jiaofu.jpg");
 		list.add(cml1);
@@ -114,6 +113,18 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 
 	@Override
 	public List<ClwMovielist> getcountrmovie(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getseachmovie(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getidmovie(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

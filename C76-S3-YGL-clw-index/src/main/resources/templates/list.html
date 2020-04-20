@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>List</title>
+<title>一部电影 - 排行榜</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -138,8 +138,6 @@
 <!-- header -->
 <div th:replace="common/common::.header"></div>
 <!-- //header -->
-<!-- bootstrap-pop-up  -->
-<div th:replace="common/common::.ygl"></div>
 	<script>
 		$('.toggle').click(function(){
 		  // Switches the Icon
@@ -160,12 +158,12 @@
 <div th:replace="common/common::.general_social_icons"></div>
 <!-- faq-banner -->
 	<div class="faq">
-		<h4 class="latest-text w3_faq_latest_text w3_latest_text">Movies List</h4>
+		<h4 class="latest-text w3_faq_latest_text w3_latest_text">电影排行榜</h4>
 			<div class="container">
 				<div class="agileits-news-top">
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li class="active">List</li>
+					  <li><a href="index.html">首页</a></li>
+					  <li class="active">列表</li>
 					</ol>
 				</div>
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -202,18 +200,18 @@
 							<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 								<div class="agile-news-table">
 									<div class="w3ls-news-result">
-										<h4>Search Results : <span>25</span></h4>
+										<h4>搜索结果： <span>25</span></h4>
 									</div>
 									<table id="table-breakpoint">
 										<thead>
 										  <tr>
-											<th>No.</th>
-											<th>Movie Name</th>
-											<th>Year</th>
-											<th>Status</th>
-											<th>Country</th>
-											<th>Genre</th>
-											<th>Rating</th>
+											<th>序号</th>
+											<th>电影名称</th>
+											<th>年份</th>
+											<th>状态</th>
+											<th>国家</th>
+											<th>类型</th>
+											<th>豆瓣评分</th>
 										  </tr>
 										</thead>
 										<tbody>

@@ -1,6 +1,8 @@
 package com.yc.clw.web;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.biz.BizException;
 import com.yc.clw.biz.MergingmethoBiz;
@@ -134,6 +137,34 @@ public class IndexAction {
 			mav.addObject("latelist", gaca.latestnew());
 			mav.setViewName("news-single");
 		}
+		return mav;
+	}
+	
+	
+	@GetMapping("allgenres")
+	public ModelAndView allgenres(ModelAndView mav) {
+		return mav;
+	}
+	
+	@GetMapping("single")
+	public ModelAndView single(@RequestParam("id")Integer id,ModelAndView mav) {
+		if(id == 0) {
+			mav.setViewName("Error");
+		}else {
+			List<ClwMovielist> list = gaca.getidmovie(id);
+			if(list != null) {
+				mmb.header(mav);
+				mav.addObject("getclwnews", list);
+				mav.setViewName("single");
+			}
+		}
+		return mav;
+	}
+	
+	@GetMapping("list")
+	public ModelAndView list(ModelAndView mav) {
+		mmb.header(mav);
+		mav.setViewName("list");
 		return mav;
 	}
 	

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Single</title>
+<title>一部电影 - 电影详情</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -69,8 +69,6 @@
 <!-- header -->
 <div th:replace="common/common::.header"></div>
 <!-- //header -->
-<!-- bootstrap-pop-up -->
-<div th:replace="common/common::.ygl"></div>
 	<script>
 		$('.toggle').click(function(){
 		  // Switches the Icon
@@ -95,25 +93,26 @@
 		<!-- /w3l-medile-movies-grids -->
 			<div class="agileits-single-top">
 				<ol class="breadcrumb">
-				  <li><a href="index.html">Home</a></li>
-				  <li class="active">Single</li>
+				  <li><a href="index">首页</a></li>
+				  <li class="active">电影详情</li>
 				</ol>
 			</div>
 			<div class="single-page-agile-info">
                    <!-- /movie-browse-agile -->
                            <div class="show-top-grids-w3lagile">
 				<div class="col-sm-8 single-left">
-					<div class="song">
+					<div class="song" th:each="gcn : ${getclwnews}">
 						<div class="song-info">
-							<h3>THE LEGEND OF TARZAN - Official Trailer 2</h3>	
+							<h3 th:text="${gcn.name}">THE LEGEND OF TARZAN - Official Trailer 2</h3>	
 					</div>
 						<div class="video-grid-single-page-agileits">
-							<div data-video="dLmKio67pVQ" id="video"> <img src="images/5.jpg" alt="" class="img-responsive" /> </div>
+							<div data-video="dLmKio67pVQ" id="video"> 
+							<img th:src="${#strings.substringAfter(gcn.image,'-') == null ? gcn.image : #strings.substringBefore(gcn.image,'-')}" alt="" class="img-responsive" /> </div>
 						</div>
 					</div>
 					<div class="song-grid-right">
 						<div class="share">
-							<h5>Share this</h5>
+							<h5>分享这部电影</h5>
 							<div class="single-agile-shar-buttons">
 							<ul>
 								<li>
@@ -156,12 +155,9 @@
 
 					<div class="all-comments">
 						<div class="all-comments-info">
-							<a href="#">Comments</a>
+							<a href="#">评论</a>
 							<div class="agile-info-wthree-box">
-								<form>
-									<input type="text" placeholder="Name" required="">			           					   
-									<input type="text" placeholder="Email" required="">
-									<input type="text" placeholder="Phone" required="">
+								<form action="#" method="post">
 									<textarea placeholder="Message" required=""></textarea>
 									<input type="submit" value="SEND">
 									<div class="clearfix"> </div>

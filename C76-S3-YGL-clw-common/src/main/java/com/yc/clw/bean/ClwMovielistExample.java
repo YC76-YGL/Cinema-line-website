@@ -445,52 +445,62 @@ public class ClwMovielistExample {
             return (Criteria) this;
         }
 
-        public Criteria andGenersEqualTo(Integer value) {
+        public Criteria andGenersEqualTo(String value) {
             addCriterion("geners =", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersNotEqualTo(Integer value) {
+        public Criteria andGenersNotEqualTo(String value) {
             addCriterion("geners <>", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersGreaterThan(Integer value) {
+        public Criteria andGenersGreaterThan(String value) {
             addCriterion("geners >", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGenersGreaterThanOrEqualTo(String value) {
             addCriterion("geners >=", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersLessThan(Integer value) {
+        public Criteria andGenersLessThan(String value) {
             addCriterion("geners <", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersLessThanOrEqualTo(Integer value) {
+        public Criteria andGenersLessThanOrEqualTo(String value) {
             addCriterion("geners <=", value, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersIn(List<Integer> values) {
+        public Criteria andGenersLike(String value) {
+            addCriterion("geners like", value, "geners");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenersNotLike(String value) {
+            addCriterion("geners not like", value, "geners");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenersIn(List<String> values) {
             addCriterion("geners in", values, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersNotIn(List<Integer> values) {
+        public Criteria andGenersNotIn(List<String> values) {
             addCriterion("geners not in", values, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersBetween(Integer value1, Integer value2) {
+        public Criteria andGenersBetween(String value1, String value2) {
             addCriterion("geners between", value1, value2, "geners");
             return (Criteria) this;
         }
 
-        public Criteria andGenersNotBetween(Integer value1, Integer value2) {
+        public Criteria andGenersNotBetween(String value1, String value2) {
             addCriterion("geners not between", value1, value2, "geners");
             return (Criteria) this;
         }
@@ -505,113 +515,123 @@ public class ClwMovielistExample {
             return (Criteria) this;
         }
 
-        public Criteria andActorEqualTo(Integer value) {
+        public Criteria andActorEqualTo(String value) {
             addCriterion("actor =", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorNotEqualTo(Integer value) {
+        public Criteria andActorNotEqualTo(String value) {
             addCriterion("actor <>", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorGreaterThan(Integer value) {
+        public Criteria andActorGreaterThan(String value) {
             addCriterion("actor >", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorGreaterThanOrEqualTo(Integer value) {
+        public Criteria andActorGreaterThanOrEqualTo(String value) {
             addCriterion("actor >=", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorLessThan(Integer value) {
+        public Criteria andActorLessThan(String value) {
             addCriterion("actor <", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorLessThanOrEqualTo(Integer value) {
+        public Criteria andActorLessThanOrEqualTo(String value) {
             addCriterion("actor <=", value, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorIn(List<Integer> values) {
+        public Criteria andActorLike(String value) {
+            addCriterion("actor like", value, "actor");
+            return (Criteria) this;
+        }
+
+        public Criteria andActorNotLike(String value) {
+            addCriterion("actor not like", value, "actor");
+            return (Criteria) this;
+        }
+
+        public Criteria andActorIn(List<String> values) {
             addCriterion("actor in", values, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorNotIn(List<Integer> values) {
+        public Criteria andActorNotIn(List<String> values) {
             addCriterion("actor not in", values, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorBetween(Integer value1, Integer value2) {
+        public Criteria andActorBetween(String value1, String value2) {
             addCriterion("actor between", value1, value2, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActorNotBetween(Integer value1, Integer value2) {
+        public Criteria andActorNotBetween(String value1, String value2) {
             addCriterion("actor not between", value1, value2, "actor");
             return (Criteria) this;
         }
 
-        public Criteria andActor1IsNull() {
-            addCriterion("actor1 is null");
+        public Criteria andRatingIsNull() {
+            addCriterion("rating is null");
             return (Criteria) this;
         }
 
-        public Criteria andActor1IsNotNull() {
-            addCriterion("actor1 is not null");
+        public Criteria andRatingIsNotNull() {
+            addCriterion("rating is not null");
             return (Criteria) this;
         }
 
-        public Criteria andActor1EqualTo(Integer value) {
-            addCriterion("actor1 =", value, "actor1");
+        public Criteria andRatingEqualTo(Double value) {
+            addCriterion("rating =", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1NotEqualTo(Integer value) {
-            addCriterion("actor1 <>", value, "actor1");
+        public Criteria andRatingNotEqualTo(Double value) {
+            addCriterion("rating <>", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1GreaterThan(Integer value) {
-            addCriterion("actor1 >", value, "actor1");
+        public Criteria andRatingGreaterThan(Double value) {
+            addCriterion("rating >", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1GreaterThanOrEqualTo(Integer value) {
-            addCriterion("actor1 >=", value, "actor1");
+        public Criteria andRatingGreaterThanOrEqualTo(Double value) {
+            addCriterion("rating >=", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1LessThan(Integer value) {
-            addCriterion("actor1 <", value, "actor1");
+        public Criteria andRatingLessThan(Double value) {
+            addCriterion("rating <", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1LessThanOrEqualTo(Integer value) {
-            addCriterion("actor1 <=", value, "actor1");
+        public Criteria andRatingLessThanOrEqualTo(Double value) {
+            addCriterion("rating <=", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1In(List<Integer> values) {
-            addCriterion("actor1 in", values, "actor1");
+        public Criteria andRatingIn(List<Double> values) {
+            addCriterion("rating in", values, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1NotIn(List<Integer> values) {
-            addCriterion("actor1 not in", values, "actor1");
+        public Criteria andRatingNotIn(List<Double> values) {
+            addCriterion("rating not in", values, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1Between(Integer value1, Integer value2) {
-            addCriterion("actor1 between", value1, value2, "actor1");
+        public Criteria andRatingBetween(Double value1, Double value2) {
+            addCriterion("rating between", value1, value2, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andActor1NotBetween(Integer value1, Integer value2) {
-            addCriterion("actor1 not between", value1, value2, "actor1");
+        public Criteria andRatingNotBetween(Double value1, Double value2) {
+            addCriterion("rating not between", value1, value2, "rating");
             return (Criteria) this;
         }
 
