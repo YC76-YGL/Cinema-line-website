@@ -24,7 +24,7 @@ import com.yc.clw.biz.UserBiz;
 public class IndexAction {
 
 	@Resource
-	IGenersAndCountryAction gaca;
+	IclwalltableAction gaca;
 	
 	@Resource
 	UserBiz uBiz;
@@ -155,6 +155,7 @@ public class IndexAction {
 			if(list != null) {
 				mmb.header(mav);
 				mav.addObject("getclwnews", list);
+				mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
 				mav.setViewName("single");
 			}
 		}

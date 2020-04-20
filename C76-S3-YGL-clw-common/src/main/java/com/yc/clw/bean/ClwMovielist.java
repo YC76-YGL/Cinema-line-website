@@ -148,14 +148,4 @@ public class ClwMovielist implements Serializable {
     public void setOther(String other) {
         this.other = other == null ? null : other.trim();
     }
-
-	@Override
-	public String toString() {
-		return "ClwMovielist [id=" + id + ", name=" + name + ", description=" + description + ", createtime="
-				+ createtime + ", isHot=" + isHot + ", geners=" + geners + ", actor=" + actor + ", rating=" + rating
-				+ ", director=" + director + ", country=" + country + ", score=" + score + ", geners1=" + geners1
-				+ ", image=" + image + ", other=" + other + "]";
-	}
-    
-    
 }

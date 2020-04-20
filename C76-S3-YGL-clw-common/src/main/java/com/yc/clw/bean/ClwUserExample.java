@@ -573,6 +573,76 @@ public class ClwUserExample {
             addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
+
+        public Criteria andLookIsNull() {
+            addCriterion("look is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookIsNotNull() {
+            addCriterion("look is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookEqualTo(String value) {
+            addCriterion("look =", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookNotEqualTo(String value) {
+            addCriterion("look <>", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookGreaterThan(String value) {
+            addCriterion("look >", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookGreaterThanOrEqualTo(String value) {
+            addCriterion("look >=", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookLessThan(String value) {
+            addCriterion("look <", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookLessThanOrEqualTo(String value) {
+            addCriterion("look <=", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookLike(String value) {
+            addCriterion("look like", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookNotLike(String value) {
+            addCriterion("look not like", value, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookIn(List<String> values) {
+            addCriterion("look in", values, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookNotIn(List<String> values) {
+            addCriterion("look not in", values, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookBetween(String value1, String value2) {
+            addCriterion("look between", value1, value2, "look");
+            return (Criteria) this;
+        }
+
+        public Criteria andLookNotBetween(String value1, String value2) {
+            addCriterion("look not between", value1, value2, "look");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

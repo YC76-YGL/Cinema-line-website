@@ -3,7 +3,7 @@ package com.yc.clw.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ClwCommentary implements Serializable {
+public class ClwCommentary implements Serializable{
     /**
 	 * 
 	 */

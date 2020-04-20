@@ -2,7 +2,7 @@ package com.yc.clw.bean;
 
 import java.io.Serializable;
 
-public class ClwGeners implements Serializable{
+public class ClwGeners implements Serializable {
     /**
 	 * 
 	 */
@@ -34,8 +34,9 @@ public class ClwGeners implements Serializable{
 		this.name = name;
 	}
 
-	public ClwGeners() {
-		super();
+	@Override
+	public String toString() {
+		return "ClwGeners [id=" + id + ", name=" + name + "]";
 	}
     
     

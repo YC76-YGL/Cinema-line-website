@@ -6,13 +6,14 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
 
 @FeignClient(name = "clw-back",fallback = GenersAndCountryAction.class)
-public interface IGenersAndCountryAction {
+public interface IclwalltableAction {
 
 	@GetMapping("lessthangetGeners")
 	public List<ClwGeners> lessthangetGeners();
@@ -58,5 +59,8 @@ public interface IGenersAndCountryAction {
 	
 	@GetMapping("getidmovie")
 	public List<ClwMovielist> getidmovie(@RequestParam("id")Integer id);
+	
+	@GetMapping("getClwCommentary")
+	public List<ClwCommentary> getClwCommentary(@RequestParam("id")Integer id);
 	
 }

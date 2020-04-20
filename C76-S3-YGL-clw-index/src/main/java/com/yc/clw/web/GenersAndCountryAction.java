@@ -6,13 +6,14 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
 
 @Component
-public class GenersAndCountryAction implements IGenersAndCountryAction{
+public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwGeners> lessthangetGeners() {
@@ -125,6 +126,12 @@ public class GenersAndCountryAction implements IGenersAndCountryAction{
 
 	@Override
 	public List<ClwMovielist> getidmovie(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwCommentary> getClwCommentary(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

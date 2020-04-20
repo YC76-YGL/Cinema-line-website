@@ -5,13 +5,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yc.clw.web.IGenersAndCountryAction;
+import com.yc.clw.web.IclwalltableAction;
 
 @Service
 public class MergingmethoBiz {
 
 	@Resource
-	IGenersAndCountryAction gaca;
+	IclwalltableAction gaca;
 	
 	public ModelAndView header(ModelAndView mav) {
 		mav.addObject("genlist1", gaca.lessthangetGeners());

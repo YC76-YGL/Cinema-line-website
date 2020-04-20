@@ -1,4 +1,4 @@
-package com.yc.clw.bean;
+package com.yc.clw.dao;
 
 import com.yc.clw.bean.ClwReplytocomments;
 import com.yc.clw.bean.ClwReplytocommentsExample;

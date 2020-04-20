@@ -2,7 +2,7 @@ package com.yc.clw.bean;
 
 import java.io.Serializable;
 
-public class ClwActor implements Serializable {
+public class ClwActor implements Serializable{
     /**
 	 * 
 	 */
@@ -67,19 +67,4 @@ public class ClwActor implements Serializable {
     public void setLooks(String looks) {
         this.looks = looks == null ? null : looks.trim();
     }
-
-	public ClwActor(Integer id, String name, Integer age, String addr, String birth, String looks) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.addr = addr;
-		this.birth = birth;
-		this.looks = looks;
-	}
-
-	public ClwActor() {
-		super();
-	}
-	
 }

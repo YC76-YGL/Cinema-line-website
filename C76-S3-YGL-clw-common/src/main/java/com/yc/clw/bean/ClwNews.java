@@ -3,7 +3,7 @@ package com.yc.clw.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ClwNews implements Serializable {
+public class ClwNews implements Serializable{
     /**
 	 * 
 	 */
@@ -88,12 +88,4 @@ public class ClwNews implements Serializable {
     public void setUser(Integer user) {
         this.user = user;
     }
-
-	@Override
-	public String toString() {
-		return "ClwNews [id=" + id + ", title=" + title + ", content=" + content + ", content1=" + content1
-				+ ", createtime=" + createtime + ", watch=" + watch + ", other=" + other + ", user=" + user + "]";
-	}
-    
-    
 }

@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //MyBatis 接口组件扫描
-@MapperScan("com.yc.clw")
+@MapperScan("com.yc.ebuy")
 public class ClwCommonApplication {
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ClwCommonApplication.class, args);
 	}
 }
-

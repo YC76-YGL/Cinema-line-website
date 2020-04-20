@@ -21,9 +21,10 @@ public class ClwUser implements Serializable {
     private String mobile;
 
     private String type;
-    
 
-	public Integer getId() {
+    private String look;
+
+    public Integer getId() {
         return id;
     }
 
@@ -79,8 +80,11 @@ public class ClwUser implements Serializable {
         this.type = type == null ? null : type.trim();
     }
 
+    public String getLook() {
+        return look;
+    }
 
-
-    
-    
+    public void setLook(String look) {
+        this.look = look == null ? null : look.trim();
+    }
 }

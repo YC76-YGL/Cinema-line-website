@@ -2,7 +2,7 @@ package com.yc.clw.bean;
 
 import java.io.Serializable;
 
-public class ClwCountry implements Serializable {
+public class ClwCountry implements Serializable{
     /**
 	 * 
 	 */
@@ -32,10 +32,6 @@ public class ClwCountry implements Serializable {
 		super();
 		this.id = id;
 		this.name = name;
-	}
-
-	public ClwCountry() {
-		super();
 	}
     
     
