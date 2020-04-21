@@ -161,7 +161,7 @@ public class IndexAction {
 			List<ClwMovielist> list = gaca.getidmovie(id);
 			if(list != null) {
 				mmb.header(mav);
-				mav.addObject("getclwnews", list);
+				mav.addObject("getidmovie", list);
 				mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
 				mav.setViewName("single");
 			}

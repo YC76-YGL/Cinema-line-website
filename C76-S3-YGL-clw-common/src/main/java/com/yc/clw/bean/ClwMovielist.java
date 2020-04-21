@@ -36,6 +36,7 @@ public class ClwMovielist implements Serializable {
     private String image;
 
     private String other;
+    
 
     public Integer getId() {
         return id;
@@ -148,4 +149,5 @@ public class ClwMovielist implements Serializable {
     public void setOther(String other) {
         this.other = other == null ? null : other.trim();
     }
+
 }

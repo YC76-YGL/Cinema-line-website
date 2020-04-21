@@ -100,8 +100,8 @@
 			<div class="single-page-agile-info">
                    <!-- /movie-browse-agile -->
                            <div class="show-top-grids-w3lagile">
-				<div class="col-sm-8 single-left">
-					<div class="song" th:each="gcn : ${getclwnews}">
+				<div class="col-sm-8 single-left" th:each="gcn : ${getidmovie}">
+					<div class="song" >
 						<div class="song-info">
 							<h3 th:text="${gcn.name}">THE LEGEND OF TARZAN - Official Trailer 2</h3>	
 					</div>
@@ -165,40 +165,16 @@
 							</div>
 						</div>
 						<div class="media-grids">
-							<div class="media" th:each="gccl : ${getClwCommentarylist}">
-								<h5 th:text="${gccl.user}">TOM BROWN</h5>
+							<div class="media" th:each="gcn1 : ${getClwCommentarylist}">
+								<h5  th:each="user : ${gcn1.username}" th:text="${user.username}">TOM BROWN</h5>
 								<div class="media-left">
 									<a href="#">
 										<img src="images/user.jpg" title="One movies" alt=" " />
 									</a>
 								</div>
 								<div class="media-body">
-									<p th:text="${gccl.commentary}">Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+									<p th:text="${gcn1.commentary}">Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
 									<span>按查看所有帖子 :<a href="#"> 管理员 </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>MARK JOHNSON</h5>
-								<div class="media-left">
-									<a href="#">
-									<img src="images/user.jpg" title="One movies" alt=" " />
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>STEVEN SMITH</h5>
-								<div class="media-left">
-									<a href="#">
-									<img src="images/user.jpg" title="One movies" alt=" " />
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
 								</div>
 							</div>
 
@@ -206,7 +182,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 single-right">
-					<h3>Up Next</h3>
+					<h3>下一个</h3>
 					<div class="single-grid-right">
 						<div class="single-right-grids">
 							<div class="col-md-4 single-right-grid-left">

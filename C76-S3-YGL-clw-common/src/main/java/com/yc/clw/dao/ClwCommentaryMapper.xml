@@ -7,7 +7,13 @@
     <result column="user" jdbcType="INTEGER" property="user" />
     <result column="movielist" jdbcType="INTEGER" property="movielist" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <!-- 一对一关联 -->
+    <association property="username" column="user" select="selectuser">
+    </association>
   </resultMap>
+  <select id="selectuser" resultType="com.yc.clw.bean.ClwUser">
+  	select * from clw_user where id = #{id}
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

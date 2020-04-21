@@ -8,6 +8,7 @@
     <result column="user" jdbcType="INTEGER" property="user" />
     <result column="byreply" jdbcType="INTEGER" property="byreply" />
   </resultMap>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

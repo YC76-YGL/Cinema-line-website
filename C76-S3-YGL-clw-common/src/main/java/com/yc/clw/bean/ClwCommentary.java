@@ -18,7 +18,9 @@ public class ClwCommentary implements Serializable{
     private Integer movielist;
 
     private Date createtime;
-
+    
+    private ClwUser username;
+    
     public Integer getId() {
         return id;
     }
@@ -58,4 +60,15 @@ public class ClwCommentary implements Serializable{
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
+
+	public ClwUser getUsername() {
+		return username;
+	}
+
+	public void setUsername(ClwUser username) {
+		this.username = username;
+	}
+
+    
+    
 }

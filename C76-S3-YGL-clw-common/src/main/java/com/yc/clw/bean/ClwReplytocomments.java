@@ -1,7 +1,15 @@
 package com.yc.clw.bean;
 
-public class ClwReplytocomments {
-    private Integer id;
+import java.io.Serializable;
+import java.util.List;
+
+public class ClwReplytocomments implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String replytocomments;
 
@@ -10,6 +18,7 @@ public class ClwReplytocomments {
     private Integer user;
 
     private Integer byreply;
+    
 
     public Integer getId() {
         return id;
@@ -50,4 +59,7 @@ public class ClwReplytocomments {
     public void setByreply(Integer byreply) {
         this.byreply = byreply;
     }
+
+    
+    
 }
