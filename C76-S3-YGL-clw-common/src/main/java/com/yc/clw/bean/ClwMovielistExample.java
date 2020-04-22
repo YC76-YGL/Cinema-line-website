@@ -585,52 +585,52 @@ public class ClwMovielistExample {
             return (Criteria) this;
         }
 
-        public Criteria andRatingEqualTo(Double value) {
+        public Criteria andRatingEqualTo(Float value) {
             addCriterion("rating =", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingNotEqualTo(Double value) {
+        public Criteria andRatingNotEqualTo(Float value) {
             addCriterion("rating <>", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingGreaterThan(Double value) {
+        public Criteria andRatingGreaterThan(Float value) {
             addCriterion("rating >", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingGreaterThanOrEqualTo(Double value) {
+        public Criteria andRatingGreaterThanOrEqualTo(Float value) {
             addCriterion("rating >=", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingLessThan(Double value) {
+        public Criteria andRatingLessThan(Float value) {
             addCriterion("rating <", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingLessThanOrEqualTo(Double value) {
+        public Criteria andRatingLessThanOrEqualTo(Float value) {
             addCriterion("rating <=", value, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingIn(List<Double> values) {
+        public Criteria andRatingIn(List<Float> values) {
             addCriterion("rating in", values, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingNotIn(List<Double> values) {
+        public Criteria andRatingNotIn(List<Float> values) {
             addCriterion("rating not in", values, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingBetween(Double value1, Double value2) {
+        public Criteria andRatingBetween(Float value1, Float value2) {
             addCriterion("rating between", value1, value2, "rating");
             return (Criteria) this;
         }
 
-        public Criteria andRatingNotBetween(Double value1, Double value2) {
+        public Criteria andRatingNotBetween(Float value1, Float value2) {
             addCriterion("rating not between", value1, value2, "rating");
             return (Criteria) this;
         }

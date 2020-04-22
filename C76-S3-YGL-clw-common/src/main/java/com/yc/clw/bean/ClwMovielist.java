@@ -23,7 +23,7 @@ public class ClwMovielist implements Serializable {
 
     private String actor;
 
-    private Double rating;
+    private Float rating;
 
     private String director;
 
@@ -36,7 +36,6 @@ public class ClwMovielist implements Serializable {
     private String image;
 
     private String other;
-    
 
     public Integer getId() {
         return id;
@@ -94,11 +93,11 @@ public class ClwMovielist implements Serializable {
         this.actor = actor == null ? null : actor.trim();
     }
 
-    public Double getRating() {
+    public Float getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 
@@ -149,5 +148,4 @@ public class ClwMovielist implements Serializable {
     public void setOther(String other) {
         this.other = other == null ? null : other.trim();
     }
-
 }

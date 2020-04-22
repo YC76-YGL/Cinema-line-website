@@ -90,8 +90,16 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		return list;
 	}
 	
+
 	@Override
-	public List<ClwNews> getfindall() {
+	public List<ClwNews> getQuerySingular() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwNews> getQueryEven() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -132,6 +140,18 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwCommentary> getClwCommentary(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getgareaterratmovie() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getMostpopular() {
 		// TODO Auto-generated method stub
 		return null;
 	}

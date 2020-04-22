@@ -28,14 +28,40 @@ public class ClwMovieListAction {
 	}
 	
 	/**
-	 * 查询最近的六部电影
+	 * 评分最高的电影
+	 * @return
+	 */
+	@GetMapping("getgareaterratmovie")
+	public List<ClwMovielist> getgareaterratmovie(){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.setOrderByClause("rating asc");
+		PageHelper.startPage(1,6);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	/**
+	 * 查询最受欢迎的三部电影
+	 * @return
+	 */
+	@GetMapping("getMostpopular")
+	public List<ClwMovielist> getMostpopular(){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.setOrderByClause("score asc");
+		PageHelper.startPage(1,3);
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	/**
+	 * 最近的电影
 	 * @return
 	 */
 	@GetMapping("getnewmovie")
 	public List<ClwMovielist> getnewmovie(){
 		ClwMovielistExample cmle =new ClwMovielistExample();
-		cmle.setOrderByClause("id desc");
-		PageHelper.startPage(1,6);
+		cmle.setOrderByClause("createtime asc");
+		PageHelper.startPage(1,8);
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}

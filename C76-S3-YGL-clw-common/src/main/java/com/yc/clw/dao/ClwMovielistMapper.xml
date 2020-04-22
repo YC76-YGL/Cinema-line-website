@@ -9,14 +9,13 @@
     <result column="is_hot" jdbcType="VARCHAR" property="isHot" />
     <result column="geners" jdbcType="VARCHAR" property="geners" />
     <result column="actor" jdbcType="VARCHAR" property="actor" />
-    <result column="rating" jdbcType="DOUBLE" property="rating" />
+    <result column="rating" jdbcType="REAL" property="rating" />
     <result column="director" jdbcType="VARCHAR" property="director" />
     <result column="country" jdbcType="INTEGER" property="country" />
     <result column="score" jdbcType="INTEGER" property="score" />
     <result column="geners1" jdbcType="INTEGER" property="geners1" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="other" jdbcType="VARCHAR" property="other" />
-   
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -121,7 +120,7 @@
       other)
     values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{isHot,jdbcType=VARCHAR}, #{geners,jdbcType=VARCHAR}, #{actor,jdbcType=VARCHAR}, 
-      #{rating,jdbcType=DOUBLE}, #{director,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{rating,jdbcType=REAL}, #{director,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
       #{score,jdbcType=INTEGER}, #{geners1,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
       #{other,jdbcType=VARCHAR})
   </insert>
@@ -191,7 +190,7 @@
         #{actor,jdbcType=VARCHAR},
       </if>
       <if test="rating != null">
-        #{rating,jdbcType=DOUBLE},
+        #{rating,jdbcType=REAL},
       </if>
       <if test="director != null">
         #{director,jdbcType=VARCHAR},
@@ -244,7 +243,7 @@
         actor = #{record.actor,jdbcType=VARCHAR},
       </if>
       <if test="record.rating != null">
-        rating = #{record.rating,jdbcType=DOUBLE},
+        rating = #{record.rating,jdbcType=REAL},
       </if>
       <if test="record.director != null">
         director = #{record.director,jdbcType=VARCHAR},
@@ -278,7 +277,7 @@
       is_hot = #{record.isHot,jdbcType=VARCHAR},
       geners = #{record.geners,jdbcType=VARCHAR},
       actor = #{record.actor,jdbcType=VARCHAR},
-      rating = #{record.rating,jdbcType=DOUBLE},
+      rating = #{record.rating,jdbcType=REAL},
       director = #{record.director,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER},
@@ -311,7 +310,7 @@
         actor = #{actor,jdbcType=VARCHAR},
       </if>
       <if test="rating != null">
-        rating = #{rating,jdbcType=DOUBLE},
+        rating = #{rating,jdbcType=REAL},
       </if>
       <if test="director != null">
         director = #{director,jdbcType=VARCHAR},
@@ -342,7 +341,7 @@
       is_hot = #{isHot,jdbcType=VARCHAR},
       geners = #{geners,jdbcType=VARCHAR},
       actor = #{actor,jdbcType=VARCHAR},
-      rating = #{rating,jdbcType=DOUBLE},
+      rating = #{rating,jdbcType=REAL},
       director = #{director,jdbcType=VARCHAR},
       country = #{country,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},

@@ -114,6 +114,16 @@ public class ClwNewsExample {
             addCriterion("id is not null");
             return (Criteria) this;
         }
+        
+        public Criteria andQuerySingular() {
+            addCriterion("id % 2 =1");
+            return (Criteria) this;
+        }
+        
+        public Criteria andQueryEven() {
+            addCriterion("id % 2 =0");
+            return (Criteria) this;
+        }
 
         public Criteria andIdEqualTo(Integer value) {
             addCriterion("id =", value, "id");

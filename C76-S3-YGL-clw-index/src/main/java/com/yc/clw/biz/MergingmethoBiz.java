@@ -13,7 +13,7 @@ public class MergingmethoBiz {
 	@Resource
 	IclwalltableAction gaca;
 	
-	public ModelAndView header(ModelAndView mav) {
+	public ModelAndView common(ModelAndView mav) {
 		mav.addObject("genlist1", gaca.lessthangetGeners());
 		mav.addObject("genlist2", gaca.betweengetGeners());
 		mav.addObject("genlist3", gaca.greatthangetGeners());
@@ -24,8 +24,9 @@ public class MergingmethoBiz {
 	}
 	
 	public ModelAndView news(ModelAndView mav) {
-		header(mav);
-		mav.addObject("newslist", gaca.getfindall());
+		common(mav);
+		mav.addObject("getQuerySingular", gaca.getQuerySingular());
+		mav.addObject("getQueryEven", gaca.getQueryEven());
 		mav.addObject("latelist", gaca.latestnew());
 		return mav;
 	}

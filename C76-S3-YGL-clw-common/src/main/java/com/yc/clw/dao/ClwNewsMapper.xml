@@ -10,7 +10,12 @@
     <result column="watch" jdbcType="VARCHAR" property="watch" />
     <result column="other" jdbcType="VARCHAR" property="other" />
     <result column="user" jdbcType="INTEGER" property="user" />
+    <association property="Even" column="id" select="selecteven">
+    </association>
   </resultMap>
+  <select id="selecteven" resultType="com.yc.clw.bean.ClwNews">
+  	select * from clw_news where id= #{id}+1
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

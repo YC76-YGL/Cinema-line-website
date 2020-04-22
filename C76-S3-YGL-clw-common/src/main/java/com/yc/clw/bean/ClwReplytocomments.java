@@ -1,7 +1,6 @@
 package com.yc.clw.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class ClwReplytocomments implements Serializable{
     /**

@@ -28,10 +28,28 @@ public class ClwNewsAction {
 		return list;
 	}
 	
-	@GetMapping("getfindall")
-	public List<ClwNews> getfindall(){
+	/**
+	 * 查询id是单数的
+	 * @return
+	 */
+	@GetMapping("QuerySingular")
+	public List<ClwNews> getQuerySingular(){
 		ClwNewsExample cne = new ClwNewsExample();
-		cne.createCriteria().andIdIsNotNull();
+		cne.setOrderByClause("createtime asc");
+		cne.createCriteria().andQuerySingular();
+		List<ClwNews> lsit = cnm.selectByExample(cne);
+		return lsit;
+	}
+	
+	/**
+	 * 查询id是双数的
+	 * @return
+	 */
+	@GetMapping("QueryEven")
+	public List<ClwNews> getQueryEven(){
+		ClwNewsExample cne = new ClwNewsExample();
+		cne.setOrderByClause("createtime asc");
+		cne.createCriteria().andQueryEven();
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;
 	}

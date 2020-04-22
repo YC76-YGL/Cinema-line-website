@@ -36,8 +36,10 @@ public class IndexAction {
 	@GetMapping({"/","index","index.html"})
 	public ModelAndView index(ModelAndView mav) {
 		//通过远程接口方式调用信息
-		mmb.header(mav);
-		mav.addObject("Movielist",gaca.getnewmovie());
+		mmb.common(mav);
+		mav.addObject("getgareaterratmovie",gaca.getgareaterratmovie());
+		mav.addObject("getnewmovie", gaca.getnewmovie());
+		mav.addObject("getMostpopular",gaca.getMostpopular());
 		mav.setViewName("index");
 		return mav;
 	}
@@ -47,7 +49,7 @@ public class IndexAction {
 		if(id.equals(0)) {
 			mav.setViewName("Error");
 		}else {
-			mmb.header(mav);
+			mmb.common(mav);
 			mav.addObject("getmovie", gaca.getgenresmovie(id));
 			mav.setViewName("genres");
 		}
@@ -59,7 +61,7 @@ public class IndexAction {
 		if(id.equals(0)) {
 			mav.setViewName("Error");
 		}else {
-			mmb.header(mav);
+			mmb.common(mav);
 			mav.addObject("getmovie", gaca.getcountrmovie(id));
 			mav.setViewName("genres");
 		}
@@ -85,7 +87,7 @@ public class IndexAction {
 			ClwUser dbuser = uBiz.login(user);
 			// 将用户对象添加到会话
 			mav.addObject("loginedUser", dbuser);
-			mmb.header(mav);
+			mmb.common(mav);
 			if(uri != null) {
 				mav.setViewName("redirect:"+uri);
 			}else {
@@ -138,7 +140,7 @@ public class IndexAction {
 		if(id == 0) {
 			mav.setViewName("Error");
 		}else {
-			mmb.header(mav);
+			mmb.common(mav);
 			mav.addObject("getclwnews", gaca.getclwnews(id));
 			mav.addObject("leatestlist", gaca.latestnew());
 			mav.addObject("latelist", gaca.latestnew());
@@ -160,7 +162,7 @@ public class IndexAction {
 		}else {
 			List<ClwMovielist> list = gaca.getidmovie(id);
 			if(list != null) {
-				mmb.header(mav);
+				mmb.common(mav);
 				mav.addObject("getidmovie", list);
 				mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
 				mav.setViewName("single");
@@ -171,7 +173,7 @@ public class IndexAction {
 	
 	@GetMapping("list")
 	public ModelAndView list(ModelAndView mav) {
-		mmb.header(mav);
+		mmb.common(mav);
 		mav.setViewName("list");
 		return mav;
 	}

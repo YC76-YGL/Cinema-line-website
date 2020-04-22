@@ -36,14 +36,30 @@ public interface IclwalltableAction {
 	@GetMapping("getClwMovielist")
 	public List<ClwMovielist> getClwMovielist();
 	
+	//查询最新电影
 	@GetMapping("getnewmovie")
 	public List<ClwMovielist> getnewmovie();
 	
-	@GetMapping("getfindall")
-	public List<ClwNews> getfindall();
+	/**
+	 * 查询id是单数的
+	 * @return
+	 */
+	@GetMapping("QuerySingular")
+	public List<ClwNews> getQuerySingular();
+	
+	/**
+	 * 查询id是双数的
+	 * @return
+	 */
+	@GetMapping("QueryEven")
+	public List<ClwNews> getQueryEven();
 	
 	@GetMapping("latestnew")
 	public List<ClwNews> latestnew();
+	
+	//查询评分高的电影
+	@GetMapping("getgareaterratmovie")
+	public List<ClwMovielist> getgareaterratmovie();
 	
 	@GetMapping("getclwnews")
 	public ClwNews getclwnews(@RequestParam("id")Integer id) ;
@@ -62,5 +78,12 @@ public interface IclwalltableAction {
 	
 	@GetMapping("getClwCommentary")
 	public List<ClwCommentary> getClwCommentary(@RequestParam("id")Integer id);
+	
+	/**
+	 * 查询最受欢迎的三部电影
+	 * @return
+	 */
+	@GetMapping("getMostpopular")
+	public List<ClwMovielist> getMostpopular();
 	
 }
