@@ -53,6 +53,18 @@ public class ClwNewsAction {
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;
 	}
+	/**
+	 * 查询头条新闻
+	 * @return
+	 */
+	@GetMapping("getHeadlines")
+	public List<ClwNews> getHeadlines(){
+		ClwNewsExample cne = new ClwNewsExample();
+		cne.setOrderByClause("createtime asc,(watch + 0) asc");
+		PageHelper.startPage(1, 10);
+		List<ClwNews> lsit = cnm.selectByExample(cne);
+		return lsit;
+	}
 	
 	@GetMapping("getclwnews")
 	public ClwNews getclwnews(@RequestParam("id")Integer id) {

@@ -155,6 +155,12 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<ClwNews> getHeadlines() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

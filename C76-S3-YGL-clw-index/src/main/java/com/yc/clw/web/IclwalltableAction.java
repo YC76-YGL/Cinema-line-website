@@ -86,4 +86,11 @@ public interface IclwalltableAction {
 	@GetMapping("getMostpopular")
 	public List<ClwMovielist> getMostpopular();
 	
+	/**
+	 * 查询头条新闻
+	 * @return
+	 */
+	@GetMapping("getHeadlines")
+	public List<ClwNews> getHeadlines();
+	
 }

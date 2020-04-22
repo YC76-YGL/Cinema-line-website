@@ -12,9 +12,15 @@
     <result column="user" jdbcType="INTEGER" property="user" />
     <association property="Even" column="id" select="selecteven">
     </association>
+    <association property="cU" column="user" select="selectuser">
+    </association>
   </resultMap>
   <select id="selecteven" resultType="com.yc.clw.bean.ClwNews">
   	select * from clw_news where id= #{id}+1
+  </select>
+  
+  <select id="selectuser" resultType="com.yc.clw.bean.ClwUser">
+  	select username from clw_user where id = #{id}
   </select>
   <sql id="Example_Where_Clause">
     <where>

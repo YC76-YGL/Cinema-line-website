@@ -23,11 +23,10 @@ public class MergingmethoBiz {
 		return mav;
 	}
 	
-	public ModelAndView news(ModelAndView mav) {
+	public ModelAndView newscommon(ModelAndView mav) {
 		common(mav);
-		mav.addObject("getQuerySingular", gaca.getQuerySingular());
-		mav.addObject("getQueryEven", gaca.getQueryEven());
 		mav.addObject("latelist", gaca.latestnew());
+		mav.addObject("getHeadlines", gaca.getHeadlines());
 		return mav;
 	}
 }

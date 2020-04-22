@@ -26,6 +26,8 @@ public class ClwNews implements Serializable{
     private Integer user;
     
     private ClwNews Even;
+    
+    private ClwUser cU;
 
     public Integer getId() {
         return id;
@@ -97,6 +99,14 @@ public class ClwNews implements Serializable{
 
 	public void setEven(ClwNews even) {
 		Even = even;
+	}
+
+	public ClwUser getcU() {
+		return cU;
+	}
+
+	public void setcU(ClwUser cU) {
+		this.cU = cU;
 	}
     
     

@@ -96,8 +96,8 @@
 	<div id="slidey" style="display: none;">
 		<ul>
 			<li th:each="ml:${getgareaterratmovie}"><img th:src="${#strings.substringAfter(ml.image,'-') == null ? ml.image : #strings.substringBefore(ml.image,'-')}" alt=" ">
-			<p class='title' th:text="${ml.name}">泰山</p>
-				<p class='description' th:text="${ml.description}">泰山,
+			<p class='title' ><a th:href="'single?id=' + ${ml.id}" th:text="${ml.name}"></a></p>
+				<p class='description' th:text="${#strings.abbreviate(ml.description,40)}">泰山,
 					适应了伦敦生活的泰山(Tarzan)被召回他在丛林的故居,以调查采矿营地的活动.</p></li>
 		</ul>
 	</div>
@@ -120,7 +120,7 @@
 				<div id="owl-demo" class="owl-carousel owl-theme">
 					<div class="item" th:each="gnm : ${getnewmovie}">
 						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-							<a href="single.html" class="hvr-shutter-out-horizontal"><img
+							<a th:href="'single?id=' + ${gnm.id}" class="hvr-shutter-out-horizontal"><img
 								th:src="${#strings.substringAfter(gnm.image,'-') == gnm.image ? gnm.image : #strings.substringAfter(gnm.image,'-')}" title="album-name" class="img-responsive"
 								alt=" " />
 								<div class="w3l-action-icon">

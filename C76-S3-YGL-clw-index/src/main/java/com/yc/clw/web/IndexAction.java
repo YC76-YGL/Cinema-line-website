@@ -74,11 +74,6 @@ public class IndexAction {
 		return mav;
 	}
 	
-	@GetMapping("Administrator")
-	public ModelAndView Administrator(ModelAndView mav) {
-		mav.setViewName("Administrator");
-		return mav;
-	}
 	
 	@PostMapping("login")
 	public ModelAndView login(ClwUser user, ModelAndView mav,
@@ -130,7 +125,8 @@ public class IndexAction {
 	
 	@GetMapping("new")
 	public ModelAndView news(ModelAndView mav) {
-		mmb.news(mav);
+		mmb.newscommon(mav);
+		mav.addObject("getQuerySingular", gaca.getQuerySingular());
 		mav.setViewName("news");
 		return mav;
 	}
@@ -140,10 +136,8 @@ public class IndexAction {
 		if(id == 0) {
 			mav.setViewName("Error");
 		}else {
-			mmb.common(mav);
+			mmb.newscommon(mav);
 			mav.addObject("getclwnews", gaca.getclwnews(id));
-			mav.addObject("leatestlist", gaca.latestnew());
-			mav.addObject("latelist", gaca.latestnew());
 			mav.setViewName("news-single");
 		}
 		return mav;

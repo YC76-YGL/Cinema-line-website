@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Spica Admin</title>
+  <title>一部电影 - 后台管理</title>
   <!-- base:css -->
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
@@ -23,24 +23,24 @@
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item sidebar-category">
-          <p>Navigation</p>
+          <p>导航</p>
           <span></span>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="mdi mdi-view-quilt menu-icon"></i>
-            <span class="menu-title">Dashboard</span>
+            <span class="menu-title">仪表板</span>
             <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
         <li class="nav-item sidebar-category">
-          <p>Components</p>
+          <p>组件</p>
           <span></span>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="mdi mdi-palette menu-icon"></i>
-            <span class="menu-title">UI Elements</span>
+            <span class="menu-title">用户界面元素</span>
             <i class="menu-arrow"></i>
           </a>
           <div class="collapse" id="ui-basic">
@@ -75,22 +75,36 @@
           </a>
         </li>
         <li class="nav-item sidebar-category">
-          <p>Pages</p>
+          <p>页面</p>
           <span></span>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
             <i class="mdi mdi-account menu-icon"></i>
-            <span class="menu-title">User Pages</span>
+            <span class="menu-title">管理用户</span>
             <i class="menu-arrow"></i>
           </a>
           <div class="collapse" id="auth">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> Login </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> Login 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> Register </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> Register 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/lock-screen.html"> Lockscreen </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 查看用户信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 更改用户信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 删除用户 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看用户评论 </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">管理新闻</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 发布新闻 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 删除新闻 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 更改新闻信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看所有新闻 </a></li>
             </ul>
           </div>
         </li>
@@ -123,10 +137,10 @@
             <a class="navbar-brand brand-logo" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo.svg" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo-mini.svg" alt="logo"/></a>
           </div>
-          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">欢迎回来, Brandon Haynes</h4>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
-              <h4 class="mb-0 font-weight-bold d-none d-xl-block">Mar 12, 2019 - Apr 10, 2019</h4>
+              <h4 class="mb-0 font-weight-bold d-none d-xl-block" th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy年3月dd日-yyyy年MM月dd日')}">Mar 12, 2019 - Apr 10, 2019</h4>
             </li>
             <li class="nav-item dropdown mr-1">
               <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
@@ -215,7 +229,7 @@
                   <div class="preview-item-content">
                     <h6 class="preview-subject font-weight-normal">New user registration</h6>
                     <p class="font-weight-light small-text mb-0 text-muted">
-                      2 days ago
+                      		两天前
                     </p>
                   </div>
                 </a>

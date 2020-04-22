@@ -12,7 +12,7 @@
     </association>
   </resultMap>
   <select id="selectuser" resultType="com.yc.clw.bean.ClwUser">
-  	select * from clw_user where id = #{id}
+  	select username from clw_user where id = #{id}
   </select>
   <sql id="Example_Where_Clause">
     <where>

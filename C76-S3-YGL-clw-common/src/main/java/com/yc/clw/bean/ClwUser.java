@@ -87,4 +87,17 @@ public class ClwUser implements Serializable {
     public void setLook(String look) {
         this.look = look == null ? null : look.trim();
     }
+
+	public ClwUser(Integer id, String username) {
+		super();
+		this.id = id;
+		this.username = username;
+	}
+
+	public ClwUser(String username) {
+		super();
+		this.username = username;
+	}
+
+    
 }
