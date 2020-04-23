@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>一部电影 - 发布新闻</title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller d-flex">
+    <nav th:replace="common/PersonalCenter::PersonalCenter"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <nav th:replace="common/PersonalCenter::top"></nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+            <!-- 这个是我发布的新闻 -->
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                <!-- 标题 -->
+                <h4 class="card-title">Blockquotes</h4>
+                <!-- 时间 -->
+                <p class="card-description">
+                    Wrap content inside<code>&lt;blockquote class="blockquote"&gt;</code>
+                  </p>
+                  <blockquote class="blockquote blockquote-primary">
+                  <!-- 文章内容 -->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer">一个有名的人 <cite title="Source Title">Source Title</cite></footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <!-- 到这里 -->
+            
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- base:js -->
+  <script src="ubui_2_SpicaAdmin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="ubui_2_SpicaAdmin/js/off-canvas.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/hoverable-collapse.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/template.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+</body>
+
+</html>

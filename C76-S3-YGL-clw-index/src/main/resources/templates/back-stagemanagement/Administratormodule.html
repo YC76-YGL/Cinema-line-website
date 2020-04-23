@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 左边控件栏 -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar" th:fragment="PersonalCenter">
+      <ul class="nav">
+        <li class="nav-item sidebar-category">
+          <p>导航</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="mdi mdi-view-quilt menu-icon"></i>
+            <span class="menu-title">个人中心</span>
+            <div class="badge badge-info badge-pill">2</div>
+          </a>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>组件</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <i class="mdi mdi-palette menu-icon"></i>
+            <span class="menu-title">查看</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">我的评论</a></li>
+              <li class="nav-item"> <a class="nav-link" href="typography">我的新闻</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="user_basic">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">个人资料</span>
+          </a>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>页面</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">管理用户</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 查看用户信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 更改用户信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 删除用户 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看用户评论 </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">管理新闻</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 发布新闻 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 删除新闻 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 更改新闻信息 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看所有新闻 </a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>Apps</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ubui_2_SpicaAdmin/docs/documentation.html">
+            <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+            <span class="menu-title">Documentation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <button class="btn bg-danger btn-sm menu-title">Upgrade to pro</button>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+     <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row"  th:fragment="top">
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="navbar-brand-wrapper">
+            <a class="navbar-brand brand-logo" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo-mini.svg" alt="logo"/></a>
+          </div>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1" th:text="'欢迎回来,' + ${session.loginedUser.username}"> Brandon Haynes</h4>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item">
+              <h4 class="mb-0 font-weight-bold d-none d-xl-block" th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy年3月dd日-yyyy年MM月dd日')}">Mar 12, 2019 - Apr 10, 2019</h4>
+            </li>
+            <li class="nav-item dropdown mr-1">
+              <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-calendar mx-0"></i>
+                <span class="count bg-info">2</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                <p class="mb-0 font-weight-normal float-left dropdown-header">留言信息</p>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                      <img src="ubui_2_SpicaAdmin/images/faces/face4.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal">David Grey
+                    </h6>
+                    <p class="font-weight-light small-text text-muted mb-0">
+                     		 会议取消了
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                      <img src="ubui_2_SpicaAdmin/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
+                    </h6>
+                    <p class="font-weight-light small-text text-muted mb-0">
+                      		新产品发布
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                      <img src="ubui_2_SpicaAdmin/images/faces/face3.jpg" alt="image" class="profile-pic">
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
+                    </h6>
+                    <p class="font-weight-light small-text text-muted mb-0">
+                      Upcoming board meeting
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown mr-2">
+              <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-email-open mx-0"></i>
+                <span class="count bg-danger">1</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <p class="mb-0 font-weight-normal float-left dropdown-header">通知事项</p>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-information mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal">应用程序出错</h6>
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                     	 就在刚刚
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-warning">
+                      <i class="mdi mdi-settings mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                      Private message
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                      <i class="mdi mdi-account-box mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal">新用户注册</h6>
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                      		两天前
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+        <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
+          <ul class="navbar-nav mr-lg-2">
+            <li class="nav-item nav-search d-none d-lg-block">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="在这里搜索" aria-label="search" aria-describedby="search">
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                <img src="ubui_2_SpicaAdmin/images/faces/face5.jpg" alt="profile"/>
+                <span class="nav-profile-name">埃莉诺·理查森</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item">
+                  <i class="mdi mdi-settings text-primary"></i>
+                  	设置
+                </a>
+                <a class="dropdown-item">
+                  <i class="mdi mdi-logout text-primary"></i>
+                 	 退出
+                </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-plus-circle-outline"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-web"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-clock-outline"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      
+      <div class="row">
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card bg-facebook d-flex align-items-center">
+                <div class="card-body py-5">
+                  <div
+                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
+                    <i class="mdi mdi-facebook text-white icon-lg"></i>
+                    <div class="ml-3 ml-md-0 ml-xl-3">
+                      <h5 class="text-white font-weight-bold">2.62k 订阅者</h5>
+                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card bg-google d-flex align-items-center">
+                <div class="card-body py-5">
+                  <div
+                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
+                    <i class="mdi mdi-google-plus text-white icon-lg"></i>
+                    <div class="ml-3 ml-md-0 ml-xl-3">
+                      <h5 class="text-white font-weight-bold">3.4k 订阅者</h5>
+                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card bg-twitter d-flex align-items-center">
+                <div class="card-body py-5">
+                  <div
+                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
+                    <i class="mdi mdi-twitter text-white icon-lg"></i>
+                    <div class="ml-3 ml-md-0 ml-xl-3">
+                      <h5 class="text-white font-weight-bold">3k 订阅者</h5>
+                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</body>
+</html>

@@ -182,4 +182,16 @@ public class IndexAction {
 		return mav;
 	}
 
+	
+	@GetMapping("user_basic")
+	public ModelAndView getuser_basic(ModelAndView mav) {
+		mav.setViewName("back-stagemanagement/user_basic");
+		return mav;
+	}
+	
+	@GetMapping("typography")
+	public ModelAndView gettypography(ModelAndView mav) {
+		mav.setViewName("back-stagemanagement/typography");
+		return mav;
+	}
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>一部电影 - 后台管理</title>
+  <title>一部电影 - 个人中心</title>
   <!-- base:css -->
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
@@ -19,14 +19,13 @@
 </head>
 <body>
   <div class="container-scroller d-flex">
-  <div th:replace="common/PersonalCenter::PersonalCenter"></div>
     <!-- partial:./partials/_sidebar.html -->
+    <div th:replace="common/PersonalCenter::.PersonalCenter"></div>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:./partials/_navbar.html -->
-     
-     
-     <nav th:replace="common/PersonalCenter::top"></nav>
+      
+      <nav th:replace="common/PersonalCenter::top"></nav>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -357,9 +356,7 @@
             </div>
           </div>
           <!-- row end -->
-          
-          
-          <div th:replace="common/PersonalCenter::.row"></div>
+          <<div th:replace="common/PersonalCenter::.row"></div>
           <!-- row end -->
         </div>
         <!-- content-wrapper ends -->

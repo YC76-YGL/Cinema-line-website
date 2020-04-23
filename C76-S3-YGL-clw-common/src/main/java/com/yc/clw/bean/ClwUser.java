@@ -99,5 +99,10 @@ public class ClwUser implements Serializable {
 		this.username = username;
 	}
 
+	public ClwUser() {
+		super();
+	}
+
+	
     
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>一部电影 - 个人信息修改</title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller d-flex">
+    <!-- partial:ubui_2_SpicaAdmin/partials/_sidebar.html -->
+   <div th:replace="common/PersonalCenter::PersonalCenter"></div>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:ubui_2_SpicaAdmin/partials/_navbar.html -->
+      
+      <nav th:replace="common/PersonalCenter::top"></nav>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">请完善您的个人信息</h4>
+                  <p class="card-description">
+                    	个人资料
+                  </p>
+                  <form class="forms-sample">
+                    <div class="form-group">
+                      <label for="exampleInputName1">修改用户名</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="用户名">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectGender">性别</label>
+                        <select class="form-control" id="exampleSelectGender">
+                          <option>男性</option>
+                          <option>女性</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label>上传图片</label>
+                      <input type="file" name="img[]" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">上传</button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputCity1">您所在的城市</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">展示您的个性签名</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">提交</button>
+                    <button class="btn btn-light">取消</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- base:js -->
+  <script src="ubui_2_SpicaAdmin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="ubui_2_SpicaAdmin/js/off-canvas.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/hoverable-collapse.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/template.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="ubui_2_SpicaAdmin/js/file-upload.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
