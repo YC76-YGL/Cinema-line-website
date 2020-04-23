@@ -26,7 +26,7 @@
 					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
 					<li><a href="toreg">注册</a></li>
-					<li><a href="logout">退出</a></li>
+					<li th:if="${session.loginedUser} != null"><a href="logout">退出</a></li>
 					
 				</ul>
 			</div>

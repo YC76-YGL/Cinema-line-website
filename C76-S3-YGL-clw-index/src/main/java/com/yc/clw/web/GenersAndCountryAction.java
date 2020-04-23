@@ -161,6 +161,12 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<ClwMovielist> getSelectedfilms() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

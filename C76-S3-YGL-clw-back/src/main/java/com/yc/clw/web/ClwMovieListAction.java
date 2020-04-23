@@ -97,4 +97,16 @@ public class ClwMovieListAction {
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}
+	
+	/**
+	 * 精选电影
+	 * @return
+	 */
+	@GetMapping("getSelectedfilms")
+	public List<ClwMovielist> getSelectedfilms(){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIsHotEqualTo("2");
+		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
 }

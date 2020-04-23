@@ -40,6 +40,7 @@ public class IndexAction {
 		mav.addObject("getgareaterratmovie",gaca.getgareaterratmovie());
 		mav.addObject("getnewmovie", gaca.getnewmovie());
 		mav.addObject("getMostpopular",gaca.getMostpopular());
+		mav.addObject("getSelectedfilms", gaca.getSelectedfilms());
 		mav.setViewName("index");
 		return mav;
 	}

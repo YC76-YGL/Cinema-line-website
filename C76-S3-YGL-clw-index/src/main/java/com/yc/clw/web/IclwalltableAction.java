@@ -40,6 +40,10 @@ public interface IclwalltableAction {
 	@GetMapping("getnewmovie")
 	public List<ClwMovielist> getnewmovie();
 	
+	//精选电影
+	@GetMapping("getSelectedfilms")
+	public List<ClwMovielist> getSelectedfilms();
+	
 	/**
 	 * 查询id是单数的
 	 * @return
