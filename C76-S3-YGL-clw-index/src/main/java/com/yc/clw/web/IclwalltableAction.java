@@ -69,7 +69,7 @@ public interface IclwalltableAction {
 	public ClwNews getclwnews(@RequestParam("id")Integer id) ;
 	
 	@GetMapping("getgenresmovie")
-	public List<ClwMovielist> getgenresmovie(@RequestParam("id")Integer id);
+	public List<ClwMovielist> getgenresmovie(@RequestParam(defaultValue = "1")Integer page,@RequestParam("id")Integer id);
 	
 	@GetMapping("getcountrmovie")
 	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id);
@@ -96,5 +96,14 @@ public interface IclwalltableAction {
 	 */
 	@GetMapping("getHeadlines")
 	public List<ClwNews> getHeadlines();
+	
+	/**
+	 * 查询所有电影网页
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("getallgenresmovie")
+	public List<ClwMovielist> getallgenresmovie(@RequestParam(defaultValue = "1")Integer page);
+	
 	
 }

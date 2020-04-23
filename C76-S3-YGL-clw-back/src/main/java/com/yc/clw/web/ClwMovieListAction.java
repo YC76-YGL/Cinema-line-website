@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwMovielistExample;
@@ -66,18 +67,39 @@ public class ClwMovieListAction {
 		return list;
 	}
 	
+	/**
+	 * 查询电影致genres网页
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("getgenresmovie")
-	public List<ClwMovielist> getgenresmovie(@RequestParam("id")Integer id){
+	public List<ClwMovielist> getgenresmovie(@RequestParam(defaultValue = "1")Integer page,@RequestParam("id")Integer id){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.createCriteria().andGenersLike(id.toString());
-		List<ClwMovielist> list = cmlm.selectByExample(cmle);
-		return list;
+		PageHelper.startPage(page,6);
+		Page<ClwMovielist> cmlist = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
+		return cmlist;
+	}
+	
+	/**
+	 * 查询所有电影网页
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("getallgenresmovie")
+	public List<ClwMovielist> getallgenresmovie(@RequestParam(defaultValue = "1")Integer page){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIdIsNotNull();
+		PageHelper.startPage(page,6);
+		Page<ClwMovielist> cmlist = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
+		return cmlist;
 	}
 	
 	@GetMapping("getcountrmovie")
 	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.createCriteria().andCountryEqualTo(id);
+		PageHelper.startPage(1,6);
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}
@@ -109,4 +131,5 @@ public class ClwMovieListAction {
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}
+	
 }

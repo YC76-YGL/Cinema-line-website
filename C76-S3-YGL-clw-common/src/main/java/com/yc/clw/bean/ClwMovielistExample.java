@@ -119,6 +119,12 @@ public class ClwMovielistExample {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
+        
+        //查询指定数量每隔六条记录
+        public Criteria andSpecifiedquantity() {
+            addCriterion(" id % 6 = 1 ");
+            return (Criteria) this;
+        }
 
         public Criteria andIdNotEqualTo(Integer value) {
             addCriterion("id <>", value, "id");
@@ -477,6 +483,11 @@ public class ClwMovielistExample {
 
         public Criteria andGenersLike(String value) {
             addCriterion("geners like", value, "geners");
+            return (Criteria) this;
+        }
+        
+        public Criteria andSpecifiedquantity(String value) {
+            addCriterion("geners like", value, "geners limit 6");
             return (Criteria) this;
         }
 
