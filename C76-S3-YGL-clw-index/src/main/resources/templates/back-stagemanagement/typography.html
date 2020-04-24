@@ -28,19 +28,24 @@
       <div class="main-panel">
         <div class="content-wrapper">
             <!-- 这个是我发布的新闻 -->
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card" th:each="gbqs : ${getbyidQuerySingular}">
+            <div class="card">
+                <div class="card-body">
+                <img  th:src="${gbqs.other}" alt=" ">
+                </div>
+              </div>
               <div class="card">
                 <div class="card-body">
                 <!-- 标题 -->
-                <h4 class="card-title">Blockquotes</h4>
+                <h4 class="card-title" th:text="${gbqs.title}">Blockquotes</h4>
                 <!-- 时间 -->
-                <p class="card-description">
+                <p class="card-description" th:text="${#dates.format(gbqs.createtime,'yyyy年MM月dd日')}">
                     Wrap content inside<code>&lt;blockquote class="blockquote"&gt;</code>
                   </p>
                   <blockquote class="blockquote blockquote-primary">
                   <!-- 文章内容 -->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer class="blockquote-footer">一个有名的人 <cite title="Source Title">Source Title</cite></footer>
+                    <p th:text="${gbqs.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer">一个有名的人 <cite title="Source Title" th:text="${session.loginedUser.username}">Source Title</cite></footer>
                   </blockquote>
                 </div>
               </div>

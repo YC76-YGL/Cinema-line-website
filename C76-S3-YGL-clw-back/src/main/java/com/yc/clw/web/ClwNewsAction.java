@@ -28,6 +28,11 @@ public class ClwNewsAction {
 		return list;
 	}
 	
+	@GetMapping("Pressrelease")
+	public int CreatePressrelease(ClwNews news){
+		return cnm.insert(news);
+	}
+	
 	/**
 	 * 查询id是单数的
 	 * @return
@@ -37,6 +42,19 @@ public class ClwNewsAction {
 		ClwNewsExample cne = new ClwNewsExample();
 		cne.setOrderByClause("createtime asc");
 		cne.createCriteria().andQuerySingular();
+		List<ClwNews> lsit = cnm.selectByExample(cne);
+		return lsit;
+	}
+	
+	/**
+	 * 查询id是单数的
+	 * @return
+	 */
+	@GetMapping("getbyidQuerySingular")
+	public List<ClwNews> getbyidQuerySingular(@RequestParam("id") Integer id){
+		ClwNewsExample cne = new ClwNewsExample();
+		cne.setOrderByClause("createtime asc");
+		cne.createCriteria().andUserEqualTo(id);
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;
 	}

@@ -105,5 +105,9 @@ public interface IclwalltableAction {
 	@GetMapping("getallgenresmovie")
 	public List<ClwMovielist> getallgenresmovie(@RequestParam(defaultValue = "1")Integer page);
 	
+	@GetMapping("getbyidQuerySingular")
+	public List<ClwNews> getbyidQuerySingular(@RequestParam("id") Integer id);
 	
+	@GetMapping("Pressrelease")
+	public int CreatePressrelease(ClwNews news);
 }

@@ -175,6 +175,18 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		return null;
 	}
 
+	@Override
+	public List<ClwNews> getbyidQuerySingular(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int CreatePressrelease(ClwNews news) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 	
 	

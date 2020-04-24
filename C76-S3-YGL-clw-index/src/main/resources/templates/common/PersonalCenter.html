@@ -32,7 +32,20 @@
           <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">我的评论</a></li>
-              <li class="nav-item"> <a class="nav-link" href="typography">我的新闻</a></li>
+              <li class="nav-item"> <a class="nav-link" th:href="'typography?id=' + ${session.loginedUser.id}">我的新闻</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <i class="mdi mdi-image-filter-center-focus"></i>
+            <span class="menu-title">发布</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">发表评论</a></li>
+              <li class="nav-item"> <a class="nav-link" th:href="'typography?id=' + ${session.loginedUser.id}">发表新闻</a></li>
             </ul>
           </div>
         </li>
@@ -47,7 +60,7 @@
           </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="ubui_2_SpicaAdmin/docs/documentation.html">
+          <a class="nav-link" href="Modifypersonalinformation">
             <i class="mdi mdi-file-document-box-outline menu-icon"></i>
             <span class="menu-title">修改密码</span>
           </a>
@@ -189,8 +202,8 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="ubui_2_SpicaAdmin/images/faces/face5.jpg" alt="profile"/>
-                <span class="nav-profile-name">埃莉诺·理查森</span>
+                <img th:src="${session.loginedUser.look} == null? 'ubui_2_SpicaAdmin/images/faces/face5.jpg' : ${session.loginedUser.look}" alt="profile"/>
+                <span class="nav-profile-name" th:text="${session.loginedUser.username}">埃莉诺·理查森</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">

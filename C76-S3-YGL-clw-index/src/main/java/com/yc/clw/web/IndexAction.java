@@ -190,8 +190,15 @@ public class IndexAction {
 	}
 	
 	@GetMapping("typography")
-	public ModelAndView gettypography(ModelAndView mav) {
+	public ModelAndView gettypography(@RequestParam("id") Integer id,ModelAndView mav) {
+		mav.addObject("getbyidQuerySingular", gaca.getbyidQuerySingular(id));
 		mav.setViewName("back-stagemanagement/typography");
+		return mav;
+	}
+	
+	@GetMapping("Modifypersonalinformation")
+	public ModelAndView getModifypersonalinformation(ModelAndView mav) {
+		mav.setViewName("back-stagemanagement/ChangePassword");
 		return mav;
 	}
 }
