@@ -1,15 +1,26 @@
 server:
    port: 8006
-   
+
+# 自定义的配置参数
+myUploadPath: E:/上课资料/Cinema-line-website/C76-S3-YGL-clw-index/src/main/resources/static/sjkimage/ 
    
 spring:
-  application:
-     name: clw-index
-  datasource:
-     url: jdbc:mysql://127.0.0.1/C76-S3-ygl-clw?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
-     username: root
-     password: a
-     driver-class-name: com.mysql.jdbc.Driver
+   application:
+      name: clw-index
+   datasource:
+      url: jdbc:mysql://127.0.0.1/C76-S3-ygl-clw?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+      username: root
+      password: a
+      driver-class-name: com.mysql.jdbc.Driver
+   resource: 
+      staticLocations:  
+         - classpath:/resources/
+         - classpath:/static/
+         - file:${myUploadPath}
+   # 文件上传配置
+   servlet: 
+      multipart: 
+         maxFileSize: 1000000000
 
 mybatis: 
   #实体类的路径

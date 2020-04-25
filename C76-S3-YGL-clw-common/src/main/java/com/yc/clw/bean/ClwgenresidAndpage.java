@@ -13,6 +13,8 @@ public class ClwgenresidAndpage implements Serializable{
 	
 	private Integer page;
 	
+	private String msg;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -28,6 +30,14 @@ public class ClwgenresidAndpage implements Serializable{
 	
 	public void setPage(Integer page) {
 		this.page = page;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 	
 }

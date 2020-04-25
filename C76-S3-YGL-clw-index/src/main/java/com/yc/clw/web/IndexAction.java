@@ -1,26 +1,36 @@
 package com.yc.clw.web;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.clw.bean.ClwMovielist;
+import com.yc.clw.bean.ClwNews;
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.bean.ClwgenresidAndpage;
 import com.yc.clw.biz.BizException;
 import com.yc.clw.biz.MergingmethoBiz;
+import com.yc.clw.biz.NewsBiz;
 import com.yc.clw.biz.UserBiz;
 
 @RestController
 @SessionAttributes({ "loginedUser", "genresid" })
+//@EnableScheduling
 public class IndexAction {
 
 	@Resource
@@ -102,6 +112,11 @@ public class IndexAction {
 		}
 		return mav;
 	}
+//	@Scheduled(cron = "0 0/1 * * * ?" )
+//	public ModelAndView Scheduledtasks(ModelAndView mav) {
+//		mav.setViewName("lock-screen");
+//		return mav;
+//	}
 
 	@GetMapping("toreg")
 	public ModelAndView toreg(ModelAndView mav) {
@@ -201,4 +216,36 @@ public class IndexAction {
 		mav.setViewName("back-stagemanagement/ChangePassword");
 		return mav;
 	}
+	
+	@GetMapping("Pressrelease")
+	public ModelAndView getPressrelease(ModelAndView mav) {
+		mav.setViewName("back-stagemanagement/Pressrelease");
+		return mav;
+	}
+	
+	@Value("${myUploadPath}")
+	private String myUploadPath;
+	
+	@Resource
+	NewsBiz nb;
+	
+	@PostMapping("Createnews")
+	public ModelAndView getCreatenews(ClwNews news,@RequestParam("file") MultipartFile file,ModelAndView mav) {
+		try {
+			file.transferTo(new File(myUploadPath + file.getOriginalFilename()));
+			// 定义用户头像的图片的 web 路径
+			String head = "sjkimage/" + file.getOriginalFilename();
+			news.setOther(head);
+			news.setCreatetime(new Date());
+			nb.create(news);
+			mav.setViewName("back-stagemanagement/Pressrelease");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.setViewName("Error");
+		}
+		return mav;
+		
+	}
+	
+	
 }

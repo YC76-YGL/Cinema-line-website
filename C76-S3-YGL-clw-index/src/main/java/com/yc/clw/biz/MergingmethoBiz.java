@@ -29,4 +29,5 @@ public class MergingmethoBiz {
 		mav.addObject("getHeadlines", gaca.getHeadlines());
 		return mav;
 	}
+	
 }
