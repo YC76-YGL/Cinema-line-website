@@ -244,7 +244,13 @@ public class IndexAction {
 			mav.setViewName("Error");
 		}
 		return mav;
-		
+	}
+	
+	@GetMapping("mytypography")
+	public ModelAndView getmytypography(@RequestParam("id") Integer id,ModelAndView mav) {
+		mav.addObject("mycommentary", gaca.getmycommentary(id));
+		mav.setViewName("back-stagemanagement/mytypography");
+		return mav;
 	}
 	
 	

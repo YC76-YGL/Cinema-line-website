@@ -14,6 +14,14 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <style type="text/css" >
+		#divMain img{ 
+			width:100%;			/* ... */
+			height:100%;		/* ... */
+			display:block;	/* ... */
+		}
+
+  </style>
   <!-- endinject -->
   <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
 </head>
@@ -30,7 +38,7 @@
             <!-- 这个是我发布的新闻 -->
             <div class="col-md-6 grid-margin stretch-card" th:each="gbqs : ${getbyidQuerySingular}">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="divMain">
                 <img  th:src="${gbqs.other}" alt=" ">
                 </div>
               </div>

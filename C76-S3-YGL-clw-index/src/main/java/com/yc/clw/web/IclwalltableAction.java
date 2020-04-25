@@ -110,4 +110,7 @@ public interface IclwalltableAction {
 	
 	@GetMapping("Pressrelease")
 	public int CreatePressrelease(ClwNews news);
+	
+	@GetMapping("mycommentary")
+	public List<ClwCommentary> getmycommentary(@RequestParam("id")Integer id);
 }

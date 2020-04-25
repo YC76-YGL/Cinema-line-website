@@ -38,7 +38,7 @@
                   <p class="card-description">
                     	个人资料
                   </p>
-                  <form class="forms-sample" action="Modifypersonalinformation" method="post">
+                  <form enctype="multipart/form-data" class="forms-sample" action="Modifypersonalinformation" method="post">
                     <div class="form-group">
                       <label for="exampleInputName1">修改用户名</label>
                       <input type="text" name="username" class="form-control" id="exampleInputName1" th:placeholder="${session.loginedUser.username}">

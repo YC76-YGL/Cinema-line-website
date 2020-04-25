@@ -187,6 +187,12 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		return 0;
 	}
 
+	@Override
+	public List<ClwCommentary> getmycommentary(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

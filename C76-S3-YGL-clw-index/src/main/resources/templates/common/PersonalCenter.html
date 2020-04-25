@@ -31,7 +31,7 @@
           </a>
           <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">我的评论</a></li>
+              <li class="nav-item"> <a class="nav-link" th:href="'mytypography?id=' + ${session.loginedUser.id}">我的评论</a></li>
               <li class="nav-item"> <a class="nav-link" th:href="'typography?id=' + ${session.loginedUser.id}">我的新闻</a></li>
               <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">发表评论</a></li>
               <li class="nav-item"> <a class="nav-link" href="Pressrelease?">发表新闻</a></li>

@@ -25,4 +25,12 @@ public class ClwCommentaryAction {
 		List<ClwCommentary> list = ccMapper.selectByExample(cce);
 		return list;
 	}
+	
+	@GetMapping("mycommentary")
+	public List<ClwCommentary> getmycommentary(@RequestParam("id")Integer id){
+		ClwCommentaryExample cce =new ClwCommentaryExample();
+		cce.createCriteria().andUserEqualTo(id);
+		List<ClwCommentary> list = ccMapper.selectByExample(cce);
+		return list;
+	}
 }

@@ -8,11 +8,16 @@
     <result column="movielist" jdbcType="INTEGER" property="movielist" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <!-- 一对一关联 -->
-    <association property="username" column="user" select="selectuser">
+    <association property="username" column="user" select="selectuser"> </association>
+    <association property="cml" column="movielist" select="selectmovie">
     </association>
   </resultMap>
   <select id="selectuser" resultType="com.yc.clw.bean.ClwUser">
   	select username from clw_user where id = #{id}
+  </select>
+  
+  <select id="selectmovie" resultType="com.yc.clw.bean.ClwMovielist">
+  	select * from clw_movielist where id = #{movielist}
   </select>
   <sql id="Example_Where_Clause">
     <where>
