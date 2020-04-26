@@ -15,15 +15,18 @@ public class NewsBiz {
 	@Resource
 	ClwNewsMapper cnm;
 	
-	public void create(ClwNews clwnews) throws BizException{
+	public String create(ClwNews clwnews) throws BizException{
+		String msg;
 		ClwNewsExample cNewsExample = new ClwNewsExample();
 		cNewsExample.createCriteria().andTitleEqualTo(clwnews.getTitle());
 		if(cnm.countByExample(cNewsExample) > 0)
 		{
-			throw new BizException("该文章已经被创建");
+			msg = "该文章已经被创建";
 		}
 		
 		cnm.insert(clwnews);
+		msg = "创建成功";
+		return msg;
 	}
 	
 }

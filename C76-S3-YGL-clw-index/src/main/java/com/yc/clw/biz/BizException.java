@@ -1,11 +1,17 @@
 package com.yc.clw.biz;
 
-public class BizException extends Exception{
+public class BizException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	// 错误的名称
+	private String name;
+
+	// 错误编码
+	private int code;
 
 	public BizException() {
 		super();
@@ -31,7 +37,29 @@ public class BizException extends Exception{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public BizException(String name, int code) {
+		super();
+		this.name = name;
+		this.code = code;
+	}
 	
 
+	
 }

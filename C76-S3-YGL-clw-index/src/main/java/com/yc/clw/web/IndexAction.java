@@ -1,18 +1,17 @@
 package com.yc.clw.web;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -29,8 +28,7 @@ import com.yc.clw.biz.NewsBiz;
 import com.yc.clw.biz.UserBiz;
 
 @RestController
-@SessionAttributes({ "loginedUser", "genresid" })
-//@EnableScheduling
+@SessionAttributes({ "loginedUser", "genresid" ,"Modificationtips"})
 public class IndexAction {
 
 	@Resource
@@ -41,6 +39,8 @@ public class IndexAction {
 
 	@Resource
 	MergingmethoBiz mmb;
+	
+	
 
 	@GetMapping({ "/", "index", "index.html" })
 	public ModelAndView index(ModelAndView mav) {
@@ -55,7 +55,7 @@ public class IndexAction {
 
 	@GetMapping("genres")
 	public ModelAndView geners(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
-			ModelAndView mav, ClwgenresidAndpage cgap) {
+			ModelAndView mav,ClwgenresidAndpage cgap ) {
 		mmb.common(mav);
 		if (id != 0) {
 			cgap.setId(id);
@@ -72,7 +72,7 @@ public class IndexAction {
 
 	@GetMapping("country")
 	public ModelAndView country(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
-			ModelAndView mav, ClwgenresidAndpage cgap) {
+			ModelAndView mav,ClwgenresidAndpage cgap) {
 		if (id.equals(0)) {
 			mav.setViewName("Error");
 		} else {
@@ -200,6 +200,7 @@ public class IndexAction {
 	
 	@GetMapping("user_basic")
 	public ModelAndView getuser_basic(ModelAndView mav) {
+		mav.addObject("Modificationtips", "");
 		mav.setViewName("back-stagemanagement/user_basic");
 		return mav;
 	}
@@ -213,6 +214,7 @@ public class IndexAction {
 	
 	@GetMapping("Modifypersonalinformation")
 	public ModelAndView getModifypersonalinformation(ModelAndView mav) {
+		mav.addObject("Modificationtips", "");
 		mav.setViewName("back-stagemanagement/ChangePassword");
 		return mav;
 	}
@@ -231,18 +233,20 @@ public class IndexAction {
 	
 	@PostMapping("Createnews")
 	public ModelAndView getCreatenews(ClwNews news,@RequestParam("file") MultipartFile file,ModelAndView mav) {
+		String msg;
 		try {
 			file.transferTo(new File(myUploadPath + file.getOriginalFilename()));
 			// 定义用户头像的图片的 web 路径
 			String head = "sjkimage/" + file.getOriginalFilename();
 			news.setOther(head);
 			news.setCreatetime(new Date());
-			nb.create(news);
-			mav.setViewName("back-stagemanagement/Pressrelease");
+			msg = nb.create(news);
 		} catch (Exception e) {
 			e.printStackTrace();
-			mav.setViewName("Error");
+			msg = "服务器出错了";
 		}
+		mav.addObject("Modificationtips", msg);
+		mav.setViewName("back-stagemanagement/Pressrelease");
 		return mav;
 	}
 	
@@ -253,5 +257,63 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@PostMapping("sendVcode")
+	@ResponseBody
+	public String Sendcode(String email,HttpSession session,ModelAndView mav) {
+		String msg;
+		try {
+			msg = "发送成功" ;
+			String vcode = uBiz.forget(email);
+			session.setAttribute("vcode", vcode);
+			return msg;
+		} catch (BizException e) {
+			msg = "发送失败" ;
+			e.printStackTrace();
+			return msg;
+		}
+	}
+	
+	@PostMapping("CPassword")
+	public ModelAndView CPassword(ClwUser user,String yzm,String repassword,
+			@SessionAttribute("vcode") String sessionVcode,ModelAndView mav) {
+		String msg = null;
+		if(sessionVcode.equals(yzm) == false) {
+			msg = "验证码输入错误";
+		}else if(user.getPassword().equals(repassword) == false) {
+			msg = "两次密码不一致";
+		}else {
+			try {
+				uBiz.updatepassword(user);
+				msg = "修改成功";
+			} catch (BizException e) {
+				e.printStackTrace();
+				msg = "修改失败";
+			}
+		}
+		mav.addObject("Modificationtips", msg);
+		mav.setViewName("back-stagemanagement/ChangePassword");
+		return mav;		
+	}
+	
+	@Value("${userlookPath}")
+	private String userlookPath;
+	
+	@PostMapping("Modifypersonaldata")
+	public ModelAndView Modifypersonaldata(@RequestParam("file") MultipartFile file,ModelAndView mav,ClwUser user) {
+		String msg;
+		try {
+			file.transferTo(new File(myUploadPath + file.getOriginalFilename()));
+			// 定义用户头像的图片的 web 路径
+			String head = "userlook/" + file.getOriginalFilename();
+			user.setLook(head);
+			msg =  uBiz.updatelookpath(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "修改失败" ;
+		}
+		mav.addObject("Modificationtips", msg);
+		mav.setViewName("back-stagemanagement/user_basic");
+		return mav;
+	}
 	
 }

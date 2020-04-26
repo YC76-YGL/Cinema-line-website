@@ -103,6 +103,12 @@ public class ClwUser implements Serializable {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "ClwUser [id=" + id + ", username=" + username + ", password=" + password + ", sex=" + sex + ", email="
+				+ email + ", mobile=" + mobile + ", type=" + type + ", look=" + look + "]";
+	}
+
 	
     
 }
