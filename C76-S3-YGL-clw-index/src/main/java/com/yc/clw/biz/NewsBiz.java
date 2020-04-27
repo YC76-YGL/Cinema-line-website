@@ -29,4 +29,5 @@ public class NewsBiz {
 		return msg;
 	}
 	
+	
 }

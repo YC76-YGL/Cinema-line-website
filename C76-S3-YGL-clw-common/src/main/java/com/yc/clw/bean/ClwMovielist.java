@@ -2,7 +2,6 @@ package com.yc.clw.bean;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class ClwMovielist implements Serializable {
     /**
@@ -38,7 +37,7 @@ public class ClwMovielist implements Serializable {
 
     private String other;
     
-    private List<ClwMovielist> cml;
+    
 
     public Integer getId() {
         return id;
@@ -152,13 +151,5 @@ public class ClwMovielist implements Serializable {
         this.other = other == null ? null : other.trim();
     }
 
-	public List<ClwMovielist> getCml() {
-		return cml;
-	}
-
-	public void setCml(List<ClwMovielist> cml) {
-		this.cml = cml;
-	}
-    
     
 }

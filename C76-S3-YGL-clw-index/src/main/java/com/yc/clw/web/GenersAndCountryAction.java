@@ -115,11 +115,6 @@ public class GenersAndCountryAction implements IclwalltableAction{
 	}
 
 
-	@Override
-	public List<ClwMovielist> getcountrmovie(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<ClwMovielist> getseachmovie(String name) {
@@ -189,6 +184,18 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwCommentary> getmycommentary(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getcountrmovie(Integer page, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getseach(Integer page, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

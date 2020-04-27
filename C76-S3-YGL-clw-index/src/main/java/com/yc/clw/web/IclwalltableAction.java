@@ -72,10 +72,15 @@ public interface IclwalltableAction {
 	public List<ClwMovielist> getgenresmovie(@RequestParam(defaultValue = "1")Integer page,@RequestParam("id")Integer id);
 	
 	@GetMapping("getcountrmovie")
-	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id);
+	public List<ClwMovielist> getcountrmovie(@RequestParam(defaultValue = "1")Integer page,@RequestParam("id")Integer id);
+	
+	
+	@GetMapping("seach")
+	public List<ClwMovielist> getseach(@RequestParam(defaultValue = "1")Integer page,String name);
+	
 	
 	@GetMapping("seachmovie")
-	public List<ClwMovielist> getseachmovie(@RequestParam("name")String name);
+	public List<ClwMovielist> getseachmovie(@RequestParam("Search")String name);
 	
 	@GetMapping("getidmovie")
 	public List<ClwMovielist> getidmovie(@RequestParam("id")Integer id);

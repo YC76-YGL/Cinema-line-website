@@ -48,8 +48,8 @@ public class ClwMovieListAction {
 	@GetMapping("getMostpopular")
 	public List<ClwMovielist> getMostpopular(){
 		ClwMovielistExample cmle =new ClwMovielistExample();
-		cmle.setOrderByClause("score asc");
-		PageHelper.startPage(1,3);
+		cmle.setOrderByClause(" RAND() ");
+		PageHelper.startPage(1,6);
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
 		return list;
 	}
@@ -95,20 +95,35 @@ public class ClwMovieListAction {
 		return cmlist;
 	}
 	
+	/**
+	 * 根据构架查询电影
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("getcountrmovie")
-	public List<ClwMovielist> getcountrmovie(@RequestParam("id")Integer id){
+	public List<ClwMovielist> getcountrmovie(@RequestParam(defaultValue = "1")Integer page,@RequestParam("id")Integer id){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.createCriteria().andCountryEqualTo(id);
-		PageHelper.startPage(1,6);
-		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		PageHelper.startPage(page,6);
+		Page<ClwMovielist> list =  (Page<ClwMovielist>) cmlm.selectByExample(cmle); ;
 		return list;
 	}
 	
 	@GetMapping("seachmovie")
-	public List<ClwMovielist> getseachmovie(@RequestParam("name")String name){
+	public List<ClwMovielist> getseachmovie(@RequestParam("Search")String name){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.createCriteria().andNameLike(name);
-		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		PageHelper.startPage(1,6);
+		Page<ClwMovielist> list = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	@GetMapping("seach")
+	public List<ClwMovielist> getseach(@RequestParam(defaultValue = "1")Integer page,String name){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andNameLike(name);
+		PageHelper.startPage(page,6);
+		Page<ClwMovielist> list = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
 		return list;
 	}
 	

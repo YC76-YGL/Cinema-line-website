@@ -46,6 +46,7 @@ public class ClwNewsAction {
 		return lsit;
 	}
 	
+	
 	/**
 	 * 查询id是单数的
 	 * @return
@@ -66,7 +67,7 @@ public class ClwNewsAction {
 	@GetMapping("QueryEven")
 	public List<ClwNews> getQueryEven(){
 		ClwNewsExample cne = new ClwNewsExample();
-		cne.setOrderByClause("createtime asc");
+		cne.setOrderByClause(" RAND() ,createtime asc ");
 		cne.createCriteria().andQueryEven();
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;

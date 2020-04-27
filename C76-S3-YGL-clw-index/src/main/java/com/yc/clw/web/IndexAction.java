@@ -20,11 +20,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
+import com.yc.clw.bean.ClwReplytocomments;
 import com.yc.clw.bean.ClwUser;
-import com.yc.clw.bean.ClwgenresidAndpage;
+import com.yc.clw.biz.ActiveAndpageBiz;
 import com.yc.clw.biz.BizException;
 import com.yc.clw.biz.MergingmethoBiz;
+import com.yc.clw.biz.MovielistBiz;
 import com.yc.clw.biz.NewsBiz;
+import com.yc.clw.biz.ReplytocommentsBiz;
 import com.yc.clw.biz.UserBiz;
 
 @RestController
@@ -39,8 +42,6 @@ public class IndexAction {
 
 	@Resource
 	MergingmethoBiz mmb;
-	
-	
 
 	@GetMapping({ "/", "index", "index.html" })
 	public ModelAndView index(ModelAndView mav) {
@@ -53,36 +54,48 @@ public class IndexAction {
 		return mav;
 	}
 
+	@Resource
+	MovielistBiz mb;
+	
 	@GetMapping("genres")
 	public ModelAndView geners(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
-			ModelAndView mav,ClwgenresidAndpage cgap ) {
+			ModelAndView mav) {
+		mav.addObject("genresid","");
 		mmb.common(mav);
-		if (id != 0) {
-			cgap.setId(id);
-			cgap.setPage(page);
-			mav.addObject("getmovie", gaca.getgenresmovie(page, id));
-		}else {
-			cgap.setPage(page);
-			mav.addObject("getmovie", gaca.getallgenresmovie(page));
+		String msg = null;
+		double getpage = mb.getgenrespage(id);
+		if(page > getpage) {
+			page = (int) getpage;
+			msg = "已经是这个类型的全部电影了";
+		}else if(page <= 0) {
+			msg = "这一页已经是首页了";
+			page = 1;
 		}
-		mav.addObject("genresid", cgap);
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id,page,msg,(int)getpage);
+		mav.addObject("getmovie", gaca.getgenresmovie(page,id));
+		mav.addObject("genresid", cgape);
 		mav.setViewName("genres");
 		return mav;
 	}
 
 	@GetMapping("country")
 	public ModelAndView country(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
-			ModelAndView mav,ClwgenresidAndpage cgap) {
-		if (id.equals(0)) {
-			mav.setViewName("Error");
-		} else {
-			mmb.common(mav);
-			cgap.setId(id);
-			cgap.setPage(page);
-			mav.addObject("genresid", cgap);
-			mav.addObject("getmovie", gaca.getcountrmovie(id));
-			mav.setViewName("genres");
+			ModelAndView mav) {
+		mav.addObject("genresid","");
+		mmb.common(mav);
+		String msg = null;
+		double getpage = mb.getgenrespage(id);
+		if(page >= getpage) {
+			page = (int) getpage;
+			msg = "已经是这个类型的全部电影了";
+		}else if(page <= 0) {
+			msg = "这一页已经是首页了";
+			page = 1;
 		}
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id,page,msg,(int)getpage);
+		mav.addObject("genresid", cgape);
+		mav.addObject("getmovie", gaca.getcountrmovie(page,id));
+		mav.setViewName("genres");
 		return mav;
 	}
 
@@ -148,7 +161,23 @@ public class IndexAction {
 	public ModelAndView news(ModelAndView mav) {
 		mmb.newscommon(mav);
 		mav.addObject("getQuerySingular", gaca.getQuerySingular());
+		mav.addObject("getQueryEven", gaca.getQueryEven());
 		mav.setViewName("news");
+		return mav;
+	}
+	
+	@GetMapping("contact")
+	public ModelAndView contanct(ModelAndView mav) {
+		mmb.common(mav);
+		mav.addObject("Modificationtips", "");
+		mav.setViewName("contact");
+		return mav;
+	}
+	
+	@GetMapping("fql")
+	public ModelAndView faq(ModelAndView mav) {
+		mmb.common(mav);
+		mav.setViewName("faq");
 		return mav;
 	}
 
@@ -219,6 +248,22 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@PostMapping("search")
+	public ModelAndView getsearchmovie(ModelAndView mav,@RequestParam("Search")String Search) {
+		mmb.common(mav);
+		mav.addObject("getSearch", gaca.getseachmovie(Search));
+		mav.setViewName("horror");
+		return mav;
+	}
+	
+	@GetMapping("horror")
+	public ModelAndView gethorrormovie(ModelAndView mav,@RequestParam("page") Integer page,@RequestParam("Search")String Search) {
+		mmb.common(mav);
+		mav.addObject("getSearch", gaca.getseachmovie(Search));
+		mav.setViewName("horror");
+		return mav;
+	}
+	
 	@GetMapping("Pressrelease")
 	public ModelAndView getPressrelease(ModelAndView mav) {
 		mav.setViewName("back-stagemanagement/Pressrelease");
@@ -247,6 +292,23 @@ public class IndexAction {
 		}
 		mav.addObject("Modificationtips", msg);
 		mav.setViewName("back-stagemanagement/Pressrelease");
+		return mav;
+	}
+	
+	@Resource
+	ReplytocommentsBiz rtb;
+	
+	@PostMapping("replytocomments")
+	public ModelAndView replytocomments(ClwReplytocomments record,ModelAndView mav) {
+		String msg = null;
+		if(record.getUser() == null) {
+			msg = "发送失败!!!请先登录";
+		}else {
+			msg = rtb.CreateClwReply(record);
+		}
+		mmb.common(mav);
+		mav.addObject("Modificationtips", msg);
+		mav.setViewName("contact");
 		return mav;
 	}
 	
@@ -302,7 +364,7 @@ public class IndexAction {
 	public ModelAndView Modifypersonaldata(@RequestParam("file") MultipartFile file,ModelAndView mav,ClwUser user) {
 		String msg;
 		try {
-			file.transferTo(new File(myUploadPath + file.getOriginalFilename()));
+			file.transferTo(new File(userlookPath + file.getOriginalFilename()));
 			// 定义用户头像的图片的 web 路径
 			String head = "userlook/" + file.getOriginalFilename();
 			user.setLook(head);
@@ -315,5 +377,6 @@ public class IndexAction {
 		mav.setViewName("back-stagemanagement/user_basic");
 		return mav;
 	}
+	
 	
 }

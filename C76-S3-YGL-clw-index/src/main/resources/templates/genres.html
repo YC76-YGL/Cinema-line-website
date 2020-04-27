@@ -112,6 +112,7 @@
 								<ol class="breadcrumb">
 									<li><a href="index.html">首页</a></li>
 									<li class="active">分类</li>
+									<li>分类</li>
 								</ol>
 							</div>
 						</div>
@@ -161,14 +162,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="alert alert-warning" role="alert" th:text="${session.genresid.msg}">
+					<strong>提示信息</strong> Best check yo self, you're not looking too good.
+				</div>
 				<!--//browse-agile-w3ls -->
 				<div class="blog-pagenat-wthree">
 					<ul>
-						<li><a class="frist" >首页</a></li>
-						<li><a href="previous" th:if="${session.genresid.page - 1} == 0" th:href="@{'genres?page=' + ${session.genresid.page - 1} + '&id=' + ${session.genresid.id}}">上一页</a></li>
-						<!-- th:if="${session.genresid} != null" -->
-						<li><a class="next" th:href="@{'genres?page=' + ${session.genresid.page +1} + '&id=' + ${session.genresid.id}}">下一页</a></li>
-						<li><a href="last">尾页</a></li>
+						<li><a class="frist"th:href="'genres?page=1&id=' + ${session.genresid.id}" >首页</a></li>
+						<li><a href="previous" th:href="'genres?page=' + ${--session.genresid.page} + '&id=' + ${session.genresid.id}">上一页</a></li>
+						<li><a class="next" th:href="'genres?page=' + ${session.genresid.page +1} + '&id=' + ${session.genresid.id}">下一页</a></li>
+						<li><a href="last" th:href="'genres?page='+${session.genresid.last}+'&id=' + ${session.genresid.id}">尾页</a></li>
 					</ul>
 				</div>
 			</div>
