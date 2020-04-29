@@ -5,6 +5,19 @@
 <title>一部电影 - 注册</title>
 <script id="jquery_183" type="text/javascript" class="library"
 	src="js/jquery-1.8.3.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	function sendVcode() {
+		$.post("sendVcode",
+			{email: $("input[name='email']").val()},
+			function (msg){
+				var obj = document.getElementById("msg");
+				obj.innerText= msg 
+			}
+		)
+	}
+	</script>
 </head>
 <body>
 	<div id="top">
@@ -13,13 +26,25 @@
 	<div class="form-bak">
 		<form method="post" action="reg" onsubmit="adaptValue();">
 			<div class="left">
-				<div class="line" id="line_account">
+				<div class="line" id="line_email">
 					<div class="info">
-						<strong>邮箱</strong> <span class="tips">请输入您的邮箱</span>
+						<strong>邮箱</strong> <span class="tips" ><button onclick="sendVcode()" type="button" >请点击这里发送验证码</button></span>
 					</div>
 					<div class="input">
-						<input type="text" name="email" id="account"
-							onblur="v_account();" onkeyup="v_account();" />
+						<input type="text" name="email" id="email"
+							onblur="v_email();" onkeyup="v_email();" />
+						<div class="none">
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div class="line" id="line_yzm">
+					<div class="info">
+						<strong>邮箱验证码</strong> <span class="tips" id="msg">请输入发送的邮箱验证码</span>
+					</div>
+					<div class="input">
+						<input type="text" name="yzm" id="yzm"
+							onblur="v_yzm();" onkeyup="v_yzm();" />
 						<div class="none">
 							<span></span>
 						</div>
@@ -105,7 +130,7 @@ body {
 
 .form-bak {
 	width: 800px;
-	height: 400px;
+	height: 600px;
 	margin: 40px auto;
 	background: #eee;
 	border-radius: 10px;
@@ -351,14 +376,14 @@ input[type=submit]:disabled {
 		$("#line_" + name + " .input span").text(msg);
 		$("#line_" + name + " .input div").attr("class", "error");
 	}
-	function v_account() {
-		var account = $("#account").val();
-		if (!RegEmail.test(account)) {
-			lineState("account", "error", "邮箱格式不正确");
+	function v_email() {
+		var email = $("#email").val();
+		if (!RegEmail.test(email)) {
+			lineState("email", "error", "邮箱格式不正确");
 			flags[0] = false;
 			enableSubmit(false);
 		} else {
-			lineState("account", "corect", "");
+			lineState("email", "corect", "");
 			flags[0] = true;
 		}
 		v_submitbutton();
@@ -376,6 +401,23 @@ input[type=submit]:disabled {
 				lineState("name", "corect", "");
 				flags[1] = true;
 			}
+		}
+		v_submitbutton();
+	}
+	function v_yzm() {
+		var yzm = $("#yzm").val();
+		if (yzm.length == 0) {
+			lineState("yzm", "error", "不得为空");
+			flags[1] = false;
+		} else {
+			if (yzm.length != 4 ) {
+				lineState("yzm", "error", "验证码输入错误");
+				flags[1] = false;
+			}
+				else {
+					lineState("yzm", "corect", "");
+					flags[1] = true;
+				}
 		}
 		v_submitbutton();
 	}

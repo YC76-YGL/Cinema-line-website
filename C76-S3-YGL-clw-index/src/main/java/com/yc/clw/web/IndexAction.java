@@ -138,10 +138,14 @@ public class IndexAction {
 	}
 
 	@PostMapping("reg")
-	public ModelAndView reg(ModelAndView mav, ClwUser user, String repwd) {
+	public ModelAndView reg(@SessionAttribute("vcode") String sessionVcode,ModelAndView mav, ClwUser user, String repwd,String yzm) {
 		try {
-			uBiz.reg(user, repwd);
-			mav.setViewName("Login");
+			if(sessionVcode.equals(yzm) == false) {
+				mav.setViewName("Reg");
+			}else {
+				uBiz.reg(user, repwd);
+				mav.setViewName("Login");
+			}
 		} catch (BizException e) {
 			e.printStackTrace();
 			mav.addObject("msg", e.getMessage());
@@ -212,6 +216,7 @@ public class IndexAction {
 	@GetMapping("list")
 	public ModelAndView list(ModelAndView mav) {
 		mmb.common(mav);
+		mav.addObject("gcml", gaca.getClwMovielist());
 		mav.setViewName("list");
 		return mav;
 	}
@@ -323,6 +328,7 @@ public class IndexAction {
 	@ResponseBody
 	public String Sendcode(String email,HttpSession session,ModelAndView mav) {
 		String msg;
+		System.out.println(email);
 		try {
 			msg = "发送成功" ;
 			String vcode = uBiz.forget(email);
@@ -375,6 +381,12 @@ public class IndexAction {
 		}
 		mav.addObject("Modificationtips", msg);
 		mav.setViewName("back-stagemanagement/user_basic");
+		return mav;
+	}
+	
+	@GetMapping("comedy")
+	public ModelAndView getcomedy(ModelAndView mav) {
+		mmb.common(mav);
 		return mav;
 	}
 	

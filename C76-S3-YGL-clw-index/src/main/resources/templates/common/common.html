@@ -26,7 +26,7 @@
 					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
 					<li><a href="toreg">注册</a></li>
-					<li th:if="${session.loginedUser} != null"><a th:href="${session.loginedUser.type} == 1 ? 'admin' : 'Use'" th:text="${session.loginedUser.type == 1 ? '用户中心 ': '管理员界面'}">管理员页面</a></li>
+					<li th:if="${session.loginedUser} != null"><a href="admin" th:text="用户中心 ">管理员页面</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div> 

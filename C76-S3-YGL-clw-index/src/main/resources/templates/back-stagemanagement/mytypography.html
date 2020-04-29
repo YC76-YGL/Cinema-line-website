@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>一部电影 - 发布新闻</title>
+  <title>一部电影 - 查看评论</title>
   <!-- base:css -->
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
@@ -42,7 +42,7 @@
                 <div class="card-body" id="divMain">
                 <img  th:src="${#strings.substringAfter(mycl.image,'-')} == null ? ${mycl.image} : ${#strings.substringBefore(mycl.image,'-')}" alt=" ">
                 <!-- 标题 -->
-                <h4 class="card-title" th:text="${mycl.cml}">Blockquotes</h4>
+                <h4 class="card-title" th:text="${mycl.name}">Blockquotes</h4>
                 <!-- 时间 -->
                 <p class="card-description" th:text="${#dates.format(mycl.createtime,'yyyy年MM月dd日')}">
                     Wrap content inside<code>&lt;blockquote class="blockquote"&gt;</code>

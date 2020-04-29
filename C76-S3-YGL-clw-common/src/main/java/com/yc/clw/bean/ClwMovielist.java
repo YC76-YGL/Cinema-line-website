@@ -37,7 +37,11 @@ public class ClwMovielist implements Serializable {
 
     private String other;
     
+    private ClwActor car;
     
+    private Integer number;
+    
+    private ClwCountry ccy;
 
     public Integer getId() {
         return id;
@@ -151,5 +155,30 @@ public class ClwMovielist implements Serializable {
         this.other = other == null ? null : other.trim();
     }
 
+	public ClwActor getCar() {
+		return car;
+	}
+
+	public void setCar(ClwActor car) {
+		this.car = car;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public ClwCountry getCcy() {
+		return ccy;
+	}
+
+	public void setCcy(ClwCountry ccy) {
+		this.ccy = ccy;
+	}
+
+	
     
 }

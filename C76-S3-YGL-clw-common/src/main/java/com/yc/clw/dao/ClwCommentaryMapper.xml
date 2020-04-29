@@ -13,7 +13,7 @@
     </association>
   </resultMap>
   <select id="selectuser" resultType="com.yc.clw.bean.ClwUser">
-  	select username from clw_user where id = #{id}
+  	select username,look from clw_user where id = #{id}
   </select>
   
   <select id="selectmovie" resultType="com.yc.clw.bean.ClwMovielist">
