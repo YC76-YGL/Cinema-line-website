@@ -39,6 +39,25 @@
 		});
 	});
 </script>
+
+<script type="text/javascript">
+function Userlogin() {
+	var user = document.getElementById("user");
+	if(user == null){
+		var uri = window.location.href;
+		$.post("tologin", {uri})
+	}else{
+		$.post("createreply",
+			{movielist:$("input[name='movielist']").val()},
+			{user:$("input[name='user']").val()},
+			{commentary:$("input[name='commentary']").val()}
+			
+		)
+		
+	}
+}
+
+</script>
 <!-- start-smoth-scrolling -->
 <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/owl.carousel.js"></script>
@@ -112,7 +131,7 @@
 					</div>
 					<div class="song-grid-right">
 						<div class="share">
-							<h5>分享这部电影</h5>
+							<h5 id="msg">分享这部电影</h5>
 							<div class="single-agile-shar-buttons">
 							<ul>
 								<li>
@@ -157,10 +176,11 @@
 						<div class="all-comments-info">
 							<a href="#">评论</a>
 							<div class="agile-info-wthree-box">
-								<form action="#" method="post">
-								<input type="hidden" th:value="${gcn.id}">
-									<textarea name="" placeholder="你的想法是?" required=""></textarea>
-									<input type="submit" value="评论">
+								<form action="createreply" method="post" >
+								<input type="hidden" name="movielist" th:value="${gcn.id}">
+								<input type="hidden" name="user" id="user" th:if="${session.loginedUser} != null" th:value="${session.loginedUser.id}" >
+									<textarea name="commentary" placeholder="你的想法是?" required=""></textarea>
+									<input type="submit" onclick="Userlogin" value="评论"> 
 									<div class="clearfix"> </div>
 								</form>
 							</div>

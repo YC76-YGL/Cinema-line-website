@@ -25,8 +25,9 @@
 					<span th:if="${session.loginedUser} == null">请&nbsp;<a href="tologin" >登录</a></span>
 					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
-					<li><a href="toreg">注册</a></li>
+					<li  th:if="${session.loginedUser} == null"><a href="toreg">注册</a></li>
 					<li th:if="${session.loginedUser} != null"><a href="admin" th:text="用户中心 ">管理员页面</a></li>
+					<li  th:if="${session.loginedUser} != null"><a href="logout">退出</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div> 

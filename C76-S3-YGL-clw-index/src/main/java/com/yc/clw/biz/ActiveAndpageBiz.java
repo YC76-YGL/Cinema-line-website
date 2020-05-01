@@ -16,6 +16,8 @@ public class ActiveAndpageBiz implements Serializable {
 	private String msg;
 
 	private Integer last;
+	
+	private String search;
 
 	public Integer getId() {
 		return id;
@@ -60,5 +62,29 @@ public class ActiveAndpageBiz implements Serializable {
 	public ActiveAndpageBiz() {
 			super();
 		}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public ActiveAndpageBiz(Integer page, String msg, Integer last, String search) {
+		super();
+		this.page = page;
+		this.msg = msg;
+		this.last = last;
+		this.search = search;
+	}
+
+	public ActiveAndpageBiz(Integer page, Integer last, String search) {
+		super();
+		this.page = page;
+		this.last = last;
+		this.search = search;
+	}
+	
 
 }

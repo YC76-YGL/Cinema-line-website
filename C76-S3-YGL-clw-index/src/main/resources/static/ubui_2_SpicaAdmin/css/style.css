@@ -18802,14 +18802,39 @@ code {
 }
 
 .traffic-status .item:nth-child(1) .color-border {
-  background: #1cbccd;
+  background: rgba(255, 99, 132);
 }
 
 .traffic-status .item:nth-child(2) .color-border {
-  background: #6640b2;
+  background: rgba(54, 162, 235);
 }
 
 .traffic-status .item:nth-child(3) .color-border {
+  background: rgba(255, 206, 86);
+}
+
+.traffic-status .item:nth-child(4) .color-border {
+  background: rgba(75, 192, 192);
+}
+
+
+
+.traffic-status .item .colorll-border {
+  width: 15px;
+  height: 3px;
+  margin-top: 5px;
+}
+
+
+.traffic-status .item:nth-child(1) .colorll-border {
+  background: #1cbccd;
+}
+
+.traffic-status .item:nth-child(2) .colorll-border {
+  background: #6640b2;
+}
+
+.traffic-status .item:nth-child(3) .colorll-border {
   background: #f83e37;
 }
 

@@ -10,7 +10,13 @@
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="look" jdbcType="VARCHAR" property="look" />
+    <association property="newnumber" column="id" select="selectnumber"></association>
   </resultMap>
+  
+  <select id="selectnumber" resultMap="com.yc.clw.bean.ClwNews">
+  	select count(*) from clw_news join clw_user on clw_user.id = clw_news.user where clw_news.id =#{id}
+  </select>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

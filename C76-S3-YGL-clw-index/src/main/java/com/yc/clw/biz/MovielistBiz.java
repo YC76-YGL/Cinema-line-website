@@ -25,4 +25,10 @@ public class MovielistBiz {
 		return Math.ceil( (double)cmm.countByExample(cmle)/(double)6);
 	}
 	
+	public double getnamepage(String name) {
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andNameLike(name);
+		return Math.ceil( (double)cmm.countByExample(cmle)/(double)6);
+	}
+	
 }

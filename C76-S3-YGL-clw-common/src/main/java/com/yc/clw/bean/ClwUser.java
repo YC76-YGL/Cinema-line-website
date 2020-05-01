@@ -23,6 +23,8 @@ public class ClwUser implements Serializable {
     private String type;
 
     private String look;
+    
+    private Integer newnumber;
 
     public Integer getId() {
         return id;
@@ -101,6 +103,16 @@ public class ClwUser implements Serializable {
 
 	public ClwUser() {
 		super();
+	}
+	
+	
+
+	public Integer getNewnumber() {
+		return newnumber;
+	}
+
+	public void setNewnumber(Integer newnumber) {
+		this.newnumber = newnumber;
 	}
 
 	@Override

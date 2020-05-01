@@ -124,7 +124,7 @@
 					<div class="item" th:each="gnm : ${getnewmovie}">
 						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
 							<a th:href="'single?id=' + ${gnm.id}" class="hvr-shutter-out-horizontal"><img
-								th:src="${#strings.substringAfter(gnm.image,'-') == null ? gnm.image : #strings.substringAfter(gnm.image,'-')}" title="album-name" class="img-responsive"
+								th:src="${#strings.substringAfter(gnm.image,'-') == null ? gnm.image : #strings.substringAfter(gnm.image,'-')}" height="182px" width="268px" title="album-name" class="img-responsive"
 								alt=" " />
 								<div class="w3l-action-icon">
 									<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -163,6 +163,7 @@
 			</div>
 		</div>
 	</div>
+	<div id="box1"></div>
 	<!-- //banner-bottom -->
 	<div th:replace="common/common::.general_social_icons">
 	</div>
@@ -177,7 +178,7 @@
 							<div class="agile_tv_series_grid">
 								<div class="col-md-6 agile_tv_series_grid_left">
 									<div class="w3ls_market_video_grid1">
-										<img th:src="${#strings.substringAfter(gmp.image,'-') == null ? gmp.image : #strings.substringBefore(gmp.image,'-')}"  alt=" " width="100%"  height="100%"  />
+										<img th:src="${#strings.substringAfter(gmp.image,'-') == null ? gmp.image : #strings.substringBefore(gmp.image,'-')}"  alt=" " width="660px"  height="361.25px"  />
 										<a class="w3_play_icon" th:href="'single?id=' + ${gmp.id}"> 
 										<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
 										</a>

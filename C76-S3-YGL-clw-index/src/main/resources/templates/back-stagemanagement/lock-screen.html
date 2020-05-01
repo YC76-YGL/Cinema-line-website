@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -25,17 +25,17 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-transparent text-left p-5 text-center">
-              <img src="ubui_2_SpicaAdmin/images/faces/face13.jpg" class="lock-profile-img" alt="img">
-              <form class="pt-5">
+              <img th:src="${session.loginedUser.look}" class="lock-profile-img" alt="img">
+              <form class="pt-5" action="Unlockpassword" method="post">
                 <div class="form-group">
                   <label for="examplePassword1" class="text-light">解锁密码</label>
-                  <input type="password" class="form-control text-center" id="examplePassword1" placeholder="请输入密码">
+                  <input type="password" class="form-control text-center" name="pwd" placeholder="请输入密码">
                 </div>
                 <div class="mt-5">
-                  <a class="btn btn-block btn-success btn-lg font-weight-medium" href="ubui_2_SpicaAdmin/index.html">解锁</a>
+                  <button class="btn btn-block btn-success btn-lg font-weight-medium" type="submit">解锁</button>
                 </div>
                 <div class="mt-3 text-center">
-                  <a href="#" class="auth-link text-white">使用其他帐户登录</a>
+                  <a href="tologin" class="auth-link text-white">使用其他帐户登录</a>
                 </div>
               </form>
             </div>

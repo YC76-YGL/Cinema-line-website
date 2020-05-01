@@ -18,12 +18,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
 import com.yc.clw.bean.ClwReplytocomments;
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.biz.ActiveAndpageBiz;
 import com.yc.clw.biz.BizException;
+import com.yc.clw.biz.ClwCount;
+import com.yc.clw.biz.ClwCountBiz;
+import com.yc.clw.biz.CommentaryBiz;
 import com.yc.clw.biz.MergingmethoBiz;
 import com.yc.clw.biz.MovielistBiz;
 import com.yc.clw.biz.NewsBiz;
@@ -104,6 +108,25 @@ public class IndexAction {
 		mav.setViewName("Login");
 		return mav;
 	}
+	
+	@PostMapping("tologin")
+	public ModelAndView tologin(ModelAndView mav,@RequestParam("uri")String uri) {
+		mav.addObject("uri", uri);
+		mav.setViewName("Login");
+		return mav;
+	}
+	
+	@PostMapping("Unlockpassword")
+	public ModelAndView Unlockpassword(@RequestParam("pwd")String pwd,ModelAndView mav,HttpSession session) {
+		ClwUser user = (ClwUser) session.getAttribute("loginedUser");
+		if(user.getPassword().equals(pwd) == false) {
+			mav.setViewName("back-stagemanagement/lock-screen");
+		}else {
+			getadmin(mav,user);
+		}
+		return mav;
+	}
+	
 
 	@PostMapping("login")
 	public ModelAndView login(ClwUser user, ModelAndView mav,
@@ -156,7 +179,9 @@ public class IndexAction {
 
 	@GetMapping("logout")
 	public ModelAndView logout(ModelAndView mav) {
-		mav.clear();
+		ClwUser user = null;
+		mmb.common(mav);
+		mav.addObject("loginedUser", user);
 		mav.setViewName("index");
 		return mav;
 	}
@@ -199,16 +224,13 @@ public class IndexAction {
 
 	@GetMapping("single")
 	public ModelAndView single(@RequestParam("id") Integer id, ModelAndView mav) {
-		if (id == 0) {
-			mav.setViewName("Error");
-		} else {
+		mav.addObject("Modificationtips", "");
 			List<ClwMovielist> list = gaca.getidmovie(id);
 			if (list != null) {
 				mmb.common(mav);
 				mav.addObject("getidmovie", list);
 				mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
 				mav.setViewName("single");
-			}
 		}
 		return mav;
 	}
@@ -221,11 +243,18 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@Resource
+	ClwCountBiz ccbz;
+	
 	@GetMapping("admin")
 	public ModelAndView getadmin(ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
 		if(user == null) {
 			mav.setViewName("login");
 		}else {
+			ClwCount cct = new ClwCount();
+			cct = ccbz.getcount();
+			mav.addObject("cct", cct);
+			mav.addObject("getusenumber", gaca.getusenumber(1));
 			mav.setViewName("Administrator");
 		}
 		return mav;
@@ -256,15 +285,21 @@ public class IndexAction {
 	@PostMapping("search")
 	public ModelAndView getsearchmovie(ModelAndView mav,@RequestParam("Search")String Search) {
 		mmb.common(mav);
+		double getpage = mb.getnamepage(Search);
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(1, (int)getpage, Search);
+		mav.addObject("genresid", cgape);
 		mav.addObject("getSearch", gaca.getseachmovie(Search));
 		mav.setViewName("horror");
 		return mav;
 	}
 	
 	@GetMapping("horror")
-	public ModelAndView gethorrormovie(ModelAndView mav,@RequestParam("page") Integer page,@RequestParam("Search")String Search) {
+	public ModelAndView gethorrormovie(ModelAndView mav,@RequestParam(defaultValue = "1") Integer page,@RequestParam("Search")String Search) {
 		mmb.common(mav);
+		double getpage = mb.getnamepage(Search);
 		mav.addObject("getSearch", gaca.getseachmovie(Search));
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(page, (int)getpage, Search);
+		mav.addObject("genresid", cgape);
 		mav.setViewName("horror");
 		return mav;
 	}
@@ -280,6 +315,12 @@ public class IndexAction {
 	
 	@Resource
 	NewsBiz nb;
+	
+	@GetMapping("lock-screen")
+	public ModelAndView getlock(ModelAndView mav) {
+		mav.setViewName("back-stagemanagement/lock-screen");
+		return mav;
+	}
 	
 	@PostMapping("Createnews")
 	public ModelAndView getCreatenews(ClwNews news,@RequestParam("file") MultipartFile file,ModelAndView mav) {
@@ -297,6 +338,21 @@ public class IndexAction {
 		}
 		mav.addObject("Modificationtips", msg);
 		mav.setViewName("back-stagemanagement/Pressrelease");
+		return mav;
+	}
+	@Resource
+	CommentaryBiz ctb;
+	
+	@PostMapping("createreply")
+	public ModelAndView getreply(ClwCommentary ccy,ModelAndView mav) {
+		String msg = null;
+		msg = ctb.crete(ccy);
+		List<ClwMovielist> list = gaca.getidmovie(ccy.getMovielist());
+			mmb.common(mav);
+			mav.addObject("getidmovie", list);
+			mav.addObject("getClwCommentarylist", gaca.getClwCommentary(ccy.getMovielist()));
+			mav.setViewName("single");
+		mav.addObject("Modificationtips", msg);
 		return mav;
 	}
 	
@@ -390,5 +446,9 @@ public class IndexAction {
 		return mav;
 	}
 	
+	@GetMapping("Directionalpush")
+	public String getpush() {
+		return "你好";
+	}
 	
 }

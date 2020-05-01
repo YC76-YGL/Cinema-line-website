@@ -101,15 +101,14 @@
 									<!-- /latest-movies1 -->
 							    <div class="browse-inner-come-agile-w3">
 							   <div class="col-md-2 w3l-movie-gride-agile" th:each="gs : ${getSearch}">
-										 <a href="single.html" class="hvr-shutter-out-horizontal"><img th:src="${#strings.substringAfter(gs.image,'-') == null ? gs.image : #strings.substringAfter(gs.image,'-')}" title="album-name" alt=" " />
+										 <a th:href="'single?id=' +${gs.id}" class="hvr-shutter-out-horizontal"><img th:src="${#strings.substringAfter(gs.image,'-') == null ? gs.image : #strings.substringAfter(gs.image,'-')}" title="album-name" alt=" " />
 									     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 									</a>
 									  <div class="mid-1">
 										<div class="w3l-movie-text">
-											<h6 th:text="${gs.name}"><a href="single.html">Before I Wake</a></h6>							
+											<h6 th:text="${gs.name}"><a th:href="'single?id=' +${gs.id}">Before I Wake</a></h6>							
 										</div>
 										<div class="mid-2">
-										
 											<p th:text="${#dates.format(gs.createtime,('yyyy年'))}">2016</p>
 											<div class="block-stars">
 												<ul class="w3l-ratings">
@@ -136,10 +135,10 @@
 								</div>
 						<div class="blog-pagenat-wthree">
 							<ul>
-								<li><a class="frist"th:href="'horror?page=1&id=' + ${session.genresid.id}" >首页</a></li>
-						<li><a href="previous" th:href="'horror?page=' + ${--session.genresid.page} + '&id=' + ${session.genresid.id}">上一页</a></li>
-						<li><a class="next" th:href="'horror?page=' + ${session.genresid.page +1} + '&id=' + ${session.genresid.id}">下一页</a></li>
-						<li><a href="last" th:href="'horror?page='+${session.genresid.last}+'&id=' + ${session.genresid.id}">尾页</a></li>
+								<li><a class="frist"th:href="'horror?page=1&Search=' + ${session.genresid.search}" >首页</a></li>
+								<li><a href="previous" th:href="'horror?page=' + ${session.genresid.page-1} + '&Search=' + ${session.genresid.search}">上一页</a></li>
+								<li><a class="next" th:href="'horror?page=' + ${session.genresid.page +1} + '&Search=' + ${session.genresid.search}">下一页</a></li>
+								<li><a href="last" th:href="'horror?page='+${session.genresid.last}+'&Search=' + ${session.genresid.search}">尾页</a></li>
 							</ul>
 						</div>
 					</div>

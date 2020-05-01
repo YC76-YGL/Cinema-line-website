@@ -11,6 +11,7 @@ import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
+import com.yc.clw.bean.ClwUser;
 
 @FeignClient(name = "clw-back",fallback = GenersAndCountryAction.class)
 public interface IclwalltableAction {
@@ -118,4 +119,7 @@ public interface IclwalltableAction {
 	
 	@GetMapping("mycommentary")
 	public List<ClwCommentary> getmycommentary(@RequestParam("id")Integer id);
+	
+	@GetMapping("getusernumber")
+	public List<ClwUser> getusenumber(Integer id);
 }
