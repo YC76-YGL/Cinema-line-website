@@ -121,5 +121,5 @@ public interface IclwalltableAction {
 	public List<ClwCommentary> getmycommentary(@RequestParam("id")Integer id);
 	
 	@GetMapping("getusernumber")
-	public List<ClwUser> getusenumber(Integer id);
+	public List<ClwUser> getusenumber();
 }

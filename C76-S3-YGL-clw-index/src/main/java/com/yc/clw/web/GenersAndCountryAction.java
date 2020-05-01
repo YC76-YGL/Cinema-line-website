@@ -202,7 +202,7 @@ public class GenersAndCountryAction implements IclwalltableAction{
 	}
 
 	@Override
-	public List<ClwUser> getusenumber(Integer id) {
+	public List<ClwUser> getusenumber() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -24,8 +24,8 @@ public class ClwUser implements Serializable {
 
     private String look;
     
-    private Integer newnumber;
-
+    private ClwCount newsnumber;
+    
     public Integer getId() {
         return id;
     }
@@ -89,6 +89,10 @@ public class ClwUser implements Serializable {
     public void setLook(String look) {
         this.look = look == null ? null : look.trim();
     }
+    
+    
+    
+
 
 	public ClwUser(Integer id, String username) {
 		super();
@@ -104,22 +108,16 @@ public class ClwUser implements Serializable {
 	public ClwUser() {
 		super();
 	}
+
+	public ClwCount getNewsnumber() {
+		return newsnumber;
+	}
+
+	public void setNewsnumber(ClwCount newsnumber) {
+		this.newsnumber = newsnumber;
+	}
 	
-	
 
-	public Integer getNewnumber() {
-		return newnumber;
-	}
-
-	public void setNewnumber(Integer newnumber) {
-		this.newnumber = newnumber;
-	}
-
-	@Override
-	public String toString() {
-		return "ClwUser [id=" + id + ", username=" + username + ", password=" + password + ", sex=" + sex + ", email="
-				+ email + ", mobile=" + mobile + ", type=" + type + ", look=" + look + "]";
-	}
 
 	
     

@@ -24,7 +24,7 @@ public class ClwUserAction {
 	ClwNewsMapper cnm;
 	
 	@GetMapping("getusernumber")
-	public List<ClwUser> getusenumber(Integer id){
+	public List<ClwUser> getusenumber(){
 		List<ClwUser> user = new ArrayList<ClwUser>();
 		ClwUserExample cue = new ClwUserExample();
 		cue.createCriteria().andIdIsNotNull();

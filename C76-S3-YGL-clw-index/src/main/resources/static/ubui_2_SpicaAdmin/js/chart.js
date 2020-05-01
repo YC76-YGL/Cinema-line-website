@@ -18,7 +18,7 @@ $(function() {
   var data = {
     labels: [uname, mname, nname, gname],
     datasets: [{
-      label: '# 值',
+      label: '=',
       data: [unumber, mnumber, nnumber, gnumber],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',

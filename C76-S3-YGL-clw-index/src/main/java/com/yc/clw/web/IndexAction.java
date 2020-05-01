@@ -35,7 +35,7 @@ import com.yc.clw.biz.ReplytocommentsBiz;
 import com.yc.clw.biz.UserBiz;
 
 @RestController
-@SessionAttributes({ "loginedUser", "genresid" ,"Modificationtips"})
+@SessionAttributes({ "loginedUser", "genresid", "Modificationtips" })
 public class IndexAction {
 
 	@Resource
@@ -60,23 +60,23 @@ public class IndexAction {
 
 	@Resource
 	MovielistBiz mb;
-	
+
 	@GetMapping("genres")
 	public ModelAndView geners(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
 			ModelAndView mav) {
-		mav.addObject("genresid","");
+		mav.addObject("genresid", "");
 		mmb.common(mav);
 		String msg = null;
 		double getpage = mb.getgenrespage(id);
-		if(page > getpage) {
+		if (page > getpage) {
 			page = (int) getpage;
 			msg = "已经是这个类型的全部电影了";
-		}else if(page <= 0) {
+		} else if (page <= 0) {
 			msg = "这一页已经是首页了";
 			page = 1;
 		}
-		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id,page,msg,(int)getpage);
-		mav.addObject("getmovie", gaca.getgenresmovie(page,id));
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id, page, msg, (int) getpage);
+		mav.addObject("getmovie", gaca.getgenresmovie(page, id));
 		mav.addObject("genresid", cgape);
 		mav.setViewName("genres");
 		return mav;
@@ -85,20 +85,20 @@ public class IndexAction {
 	@GetMapping("country")
 	public ModelAndView country(@RequestParam(defaultValue = "1") Integer page, @RequestParam("id") Integer id,
 			ModelAndView mav) {
-		mav.addObject("genresid","");
+		mav.addObject("genresid", "");
 		mmb.common(mav);
 		String msg = null;
 		double getpage = mb.getgenrespage(id);
-		if(page >= getpage) {
+		if (page >= getpage) {
 			page = (int) getpage;
 			msg = "已经是这个类型的全部电影了";
-		}else if(page <= 0) {
+		} else if (page <= 0) {
 			msg = "这一页已经是首页了";
 			page = 1;
 		}
-		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id,page,msg,(int)getpage);
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id, page, msg, (int) getpage);
 		mav.addObject("genresid", cgape);
-		mav.addObject("getmovie", gaca.getcountrmovie(page,id));
+		mav.addObject("getmovie", gaca.getcountrmovie(page, id));
 		mav.setViewName("genres");
 		return mav;
 	}
@@ -108,25 +108,24 @@ public class IndexAction {
 		mav.setViewName("Login");
 		return mav;
 	}
-	
+
 	@PostMapping("tologin")
-	public ModelAndView tologin(ModelAndView mav,@RequestParam("uri")String uri) {
+	public ModelAndView tologin(ModelAndView mav, @RequestParam("uri") String uri) {
 		mav.addObject("uri", uri);
 		mav.setViewName("Login");
 		return mav;
 	}
-	
+
 	@PostMapping("Unlockpassword")
-	public ModelAndView Unlockpassword(@RequestParam("pwd")String pwd,ModelAndView mav,HttpSession session) {
+	public ModelAndView Unlockpassword(@RequestParam("pwd") String pwd, ModelAndView mav, HttpSession session) {
 		ClwUser user = (ClwUser) session.getAttribute("loginedUser");
-		if(user.getPassword().equals(pwd) == false) {
+		if (user.getPassword().equals(pwd) == false) {
 			mav.setViewName("back-stagemanagement/lock-screen");
-		}else {
-			getadmin(mav,user);
+		} else {
+			getadmin(mav, user);
 		}
 		return mav;
 	}
-	
 
 	@PostMapping("login")
 	public ModelAndView login(ClwUser user, ModelAndView mav,
@@ -139,6 +138,7 @@ public class IndexAction {
 			if (uri != null) {
 				mav.setViewName("redirect:" + uri);
 			} else {
+				index(mav);
 				mav.setViewName("index");
 			}
 		} catch (BizException e) {
@@ -161,11 +161,12 @@ public class IndexAction {
 	}
 
 	@PostMapping("reg")
-	public ModelAndView reg(@SessionAttribute("vcode") String sessionVcode,ModelAndView mav, ClwUser user, String repwd,String yzm) {
+	public ModelAndView reg(@SessionAttribute("vcode") String sessionVcode, ModelAndView mav, ClwUser user,
+			String repwd, String yzm) {
 		try {
-			if(sessionVcode.equals(yzm) == false) {
+			if (sessionVcode.equals(yzm) == false) {
 				mav.setViewName("Reg");
-			}else {
+			} else {
 				uBiz.reg(user, repwd);
 				mav.setViewName("Login");
 			}
@@ -194,7 +195,7 @@ public class IndexAction {
 		mav.setViewName("news");
 		return mav;
 	}
-	
+
 	@GetMapping("contact")
 	public ModelAndView contanct(ModelAndView mav) {
 		mmb.common(mav);
@@ -202,7 +203,7 @@ public class IndexAction {
 		mav.setViewName("contact");
 		return mav;
 	}
-	
+
 	@GetMapping("fql")
 	public ModelAndView faq(ModelAndView mav) {
 		mmb.common(mav);
@@ -225,12 +226,12 @@ public class IndexAction {
 	@GetMapping("single")
 	public ModelAndView single(@RequestParam("id") Integer id, ModelAndView mav) {
 		mav.addObject("Modificationtips", "");
-			List<ClwMovielist> list = gaca.getidmovie(id);
-			if (list != null) {
-				mmb.common(mav);
-				mav.addObject("getidmovie", list);
-				mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
-				mav.setViewName("single");
+		List<ClwMovielist> list = gaca.getidmovie(id);
+		if (list != null) {
+			mmb.common(mav);
+			mav.addObject("getidmovie", list);
+			mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
+			mav.setViewName("single");
 		}
 		return mav;
 	}
@@ -242,88 +243,88 @@ public class IndexAction {
 		mav.setViewName("list");
 		return mav;
 	}
-	
+
 	@Resource
 	ClwCountBiz ccbz;
-	
+
 	@GetMapping("admin")
-	public ModelAndView getadmin(ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
-		if(user == null) {
-			mav.setViewName("login");
-		}else {
-			ClwCount cct = new ClwCount();
-			cct = ccbz.getcount();
-			mav.addObject("cct", cct);
-			mav.addObject("getusenumber", gaca.getusenumber(1));
-			mav.setViewName("Administrator");
+	public ModelAndView getadmin(ModelAndView mav, @SessionAttribute("loginedUser") ClwUser user) {
+		ClwCount cct = new ClwCount();
+		cct = ccbz.getcount();
+		mav.addObject("cct", cct);
+		if (user.getType().equals("1") == true) {
+			mav.addObject("getusenumber", gaca.getusenumber());
+		} else {
+			mav.addObject("getusenumber", user);
 		}
+		mav.setViewName("Administrator");
 		return mav;
 	}
 
-	
 	@GetMapping("user_basic")
 	public ModelAndView getuser_basic(ModelAndView mav) {
 		mav.addObject("Modificationtips", "");
 		mav.setViewName("back-stagemanagement/user_basic");
 		return mav;
 	}
-	
+
 	@GetMapping("typography")
-	public ModelAndView gettypography(@RequestParam("id") Integer id,ModelAndView mav) {
+	public ModelAndView gettypography(@RequestParam("id") Integer id, ModelAndView mav) {
 		mav.addObject("getbyidQuerySingular", gaca.getbyidQuerySingular(id));
 		mav.setViewName("back-stagemanagement/typography");
 		return mav;
 	}
-	
+
 	@GetMapping("Modifypersonalinformation")
 	public ModelAndView getModifypersonalinformation(ModelAndView mav) {
 		mav.addObject("Modificationtips", "");
 		mav.setViewName("back-stagemanagement/ChangePassword");
 		return mav;
 	}
-	
+
 	@PostMapping("search")
-	public ModelAndView getsearchmovie(ModelAndView mav,@RequestParam("Search")String Search) {
+	public ModelAndView getsearchmovie(ModelAndView mav, @RequestParam("Search") String Search) {
 		mmb.common(mav);
 		double getpage = mb.getnamepage(Search);
-		ActiveAndpageBiz cgape = new ActiveAndpageBiz(1, (int)getpage, Search);
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(1, (int) getpage, Search);
 		mav.addObject("genresid", cgape);
 		mav.addObject("getSearch", gaca.getseachmovie(Search));
 		mav.setViewName("horror");
 		return mav;
 	}
-	
+
 	@GetMapping("horror")
-	public ModelAndView gethorrormovie(ModelAndView mav,@RequestParam(defaultValue = "1") Integer page,@RequestParam("Search")String Search) {
+	public ModelAndView gethorrormovie(ModelAndView mav, @RequestParam(defaultValue = "1") Integer page,
+			@RequestParam("Search") String Search) {
 		mmb.common(mav);
 		double getpage = mb.getnamepage(Search);
 		mav.addObject("getSearch", gaca.getseachmovie(Search));
-		ActiveAndpageBiz cgape = new ActiveAndpageBiz(page, (int)getpage, Search);
+		ActiveAndpageBiz cgape = new ActiveAndpageBiz(page, (int) getpage, Search);
 		mav.addObject("genresid", cgape);
 		mav.setViewName("horror");
 		return mav;
 	}
-	
+
 	@GetMapping("Pressrelease")
 	public ModelAndView getPressrelease(ModelAndView mav) {
 		mav.setViewName("back-stagemanagement/Pressrelease");
 		return mav;
 	}
-	
+
 	@Value("${myUploadPath}")
 	private String myUploadPath;
-	
+
 	@Resource
 	NewsBiz nb;
-	
+
 	@GetMapping("lock-screen")
 	public ModelAndView getlock(ModelAndView mav) {
 		mav.setViewName("back-stagemanagement/lock-screen");
 		return mav;
 	}
-	
+
 	@PostMapping("Createnews")
-	public ModelAndView getCreatenews(ClwNews news,@RequestParam("file") MultipartFile file,ModelAndView mav) {
+	public ModelAndView getCreatenews(ClwNews news, @RequestParam("file") MultipartFile file, ModelAndView mav) {
 		String msg;
 		try {
 			file.transferTo(new File(myUploadPath + file.getOriginalFilename()));
@@ -340,31 +341,32 @@ public class IndexAction {
 		mav.setViewName("back-stagemanagement/Pressrelease");
 		return mav;
 	}
+
 	@Resource
 	CommentaryBiz ctb;
-	
+
 	@PostMapping("createreply")
-	public ModelAndView getreply(ClwCommentary ccy,ModelAndView mav) {
+	public ModelAndView getreply(ClwCommentary ccy, ModelAndView mav) {
 		String msg = null;
 		msg = ctb.crete(ccy);
 		List<ClwMovielist> list = gaca.getidmovie(ccy.getMovielist());
-			mmb.common(mav);
-			mav.addObject("getidmovie", list);
-			mav.addObject("getClwCommentarylist", gaca.getClwCommentary(ccy.getMovielist()));
-			mav.setViewName("single");
+		mmb.common(mav);
+		mav.addObject("getidmovie", list);
+		mav.addObject("getClwCommentarylist", gaca.getClwCommentary(ccy.getMovielist()));
+		mav.setViewName("single");
 		mav.addObject("Modificationtips", msg);
 		return mav;
 	}
-	
+
 	@Resource
 	ReplytocommentsBiz rtb;
-	
+
 	@PostMapping("replytocomments")
-	public ModelAndView replytocomments(ClwReplytocomments record,ModelAndView mav) {
+	public ModelAndView replytocomments(ClwReplytocomments record, ModelAndView mav) {
 		String msg = null;
-		if(record.getUser() == null) {
+		if (record.getUser() == null) {
 			msg = "发送失败!!!请先登录";
-		}else {
+		} else {
 			msg = rtb.CreateClwReply(record);
 		}
 		mmb.common(mav);
@@ -372,40 +374,40 @@ public class IndexAction {
 		mav.setViewName("contact");
 		return mav;
 	}
-	
+
 	@GetMapping("mytypography")
-	public ModelAndView getmytypography(@RequestParam("id") Integer id,ModelAndView mav) {
+	public ModelAndView getmytypography(@RequestParam("id") Integer id, ModelAndView mav) {
 		mav.addObject("mycommentary", gaca.getmycommentary(id));
 		mav.setViewName("back-stagemanagement/mytypography");
 		return mav;
 	}
-	
+
 	@PostMapping("sendVcode")
 	@ResponseBody
-	public String Sendcode(String email,HttpSession session,ModelAndView mav) {
+	public String Sendcode(String email, HttpSession session, ModelAndView mav) {
 		String msg;
 		System.out.println(email);
 		try {
-			msg = "发送成功" ;
+			msg = "发送成功";
 			String vcode = uBiz.forget(email);
 			session.setAttribute("vcode", vcode);
 			return msg;
 		} catch (BizException e) {
-			msg = "发送失败" ;
+			msg = "发送失败";
 			e.printStackTrace();
 			return msg;
 		}
 	}
-	
+
 	@PostMapping("CPassword")
-	public ModelAndView CPassword(ClwUser user,String yzm,String repassword,
-			@SessionAttribute("vcode") String sessionVcode,ModelAndView mav) {
+	public ModelAndView CPassword(ClwUser user, String yzm, String repassword,
+			@SessionAttribute("vcode") String sessionVcode, ModelAndView mav) {
 		String msg = null;
-		if(sessionVcode.equals(yzm) == false) {
+		if (sessionVcode.equals(yzm) == false) {
 			msg = "验证码输入错误";
-		}else if(user.getPassword().equals(repassword) == false) {
+		} else if (user.getPassword().equals(repassword) == false) {
 			msg = "两次密码不一致";
-		}else {
+		} else {
 			try {
 				uBiz.updatepassword(user);
 				msg = "修改成功";
@@ -416,39 +418,39 @@ public class IndexAction {
 		}
 		mav.addObject("Modificationtips", msg);
 		mav.setViewName("back-stagemanagement/ChangePassword");
-		return mav;		
+		return mav;
 	}
-	
+
 	@Value("${userlookPath}")
 	private String userlookPath;
-	
+
 	@PostMapping("Modifypersonaldata")
-	public ModelAndView Modifypersonaldata(@RequestParam("file") MultipartFile file,ModelAndView mav,ClwUser user) {
+	public ModelAndView Modifypersonaldata(@RequestParam("file") MultipartFile file, ModelAndView mav, ClwUser user) {
 		String msg;
 		try {
 			file.transferTo(new File(userlookPath + file.getOriginalFilename()));
 			// 定义用户头像的图片的 web 路径
 			String head = "userlook/" + file.getOriginalFilename();
 			user.setLook(head);
-			msg =  uBiz.updatelookpath(user);
+			msg = uBiz.updatelookpath(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "修改失败" ;
+			msg = "修改失败";
 		}
 		mav.addObject("Modificationtips", msg);
 		mav.setViewName("back-stagemanagement/user_basic");
 		return mav;
 	}
-	
+
 	@GetMapping("comedy")
 	public ModelAndView getcomedy(ModelAndView mav) {
 		mmb.common(mav);
 		return mav;
 	}
-	
+
 	@GetMapping("Directionalpush")
 	public String getpush() {
 		return "你好";
 	}
-	
+
 }

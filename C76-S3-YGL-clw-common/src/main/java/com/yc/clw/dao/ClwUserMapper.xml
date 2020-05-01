@@ -10,11 +10,12 @@
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="look" jdbcType="VARCHAR" property="look" />
-    <association property="newnumber" column="id" select="selectnumber"></association>
+    
+    <association property="newsnumber" column="id" select="selectCategory"></association>
   </resultMap>
   
-  <select id="selectnumber" resultMap="com.yc.clw.bean.ClwNews">
-  	select count(*) from clw_news join clw_user on clw_user.id = clw_news.user where clw_news.id =#{id}
+  <select id="selectCategory" resultType="com.yc.clw.bean.ClwCount">
+  	select count(*) as newnumber  from clw_news join clw_user on clw_user.id = user where user = #{id}
   </select>
   
   <sql id="Example_Where_Clause">
