@@ -96,6 +96,20 @@ public class ClwMovieListAction {
 	}
 	
 	/**
+	 * 查询所有电影网页
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("getalmovie")
+	public List<ClwMovielist> getalmovie(@RequestParam(defaultValue = "1")Integer page){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIdIsNotNull();
+		PageHelper.startPage(page,10);
+		Page<ClwMovielist> cmlist = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
+		return cmlist;
+	}
+	
+	/**
 	 * 根据构架查询电影
 	 * @param id
 	 * @return
@@ -128,10 +142,8 @@ public class ClwMovieListAction {
 	}
 	
 	@GetMapping("getidmovie")
-	public List<ClwMovielist> getnamemovie(@RequestParam("id")Integer id){
-		ClwMovielistExample cmle =new ClwMovielistExample();
-		cmle.createCriteria().andIdEqualTo(id);
-		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+	public ClwMovielist getnamemovie(@RequestParam("id")Integer id){
+		ClwMovielist list = cmlm.selectByPrimaryKey(id);
 		return list;
 	}
 	

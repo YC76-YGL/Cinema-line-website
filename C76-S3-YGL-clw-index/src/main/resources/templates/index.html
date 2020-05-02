@@ -124,7 +124,7 @@
 					<div class="item" th:each="gnm : ${getnewmovie}">
 						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
 							<a th:href="'single?id=' + ${gnm.id}" class="hvr-shutter-out-horizontal"><img
-								th:src="${#strings.substringAfter(gnm.image,'-') == null ? gnm.image : #strings.substringAfter(gnm.image,'-')}" height="182px" width="268px" title="album-name" class="img-responsive"
+								th:src="${#strings.substringAfter(gnm.image,'-')} == null ? ${gnm.image} : ${#strings.substringAfter(gnm.image,'-')}" height="182px" width="268px" title="album-name" class="img-responsive"
 								alt=" " />
 								<div class="w3l-action-icon">
 									<i class="fa fa-play-circle" aria-hidden="true"></i>

@@ -2,7 +2,6 @@ package com.yc.clw.web;
 
 import java.io.File;
 import java.util.Date;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -216,8 +215,11 @@ public class IndexAction {
 		if (id == 0) {
 			mav.setViewName("Error");
 		} else {
+			ClwNews news = gaca.getclwnews(id);
 			mmb.newscommon(mav);
-			mav.addObject("getclwnews", gaca.getclwnews(id));
+			mav.addObject("great", gaca.getgareaterratmovie());
+			mav.addObject("na", nb.alike(news.getUser(), id));
+			mav.addObject("getclwnews", news);
 			mav.setViewName("news-single");
 		}
 		return mav;
@@ -226,10 +228,12 @@ public class IndexAction {
 	@GetMapping("single")
 	public ModelAndView single(@RequestParam("id") Integer id, ModelAndView mav) {
 		mav.addObject("Modificationtips", "");
-		List<ClwMovielist> list = gaca.getidmovie(id);
+		ClwMovielist list = gaca.getidmovie(id);
 		if (list != null) {
 			mmb.common(mav);
+			mav.addObject("mge", mb.getalikemovie(list.getCountry(), list.getId()));
 			mav.addObject("getidmovie", list);
+			mav.addObject("gl", gaca.latestnew());
 			mav.addObject("getClwCommentarylist", gaca.getClwCommentary(id));
 			mav.setViewName("single");
 		}
@@ -349,7 +353,7 @@ public class IndexAction {
 	public ModelAndView getreply(ClwCommentary ccy, ModelAndView mav) {
 		String msg = null;
 		msg = ctb.crete(ccy);
-		List<ClwMovielist> list = gaca.getidmovie(ccy.getMovielist());
+		ClwMovielist list = gaca.getidmovie(ccy.getMovielist());
 		mmb.common(mav);
 		mav.addObject("getidmovie", list);
 		mav.addObject("getClwCommentarylist", gaca.getClwCommentary(ccy.getMovielist()));
@@ -386,7 +390,6 @@ public class IndexAction {
 	@ResponseBody
 	public String Sendcode(String email, HttpSession session, ModelAndView mav) {
 		String msg;
-		System.out.println(email);
 		try {
 			msg = "发送成功";
 			String vcode = uBiz.forget(email);
@@ -444,13 +447,60 @@ public class IndexAction {
 
 	@GetMapping("comedy")
 	public ModelAndView getcomedy(ModelAndView mav) {
-		mmb.common(mav);
+		mav.addObject("gae", gaca.getalmovie(1));
+		mav.addObject("page",1);
+		mav.setViewName("back-stagemanagement/basic-table");
+		return mav;
+	}
+	
+	@GetMapping("comedy1")
+	public ModelAndView getcomedy1(@RequestParam("page") Integer page,ModelAndView mav) {
+		page = page - 1;
+		if(page < 1) {
+			page = 1;
+		}
+		mav.addObject("gae", gaca.getalmovie(page));
+		mav.addObject("page",page);
+		mav.setViewName("back-stagemanagement/basic-table");
+		return mav;
+	}
+	@GetMapping("comedy2")
+	public ModelAndView getcomedy2(@RequestParam("page") Integer page,ModelAndView mav) {
+		page = page + 1;
+		if(page > mb.getpage()) {
+			page =  (int) mb.getpage();
+		}
+		mav.addObject("gae", gaca.getalmovie(page));
+		mav.addObject("page",page);
+		mav.setViewName("back-stagemanagement/basic-table");
 		return mav;
 	}
 
-	@GetMapping("Directionalpush")
-	public String getpush() {
-		return "你好";
+	@GetMapping("msg")
+	public ModelAndView getpush(ModelAndView mav) {
+		mav.setViewName("msg");
+		return mav;
 	}
+	
+	@GetMapping("usercomment")
+	public ModelAndView usercomment(@RequestParam("id") Integer id,ModelAndView mav) {
+		mav.addObject("gmi", gaca.getidmovie(id));
+		mav.setViewName("back-stagemanagement/Usercomments");
+		return mav;
+	}
+	
+	@PostMapping("send")
+	@ResponseBody
+	public String msend(ClwCommentary ccy) {
+		String msg = "";
+		if(ccy.getCommentary() == null) {
+			msg = "请填写内容";
+		}else {
+			msg = ctb.crete(ccy);
+		}
+		return msg;
+	}
+	
+	
 
 }

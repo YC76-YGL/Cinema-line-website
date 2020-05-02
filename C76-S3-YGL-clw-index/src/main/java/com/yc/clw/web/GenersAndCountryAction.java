@@ -124,7 +124,7 @@ public class GenersAndCountryAction implements IclwalltableAction{
 	}
 
 	@Override
-	public List<ClwMovielist> getidmovie(Integer id) {
+	public ClwMovielist getidmovie(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -203,6 +203,18 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwUser> getusenumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getalmovie(Integer page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getnamemovie(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

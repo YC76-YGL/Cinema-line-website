@@ -12,10 +12,12 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 //WebScock 服务器注解, value 表示的是建立连接的请求地址
-@ServerEndpoint(value = "/websocket/{id}")
+@ServerEndpoint(value = "websocket/{id}")
 @Component
+@RestController
 public class MyWebSocket {
 
 	// Hashtable 用来存放每个客户端对应的 id : Session 对象。
@@ -91,16 +93,16 @@ public class MyWebSocket {
 			　　0 0/5 14 * * ?    在每天下午2点到下午2:55期间的每5分钟触发 
 			
 		 */
-	    @Scheduled(cron="*/5 * 10-13 * * ?")
-	    private void process() throws IOException{
-	    	
-	    	System.out.println("======================" + System.currentTimeMillis()/1000);
-	       
-	    	for( Session session : webSocketMap.values()) {
-	    		String id = (String) session.getUserProperties().get("id");
-	    		session.getBasicRemote().sendText(id + ": 你好,现在时间是" + System.currentTimeMillis()/1000);
-	    	}
-	    }
+//	    @Scheduled(cron="*/5 * 10-13 * * ?")
+//	    private void process() throws IOException{
+//	    	
+//	    	System.out.println("======================" + System.currentTimeMillis()/1000);
+//	       
+//	    	for( Session session : webSocketMap.values()) {
+//	    		String id = (String) session.getUserProperties().get("id");
+//	    		session.getBasicRemote().sendText(id + ": 你好,现在时间是" + System.currentTimeMillis()/1000);
+//	    	}
+//	    }
 	
 	
 }

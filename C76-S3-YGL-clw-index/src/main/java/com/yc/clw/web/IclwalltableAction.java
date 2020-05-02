@@ -84,7 +84,7 @@ public interface IclwalltableAction {
 	public List<ClwMovielist> getseachmovie(@RequestParam("Search")String name);
 	
 	@GetMapping("getidmovie")
-	public List<ClwMovielist> getidmovie(@RequestParam("id")Integer id);
+	public ClwMovielist getidmovie(@RequestParam("id")Integer id);
 	
 	@GetMapping("getClwCommentary")
 	public List<ClwCommentary> getClwCommentary(@RequestParam("id")Integer id);
@@ -122,4 +122,10 @@ public interface IclwalltableAction {
 	
 	@GetMapping("getusernumber")
 	public List<ClwUser> getusenumber();
+	
+	@GetMapping("getidmovie")
+	public List<ClwMovielist> getnamemovie(@RequestParam("id")Integer id);
+	
+	@GetMapping("getalmovie")
+	public List<ClwMovielist> getalmovie(@RequestParam(defaultValue = "1")Integer page);
 }

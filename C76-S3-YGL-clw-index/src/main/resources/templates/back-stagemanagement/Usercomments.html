@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- base:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" /><!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- base:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+  
+   <script type="text/javascript">
+   
+   function send() {
+		$.post("send",
+			{movielist: $("input[name='movielist']").val(),
+			user: $("input[name='user']").val(),
+			commentary: $("textarea[name='commentary']").val(),
+			},
+			function (msg){
+				var obj = document.getElementById("msg");
+				obj.innerText= msg 
+			}
+		)
+	}
+   </script>
+<title>一部电影 - 用户评论 </title>
+</head>
+<body>
+<div class="container-scroller d-flex">
+  <nav th:replace="common/PersonalCenter::PersonalCenter"></nav>
+    <!-- partial:ubui_2_SpicaAdmin/partials/_sidebar.html -->
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+    <nav th:replace="common/PersonalCenter::top"></nav>
+    <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">电影信息</h4>
+                  <div class="template-demo" th:each="g : ${gmi}">
+                    <h1 class="display-3" th:text="${g.name}">Display 3</h1>
+                    <h1 class="display-4" th:text="'导演:' + ${g.director}">Display 4</h1>
+                     <p class="lead" th:text="${g.description}">
+                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">请输入您的评论</h4>
+                  <p id="msg"class="card-description" style="color: red;">
+                  </p>
+                    <form class="forms-sample">
+                    <div class="form-group" th:each="i : ${gmi}">
+                      <label for="exampleTextarea1">文本信息</label>
+                      <input type="hidden" name="movielist"  th:value="${i.id}">
+                      <input type="hidden" name="user" th:value="${session.loginedUser.id}">
+                      <textarea class="form-control" name="commentary" id="commentary" rows="4"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary mr-2" onclick="send()">提交</button>
+                    <button class="btn btn-light">取消</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+            
+    </div>
+    </div>
+
+ <script src="ubui_2_SpicaAdmin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="ubui_2_SpicaAdmin/js/off-canvas.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/hoverable-collapse.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/template.js"></script>
+</body>
+</html>

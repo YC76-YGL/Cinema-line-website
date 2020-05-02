@@ -18,11 +18,17 @@ public class CommentaryBiz {
 	public String crete(ClwCommentary ccy) {
 		String msg = null;
 		ccy.setCreatetime(new Date());
-		int i = ccMapper.insert(ccy);
-		if(i == 1) {
-			msg = "发布成功!!!";
+		if(ccy.getUser() == null) {
+			msg = "失败";
+		}else if(ccy.getMovielist() == null) {
+			msg = "失败";
 		}else {
-			msg = "发布失败";
+			int i = ccMapper.insert(ccy);
+			if(i == 1) {
+				msg = "发布成功!!!";
+			}else {
+				msg = "发布失败";
+			}
 		}
 		return msg;
 	}
