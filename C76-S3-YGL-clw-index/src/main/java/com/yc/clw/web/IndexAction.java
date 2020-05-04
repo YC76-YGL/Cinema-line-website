@@ -509,5 +509,32 @@ public class IndexAction {
 		}
 		return mmb.getserise(mav, page,user.getId());
 	}
+	
+	@GetMapping("Filmmanagement")
+	public ModelAndView getFilmmanagement(@RequestParam(defaultValue = "1")Integer page,ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
+		if(user.getType().equals("1") ) {
+			mav.addObject("getalmovie", gaca.getalmovie(page));
+			mav.setViewName("back-stagemanagement/Filmmanagement");
+		}else {
+			index(mav);
+		}
+		return mav;
+	}
+	
+	@GetMapping("delete")
+	public ModelAndView delete(@RequestParam("id") Integer id,ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
+		String msg = gaca.deletemovie(id);
+		mav.addObject("msg", msg);
+		return getFilmmanagement(1,mav,user);
+	}
+	
+	@GetMapping("update")
+	public ModelAndView update(@RequestParam("id") Integer id,ModelAndView mav) {
+		mav.addObject("getnamemovie", gaca.getnamemovie(id));
+		mav.addObject("getcountary", gaca.getcountary());
+		mav.addObject("getgenres", gaca.getgenres());
+		mav.setViewName("update");
+		return mav;
+	}
 
 }

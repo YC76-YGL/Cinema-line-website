@@ -1,19 +1,16 @@
 package com.yc.clw.biz;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageHelper;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwMovielistExample;
-import com.yc.clw.bean.ClwNews;
-import com.yc.clw.bean.ClwNewsExample;
 import com.yc.clw.dao.ClwMovielistMapper;
 
 @Service
@@ -54,6 +51,29 @@ public class MovielistBiz {
 		PageHelper.startPage(1, 6);
 		list = cmm.selectByExample(cMovielistExample);
 		return list;
+	}
+	
+	public String update(ClwMovielist list) {
+		String msg;
+		int i = cmm.updateByPrimaryKey(list);
+		if(i == 1) {
+			msg = "成功";
+		}else {
+			msg = "失败";
+		}
+		return msg;
+	}
+	
+	public String add(ClwMovielist list) {
+		String msg;
+		list.setCreatetime(new Date());
+		int i = cmm.insert(list);
+		if(i == 1) {
+			msg = "成功";
+		}else {
+			msg = "失败";
+		}
+		return msg;
 	}
 	
 }

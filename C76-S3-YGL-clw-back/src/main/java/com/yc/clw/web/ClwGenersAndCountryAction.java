@@ -114,8 +114,19 @@ public class ClwGenersAndCountryAction {
 		return ccelist;
 	}
 	
-	@GetMapping("test")
-	public String test() {
-		return "back test";
+	@GetMapping("getgenres")
+	public List<ClwGeners> getgenres() {
+		ClwGenersExample cge = new ClwGenersExample();
+		cge.createCriteria().andIdIsNotNull();
+		List<ClwGeners> list = cgm.selectByExample(cge);
+		return list;
+	}
+	
+	@GetMapping("getcountary")
+	public List<ClwCountry> getcountary() {
+		ClwCountryExample cce = new ClwCountryExample();
+		cce.createCriteria().andIdIsNotNull();
+		List<ClwCountry> list = ccMapper.selectByExample(cce);
+		return list;
 	}
 }

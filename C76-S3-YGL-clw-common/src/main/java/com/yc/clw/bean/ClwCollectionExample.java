@@ -247,7 +247,7 @@ public class ClwCollectionExample {
 		}
 		
 		public Criteria andUserCollectionTwoIsNotNull() {
-			addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) ,\" "
+			addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) ,"
 					+ " date_format( createtime, '%Y%m' ) ) = 2 and user is not null");
 			return (Criteria) this;
 		}
@@ -258,8 +258,7 @@ public class ClwCollectionExample {
 		}
 
 		public Criteria andUserThismouthCollectionEqualTo(Integer value) {
-			addCriterion(" DATE_FORMAT( createtime,'%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and user =", value,
-					"user");
+			addCriterion(" DATE_FORMAT( createtime,'%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and  user =" , value, "user");
 			return (Criteria) this;
 		}
 

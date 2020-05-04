@@ -261,6 +261,24 @@ public class GenersAndCountryAction implements IclwalltableAction{
 		return null;
 	}
 
+	@Override
+	public String deletemovie(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwCountry> getcountary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwGeners> getgenres() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

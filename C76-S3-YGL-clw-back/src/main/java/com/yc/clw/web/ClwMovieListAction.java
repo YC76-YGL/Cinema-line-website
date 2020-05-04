@@ -171,4 +171,21 @@ public class ClwMovieListAction {
 		return list;
 	}
 	
+	@GetMapping("deletemovie")
+	public String deletemovie(@RequestParam("id")Integer id) {
+		ClwMovielist list = cmlm.selectByPrimaryKey(id);
+		String msg = "";
+		if(list != null) {
+			int i = cmlm.deleteByPrimaryKey(id);
+			if(i == 1) {
+				msg = "删除成功";
+			}else {
+				msg = "您的操作失败";
+			}
+		}else {
+			msg = "该影片已经不在数据库中";
+		}
+		return msg;
+	}
+	
 }

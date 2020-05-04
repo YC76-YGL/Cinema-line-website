@@ -153,4 +153,13 @@ public interface IclwalltableAction {
 	
 	@GetMapping("AllUserCollectionCount")
 	public Integer getAllUserCollectionCount();
+	
+	@GetMapping("deletemovie")
+	public String deletemovie(@RequestParam("id")Integer id);
+	
+	@GetMapping("getcountary")
+	public List<ClwCountry> getcountary();
+	
+	@GetMapping("getgenres")
+	public List<ClwGeners> getgenres();
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>一部电影 - 电影管理</title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <script type="text/javascript">
+  
+  function showtable(){
+		//处理逻辑，获取返回值，接着调用confirm就ok了
+		if(confirm("确认要修改密码吗 "))
+		$("form").submit();
+		}
+  </script>
+  <!-- inject:css -->
+  <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller d-flex">
+    <!-- partial:ubui_2_SpicaAdmin/partials/_sidebar.html -->
+	<nav th:replace="common/PersonalCenter::PersonalCenter"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:ubui_2_SpicaAdmin/partials/_navbar.html -->
+	<nav th:replace="common/PersonalCenter::top"></nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">任何操作都是不可撤销的!!!</h4>
+                  <p class="card-description">
+                    	请选择 <code>您的操作</code>
+                  </p>
+                  <button type="button" class="btn btn-danger btn-icon-text">
+                          <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
+                          	上传电影	
+                        </button>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            	电影编号
+                          </th>
+                          <th>
+                            	电影名称
+                          </th>
+                          <th>
+                            	上架时间
+                          </th>
+                          <th>
+                            	导演
+                          </th>
+                          <th>
+                            	操作
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="table-info" th:each="g : ${getalmovie}">
+                          <td th:text="${g.id}">
+                            1
+                          </td>
+                          <td th:text="${g.name}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${#dates.format(g.createtime,'yyyy年MM月dd日')}">
+                            Photoshop
+                          </td>
+                          <td th:text="${g.director eq null}? '未知' : ${g.director}">
+                            $ 77.99
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">请选择</button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" th:href="'delete?id=' + ${g.id}">删除</a>
+                              <a class="dropdown-item" th:href="'update?id=' + ${g.id}">修改</a>
+                            </div>                          
+                          </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- base:js -->
+  <script src="ubui_2_SpicaAdmin/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="ubui_2_SpicaAdmin/js/off-canvas.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/hoverable-collapse.js"></script>
+  <script src="ubui_2_SpicaAdmin/js/template.js"></script>
+  <!-- endinject -->
+  <!-- End custom js for this page-->
+</body>
+
+</html>

@@ -70,6 +70,12 @@
           </a>
         </li>
         
+         <li class="nav-item" th:if="${session.loginedUser.type eq '1'}">
+          <a class="nav-link" href="Filmmanagement">
+            <button class="btn bg-danger btn-sm menu-title">电影管理</button>
+          </a>
+        </li>
+        
       </ul>
     </nav>
     

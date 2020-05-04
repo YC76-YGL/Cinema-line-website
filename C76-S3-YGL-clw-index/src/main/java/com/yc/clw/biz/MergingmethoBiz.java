@@ -91,7 +91,7 @@ public class MergingmethoBiz {
 			mav.addObject("getMyCollectionCount", gaca.getAllUserCollectionCount());
 			mav.addObject("getMyNewsCount", gaca.getMyNewsCount(user.getId()));
 			mav.addObject("getMyCommentarycount", gaca.getAllUserCommentarycount());
-			mav.setViewName("Administratormodule");
+			mav.setViewName("back-stagemanagement/Administratormodule");
 		} else {
 			mav.addObject("getusenumber", user);
 			mav.addObject("getusercount", getusercount(user.getId()));
