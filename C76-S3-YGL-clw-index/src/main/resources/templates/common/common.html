@@ -18,16 +18,18 @@
 					<input type="submit" value="确定">
 				</form>
 			</div>
+			
 			<div class="w3l_sign_in_register">
 				<ul>
-					<li>您好</li> 
+					<li th:if="${session.loginedUser}  != null">
+					<span th:text="|您好:${session.loginedUser.username}|"></span>
+					</li> 
 					<li>
 					<span th:if="${session.loginedUser} == null">请&nbsp;<a href="tologin" >登录</a></span>
-					<span th:if="${session.loginedUser} != null" th:text="${session.loginedUser.username}"></span>
 					</li>
 					<li  th:if="${session.loginedUser} == null"><a href="toreg">注册</a></li>
-					<li th:if="${session.loginedUser} != null"><a href="admin" th:text="用户中心 ">管理员页面</a></li>
-					<li  th:if="${session.loginedUser} != null"><a href="logout">退出</a></li>
+					<li th:if="${session.loginedUser}  != null"><a href="admin" th:text="用户中心 ">管理员页面</a></li>
+					<li  th:if="${session.loginedUser} != null "><a href="logout">退出</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div> 
@@ -82,7 +84,7 @@
 									</li>
 								</ul>
 							</li>
-							<li><a href="series">每日推荐</a></li>
+							<li ><a th:href="${session.loginedUser eq null}? 'tologin?uri=series' :'series' ">每日推荐</a></li>
 							<li><a href="new">新闻</a></li>
 							<li class="dropdown">
 								<a href="horror" class="dropdown-toggle" data-toggle="dropdown">国家 <b class="caret"></b></a>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yc.clw.bean.ClwCollection;
 import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
@@ -94,19 +95,16 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwNews> getQuerySingular() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ClwNews> getQueryEven() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ClwNews> latestnew() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -119,37 +117,27 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwMovielist> getseachmovie(String name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ClwMovielist getidmovie(Integer id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ClwCommentary> getClwCommentary(Integer id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ClwMovielist> getgareaterratmovie() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<ClwMovielist> getMostpopular() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<ClwNews> getHeadlines() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -215,6 +203,60 @@ public class GenersAndCountryAction implements IclwalltableAction{
 
 	@Override
 	public List<ClwMovielist> getnamemovie(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getMostpopular(Integer page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwCollection> getcollection(Integer userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClwMovielist> getcommentmost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getMyCommentarycount(Integer userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getMyNewsCount(Integer userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getMyCollectionCount(Integer userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getAllUserCommentarycount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getAllUserNewsCount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getAllUserCollectionCount() {
 		// TODO Auto-generated method stub
 		return null;
 	}

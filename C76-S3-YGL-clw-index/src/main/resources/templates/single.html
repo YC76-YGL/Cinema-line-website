@@ -185,7 +185,7 @@ function Userlogin() {
 								</form>
 							</div>
 						</div>
-						<div class="media-grids">
+						<div class="media-grids" th:if="${#lists.isEmpty(getClwCommentarylist) == false} ">
 							<div class="media" th:each="gcn1 : ${getClwCommentarylist}">
 								<h5  th:each="user : ${gcn1.username}" th:text="${user.username}">TOM BROWN</h5>
 								<div class="media-left">

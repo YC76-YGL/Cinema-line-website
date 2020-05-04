@@ -1,299 +1,580 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>一部电影 - 后台管理</title>
+<!-- base:css -->
+<link rel="stylesheet"
+	href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet"
+	href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css"
+	media="all" />
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
+<!-- endinject -->
+<link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+
+<link href="css/css.css" rel="stylesheet" media="screen">
+<style type="text/css">
+.sect li span{
+float:left;
+}
+.sect li p{
+float:right;
+}
+.sect {
+margin: 0 auto;
+}
+
+
+</style>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
 </head>
 <body>
-<!-- 左边控件栏 -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar" th:fragment="PersonalCenter">
-      <ul class="nav">
-        <li class="nav-item sidebar-category">
-          <p>导航</p>
-          <span></span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="mdi mdi-view-quilt menu-icon"></i>
-            <span class="menu-title">个人中心</span>
-            <div class="badge badge-info badge-pill">2</div>
-          </a>
-        </li>
-        <li class="nav-item sidebar-category">
-          <p>组件</p>
-          <span></span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-            <i class="mdi mdi-palette menu-icon"></i>
-            <span class="menu-title">查看</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="ui-basic">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/ui-features/buttons.html">我的评论</a></li>
-              <li class="nav-item"> <a class="nav-link" href="typography">我的新闻</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_basic">
-            <i class="mdi mdi-view-headline menu-icon"></i>
-            <span class="menu-title">个人资料</span>
-          </a>
-        </li>
-        <li class="nav-item sidebar-category">
-          <p>页面</p>
-          <span></span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-            <i class="mdi mdi-account menu-icon"></i>
-            <span class="menu-title">管理用户</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 查看用户信息 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 更改用户信息 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 删除用户 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看用户评论 </a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-            <i class="mdi mdi-account menu-icon"></i>
-            <span class="menu-title">管理新闻</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login.html"> 发布新闻 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/login-2.html"> 删除新闻 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register.html"> 更改新闻信息 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="ubui_2_SpicaAdmin/pages/samples/register-2.html"> 查看所有新闻 </a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item sidebar-category">
-          <p>Apps</p>
-          <span></span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ubui_2_SpicaAdmin/docs/documentation.html">
-            <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-            <span class="menu-title">Documentation</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <button class="btn bg-danger btn-sm menu-title">Upgrade to pro</button>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    
-     <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row"  th:fragment="top">
-        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
-          <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo.svg" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="ubui_2_SpicaAdmin/images/logo-mini.svg" alt="logo"/></a>
-          </div>
-          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1" th:text="'欢迎回来,' + ${session.loginedUser.username}"> Brandon Haynes</h4>
-          <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item">
-              <h4 class="mb-0 font-weight-bold d-none d-xl-block" th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy年3月dd日-yyyy年MM月dd日')}">Mar 12, 2019 - Apr 10, 2019</h4>
-            </li>
-            <li class="nav-item dropdown mr-1">
-              <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-calendar mx-0"></i>
-                <span class="count bg-info">2</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <p class="mb-0 font-weight-normal float-left dropdown-header">留言信息</p>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                      <img src="ubui_2_SpicaAdmin/images/faces/face4.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow">
-                    <h6 class="preview-subject ellipsis font-weight-normal">David Grey
-                    </h6>
-                    <p class="font-weight-light small-text text-muted mb-0">
-                     		 会议取消了
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                      <img src="ubui_2_SpicaAdmin/images/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow">
-                    <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
-                    </h6>
-                    <p class="font-weight-light small-text text-muted mb-0">
-                      		新产品发布
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                      <img src="ubui_2_SpicaAdmin/images/faces/face3.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content flex-grow">
-                    <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
-                    </h6>
-                    <p class="font-weight-light small-text text-muted mb-0">
-                      Upcoming board meeting
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item dropdown mr-2">
-              <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-email-open mx-0"></i>
-                <span class="count bg-danger">1</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <p class="mb-0 font-weight-normal float-left dropdown-header">通知事项</p>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-information mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">应用程序出错</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                     	 就在刚刚
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-warning">
-                      <i class="mdi mdi-settings mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                      Private message
-                    </p>
-                  </div>
-                </a>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="mdi mdi-account-box mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">新用户注册</h6>
-                    <p class="font-weight-light small-text mb-0 text-muted">
-                      		两天前
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </li>
-          </ul>
-          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="mdi mdi-menu"></span>
-          </button>
-        </div>
-        <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
-          <ul class="navbar-nav mr-lg-2">
-            <li class="nav-item nav-search d-none d-lg-block">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="在这里搜索" aria-label="search" aria-describedby="search">
-              </div>
-            </li>
-          </ul>
-          <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="ubui_2_SpicaAdmin/images/faces/face5.jpg" alt="profile"/>
-                <span class="nav-profile-name">埃莉诺·理查森</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item">
-                  <i class="mdi mdi-settings text-primary"></i>
-                  	设置
-                </a>
-                <a class="dropdown-item">
-                  <i class="mdi mdi-logout text-primary"></i>
-                 	 退出
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link icon-link">
-                <i class="mdi mdi-plus-circle-outline"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link icon-link">
-                <i class="mdi mdi-web"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link icon-link">
-                <i class="mdi mdi-clock-outline"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      
-      
-      <div class="row">
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card bg-facebook d-flex align-items-center">
-                <div class="card-body py-5">
-                  <div
-                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
-                    <i class="mdi mdi-facebook text-white icon-lg"></i>
-                    <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h5 class="text-white font-weight-bold">2.62k 订阅者</h5>
-                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card bg-google d-flex align-items-center">
-                <div class="card-body py-5">
-                  <div
-                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
-                    <i class="mdi mdi-google-plus text-white icon-lg"></i>
-                    <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h5 class="text-white font-weight-bold">3.4k 订阅者</h5>
-                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card bg-twitter d-flex align-items-center">
-                <div class="card-body py-5">
-                  <div
-                    class="d-flex flex-row align-items-center flex-wrap justify-content-md-center justify-content-xl-start py-1">
-                    <i class="mdi mdi-twitter text-white icon-lg"></i>
-                    <div class="ml-3 ml-md-0 ml-xl-3">
-                      <h5 class="text-white font-weight-bold">3k 订阅者</h5>
-                      <p class="mt-2 text-white card-text">你的主要名单在增长</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+	<div class="container-scroller d-flex">
+		<div th:replace="common/PersonalCenter::PersonalCenter"></div>
+		<!-- partial:./partials/_sidebar.html -->
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:./partials/_navbar.html -->
+
+
+			<nav th:replace="common/PersonalCenter::top"></nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<!-- 在这里 -->
+					<div class="row">
+						<div class="col-12 col-xl-6 grid-margin stretch-card">
+							<div class="card">
+
+								<div class="card-body">
+									<div class="row mb-3">
+										<div class="col-md-7">
+											<h4 class="card-title">数量条形图</h4>
+											<div class="d-flex justify-content-between traffic-status"
+												th:each=" ct : ${cct}">
+												<div class="item">
+													<p id="uname" class="mb-">用户数</p>
+													<h5 id="unumber" class="font-weight-bold mb-0"
+														th:text="${ct.user}">93,956</h5>
+													<div class="color-border"></div>
+												</div>
+												<div class="item">
+													<p id="umoviename" class="mb-">电影数</p>
+													<h5 id="mnumber" class="font-weight-bold mb-0"
+														th:text="${ct.movie}">58,605</h5>
+													<div class="color-border"></div>
+												</div>
+												<div class="item">
+													<p id="nname" class="mb-">新闻数</p>
+													<h5 id="nnumber" class="font-weight-bold mb-0"
+														th:text=${ct.news}>78,254</h5>
+													<div class="color-border"></div>
+												</div>
+												<div class="item">
+													<p id="gname" class="mb-">电影类型数</p>
+													<h5 id="gnumber" th:text="${ct.genres}"
+														class="font-weight-bold mb-0">30</h5>
+													<div class="color-border"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<canvas id="barChart"></canvas>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="row mb-3">
+										<h4 class="card-title">用户数量</h4>
+									</div>
+									<canvas id="lineChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 这里结束 -->
+
+					<div class="row">
+						<div class="col-12 col-xl-6 grid-margin stretch-card">
+							<div class="row w-100 flex-grow">
+								<div class="col-md-12 grid-margin stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<p class="card-title">按近几个月的比较</p>
+											<p class="text-muted">比前一月增加25％的流量</p>
+											<div class="row mb-3">
+												<div class="col-md-7">
+													<div class="d-flex justify-content-between traffic-status">
+														<div class="item">
+															<p class="mb-">评论数</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyCommentarycount}">93,956</h5>
+															<div class="colorll-border"></div>
+														</div>
+														<div class="item">
+															<p class="mb-">新闻数</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyNewsCount}">58,605</h5>
+															<div class="colorll-border"></div>
+														</div>
+														<div class="item">
+															<p class="mb-">收藏量</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyCollectionCount}">78,254</h5>
+															<div class="colorll-border"></div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-5">
+												<!-- <div th:each="gut : ${getusercount}">
+														<input type="hidden" id="thismouthnews" th:value="${gut.thismouthnews}">
+														<input type="hidden" id="lastmouthnews" th:value="${gut.lastmouthnews}">
+														<input type="hidden" id="3" th:value="${gut.fristmouthnews}">
+														<input type="hidden" id="4" th:value="${gut.thismouthcommentry}">
+														<input type="hidden" id="5" th:value="${gut.lastmouthcommentry}">
+														<input type="hidden" id="6" th:value="${gut.fristmouthcommentry}">
+														<input type="hidden" id="7" th:value="${gut.thismouthcollection}">
+														<input type="hidden" id="8" th:value="${gut.lastmouthcollection}">
+														<input type="hidden" id="9" th:value="${gut.fristmouthollection}">
+														</div> -->
+													<ul
+														class="nav nav-pills nav-pills-custom justify-content-md-end"
+														id="pills-tab-custom" role="tablist">
+														<li class="nav-item"><a class="nav-link"
+															id="pills-contact-tab-custom" data-toggle="pill"
+															href="#pills-music" role="tab"
+															aria-controls="pills-contact" aria-selected="false">
+																月 </a></li>
+													</ul>
+												</div>
+											</div>
+											<canvas id="audience-chart"></canvas>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<div
+												class="d-flex align-items-center justify-content-between flex-wrap">
+												<p class="card-title">每周余额</p>
+												<p class="text-success font-weight-medium">20.15 %</p>
+											</div>
+											<div class="d-flex align-items-center flex-wrap mb-3">
+												<h5 class="font-weight-normal mb-0 mb-md-1 mb-lg-0 mr-3">$22.736</h5>
+												<p class="text-muted mb-0">平均会话数</p>
+											</div>
+											<canvas id="balance-chart" height="130"></canvas>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-6 stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<div
+												class="d-flex align-items-center justify-content-between flex-wrap">
+												<p class="card-title">今日任务</p>
+												<p class="text-success font-weight-medium">45.39 %</p>
+											</div>
+											<div class="d-flex align-items-center flex-wrap mb-3">
+												<h5 class="font-weight-normal mb-0 mb-md-1 mb-lg-0 mr-3">17.247</h5>
+												<p class="text-muted mb-0">平均会话数</p>
+											</div>
+											<canvas id="task-chart" height="130"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-xl-6 grid-margin stretch-card">
+							<div class="row w-100 flex-grow">
+								<div class="col-md-6 grid-margin stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<p class="card-title">区域负荷</p>
+											<p class="text-muted">最近更新:2小时前</p>
+											<div
+												class="regional-chart-legend d-flex align-items-center flex-wrap mb-1"
+												id="regional-chart-legend"></div>
+											<canvas height="280" id="regional-chart"></canvas>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 grid-margin stretch-card">
+									<div class="card">
+										<div class="card-body pb-0">
+											<div class="d-flex align-items-center mb-4">
+												<p class="card-title mb-0 mr-1">今日活动</p>
+												<div class="badge badge-info badge-pill">2</div>
+											</div>
+											<div class="d-flex flex-wrap pt-2">
+												<div class="mr-4 mb-lg-2 mb-xl-0">
+													<p>现场时间</p>
+													<h4 class="font-weight-bold mb-0">77.15 %</h4>
+												</div>
+												<div>
+													<p>页面浏览量</p>
+													<h4 class="font-weight-bold mb-0">14.15 %</h4>
+												</div>
+											</div>
+										</div>
+										<canvas height="150" id="activity-chart"></canvas>
+									</div>
+								</div>
+								<div class="col-md-12 stretch-card">
+									<div class="card">
+										<div class="card-body pb-0">
+											<p class="card-title">服务器状态 247</p>
+											<div class="d-flex justify-content-between flex-wrap">
+												<p class="text-muted">最近更新:2小时前</p>
+												<div
+													class="d-flex align-items-center flex-wrap server-status-legend mt-3 mb-3 mb-md-0">
+													<div class="item mr-3">
+														<div class="d-flex align-items-center">
+															<div class="color-bullet"></div>
+															<h5 class="font-weight-bold mb-0">128GB</h5>
+														</div>
+														<p class="mb-">总用量</p>
+													</div>
+													<div class="item mr-3">
+														<div class="d-flex align-items-center">
+															<div class="color-bullet"></div>
+															<h5 class="font-weight-bold mb-0">92%</h5>
+														</div>
+														<p class="mb-">内存使用情况</p>
+													</div>
+													<div class="item mr-3">
+														<div class="d-flex align-items-center">
+															<div class="color-bullet"></div>
+															<h5 class="font-weight-bold mb-0">16%</h5>
+														</div>
+														<p class="mb-">磁盘使用情况</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<canvas height="170" id="status-chart"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">用户信息</h4>
+									<div class="table-responsive">
+										<table class="table table-striped">
+											<thead>
+												<tr>
+													<th>用户头像</th>
+													<th>用户名</th>
+													<th>发布新闻数量</th>
+													<th>用户性别</th>
+													<th>是否会员</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="gur : ${getusenumber}">
+													<td class="py-1"><img
+														th:src="${gur.look}==null? 'images/user.jpg' : ${gur.look}"
+														alt="image" /></td>
+													<td th:text="${gur.username}">Herman Beck</td>
+													<td th:text="${gur.newsnumber.newnumber}"></td>
+													<td th:text="${gur.sex} == 1? '男' : '女'">$ 77.99</td>
+													<td th:text="${gur.type} == 3? '非会员' : '会员'">May 15,
+														2015</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- row end -->
+
+
+					<div th:replace="common/PersonalCenter::.row"></div>
+					<!-- row end -->
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:./partials/_footer.html -->
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+
+
+	<div class="livechat-girl animated">
+		<img data-toggle="modal" data-target="#myModal" class="girl"
+			src="images/user.jpg">
+		<div
+			class="livechat-hint rd-notice-tooltip rd-notice-type-success rd-notice-position-left single-line show_hint">
+			<div class="rd-notice-content">嘿，我来帮您！</div>
+		</div>
+		<div class="animated-circles">
+			<div class="circle c-1"></div>
+			<div class="circle c-2"></div>
+			<div class="circle c-3"></div>
+		</div>
+	</div>
+
+	<div class="modal video-modal fade" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					在线客服
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+					<section class="sect">
+							<h4 class="card-title">List with icon</h4>
+							<p class="card-description">
+								Add class
+								<code>.list-ticked</code>
+								to
+								<code>&lt;ul&gt;</code>
+							</p>
+							<div class="modal-body">
+							<div class="w3_login_module">
+								<ul class="list-ticked" >
+									<li><span>Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</span></li>
+									<li><span>Consectetur adipiscing elit</span></li>
+								</ul>
+
+								<ul class="list-arrow">
+									<li><p>Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p></li>
+									<li>Consectetur adipiscing elit</li>
+									<li>Integer molestie lorem at massa</li>
+									<li>Facilisis in pretium nisl aliquet</li>
+									<li>Nulla volutpat aliquam velit></li>
+								</ul>
+								</div>
+								</div>
+					</section>
+				<section>
+					<div class="modal-body">
+						<div class="w3_login_module">
+							<div class="module form-module">
+								<div class="toggle">
+									<i class="fa fa-times fa-pencil"></i>
+								</div>
+								<div class="form">
+									<h3>请输入您想要问的问题</h3>
+											<textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+											 <button class="btn btn-primary btn-icon-text"
+											type="button" >
+											<i class="mdi mdi-file-check btn-icon-prepend"></i>
+											发送
+											</button>
+								</div>
+								<div class="cta">
+									<a href="#">Forgot your password?</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</section>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+(function($) {
+	setInterval(function(){
+		if($(".animated-circles").hasClass("animated")){
+			$(".animated-circles").removeClass("animated");
+		}else{
+			$(".animated-circles").addClass('animated');
+		}
+	},3000);
+	var wait = setInterval(function(){
+		$(".livechat-hint").removeClass("show_hint").addClass("hide_hint");
+		clearInterval(wait);
+	},4500);
+	$(".livechat-girl").hover(function(){
+		clearInterval(wait);
+		$(".livechat-hint").removeClass("hide_hint").addClass("show_hint");
+	},function(){
+		$(".livechat-hint").removeClass("show_hint").addClass("hide_hint");
+	}).click(function(){
+		if(isMobile){
+			 window.location.href = 'http://www.baidu.com';
+		}else{
+			var oWidth = 606,
+				oHeight = 630,
+				top = ($(window).height()/2)-(oHeight/2),
+				left = ($(window).width()/2)-(oWidth/2);
+			window.open('http://www.baidu.com','','width='+oWidth+',height='+oHeight+',scrollbars=yes,top='+top+',left='+left+',resizable=yes');
+		}
+	});
+})(jQuery);
+</script>
+
+	<!-- base:js -->
+	<script src="ubui_2_SpicaAdmin/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<script src="ubui_2_SpicaAdmin/vendors/chart.js/Chart.min.js"></script>
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="jssa/off-canvas.js"></script>
+	<script src="jssa/hoverable-collapse.js"></script>
+	<script src="jssa/template.js"></script>
+	<!-- endinject -->
+	<!-- plugin js for this page -->
+	<!-- End plugin js for this page -->
+	<!-- Custom js for this page-->
+	<script  src="jssa/dashboard.js">
+	</script>
+	
+	<script type="text/javascript"  th:inline="javascript"  >
+	 // <![CDATA[
+	  if ($("#audience-chart").length) {
+		  var date=new Date;
+		  var month=date.getMonth()+1;
+		  var month1= date.getMonth();
+		  var month2= date.getMonth() - 1;
+	      var AudienceChartCanvas = $("#audience-chart").get(0).getContext("2d");
+	      var AudienceChart = new Chart(AudienceChartCanvas, {
+	        type: 'bar',
+	        data: {
+	          labels: [  month2 + '月', month1 + '月',"本月"],
+	          datasets: [
+	            {
+	              type: 'line',
+	              fill: false,
+	              data: [ [[${getusercount.fristmouthnews}]],[[${getusercount.lastmouthnews}]],[[${getusercount.thismouthnews}]]],
+	              borderColor: '#ff4c5b'
+	            },
+	            {
+	              label: 'Offline Sales',
+	              data: [ [[${getusercount.fristmouthcommentry}]],[[${getusercount.lastmouthcommentry}]],[[${getusercount.thismouthcommentry}]] ],
+	              backgroundColor: '#6640b2'
+	            },
+	            {
+	              label: 'Online Sales',
+	              data: [ [[${getusercount.fristmouthollection}]],[[${getusercount.lastmouthcollection}]] ,[[${getusercount.thismouthcollection}]]],
+	              backgroundColor: '#1cbccd'
+	            }
+	          ]
+	        },
+	        options: {
+	          responsive: true,
+	          maintainAspectRatio: true,
+	          layout: {
+	            padding: {
+	              left: 0,
+	              right: 0,
+	              top: 20,
+	              bottom: 0
+	            }
+	          },
+	          scales: {
+	            yAxes: [{
+	              display: true,
+	              gridLines: {
+	                display: true,
+	                drawBorder: false,
+	                color: "#f8f8f8",
+	                zeroLineColor: "#f8f8f8"
+	              },
+	              ticks: {
+	                display: true,
+	                min: 0,
+	                max: 50,
+	                stepSize: 10,
+	                fontColor: "#b1b0b0",
+	                fontSize: 10,
+	                padding: 10
+	              }
+	            }],
+	            xAxes: [{
+	              stacked: false,
+	              ticks: {
+	                beginAtZero: true,
+	                fontColor: "#b1b0b0",
+	                fontSize: 10
+	              },
+	              gridLines: {
+	                color: "rgba(0, 0, 0, 0)",
+	                display: false
+	              },
+	              barPercentage: .9,
+	              categoryPercentage: .7,
+	            }]
+	          },
+	          legend: {
+	            display: false
+	          },
+	          elements: {
+	            point: {
+	              radius: 3,
+	              backgroundColor: '#ff4c5b'
+	            }
+	          }
+	        },
+	      });
+	    }
+	  // ]]>
+
+	</script>
+	<!-- End custom js for this page-->
+	<script>
+		var currentUrl = window.location.href; //获取当前页面地址
+		var timefly = 10000; //超时时间
+		var beginDt = new Date(); //把得到的当前时间放入变量作为初始时间
+		var gourl = "lock-screen"; //需要跳转的地址
+		document.onmousemove = retime; //当鼠标移动时的时间
+		document.onkeypress = retime; //当鼠标点击重新获取当前时间放入变量作为初始时间
+		//判断当前页面是否为跳转页面
+		if (currentUrl == gourl) {
+			clearInterval("checkTime()");
+		} else {
+			setInterval("checkTime()", 1000); //每间隔1000毫秒执行checkTime函数检查是否超时
+		}
+
+		function retime() {
+			beginDt = new Date();
+		}
+		function checkTime() {
+			nowDt = new Date(); //得到当前时间放入变量
+
+			if ((nowDt - beginDt) > timefly) {
+				location.href = gourl; //如果当前时间减去初始时间大于超时时间，就执行自动跳转
+			}
+		}
+	</script>
+	<script src="jssa/chart.js"></script>
+
+	<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 </body>
+
 </html>

@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yc.clw.bean.ClwCollection;
 import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwCountry;
 import com.yc.clw.bean.ClwGeners;
@@ -24,6 +25,9 @@ public interface IclwalltableAction {
 	
 	@GetMapping("greatthangetGeners")
 	public List<ClwGeners> greatthangetGeners();
+	
+	@GetMapping("getcommentmost")
+	public List<ClwMovielist> getcommentmost();
 	
 	@GetMapping("greaterthangetcountry")
 	public List<ClwCountry> greaterthangetcountry();
@@ -94,7 +98,7 @@ public interface IclwalltableAction {
 	 * @return
 	 */
 	@GetMapping("getMostpopular")
-	public List<ClwMovielist> getMostpopular();
+	public List<ClwMovielist> getMostpopular(@RequestParam("page")Integer page);
 	
 	/**
 	 * 查询头条新闻
@@ -126,6 +130,27 @@ public interface IclwalltableAction {
 	@GetMapping("getidmovie")
 	public List<ClwMovielist> getnamemovie(@RequestParam("id")Integer id);
 	
+	@GetMapping("getcollection")
+	public List<ClwCollection> getcollection(@RequestParam("id")Integer userid);
+	
 	@GetMapping("getalmovie")
 	public List<ClwMovielist> getalmovie(@RequestParam(defaultValue = "1")Integer page);
+	
+	@GetMapping("MyCommentarycount")
+	public Integer getMyCommentarycount(@RequestParam("userid")Integer userid);
+	
+	@GetMapping("MyNewsCount")
+	public Integer getMyNewsCount(@RequestParam("userid")Integer userid);
+	
+	@GetMapping("MyCollectionCount")
+	public Integer getMyCollectionCount(@RequestParam("userid")Integer userid);
+	
+	@GetMapping("AllUserCommentarycount")
+	public Integer getAllUserCommentarycount();
+	
+	@GetMapping("AllUserNewsCount")
+	public Integer getAllUserNewsCount() ;
+	
+	@GetMapping("AllUserCollectionCount")
+	public Integer getAllUserCollectionCount();
 }

@@ -90,4 +90,20 @@ public class ClwNewsAction {
 		return cnm.selectByPrimaryKey(id);
 	}
 	
+	@GetMapping("MyNewsCount")
+	public Integer getMyNewsCount(@RequestParam("userid")Integer userid) {
+		ClwNewsExample cne = new ClwNewsExample();
+		cne.createCriteria().andUserEqualTo(userid);
+		return (int) cnm.countByExample(cne);
+	}
+	
+	@GetMapping("AllUserNewsCount")
+	public Integer getAllUserNewsCount() {
+		ClwNewsExample cne = new ClwNewsExample();
+		cne.createCriteria().andIdIsNotNull();
+		return (int) cnm.countByExample(cne);
+	}
+	
+	
+	
 }

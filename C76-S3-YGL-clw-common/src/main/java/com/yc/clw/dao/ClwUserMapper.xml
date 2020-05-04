@@ -12,7 +12,9 @@
     <result column="look" jdbcType="VARCHAR" property="look" />
     
     <association property="newsnumber" column="id" select="selectCategory"></association>
+    
   </resultMap>
+  
   
   <select id="selectCategory" resultType="com.yc.clw.bean.ClwCount">
   	select count(*) as newnumber  from clw_news join clw_user on clw_user.id = user where user = #{id}

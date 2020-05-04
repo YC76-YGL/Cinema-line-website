@@ -24,8 +24,6 @@ import com.yc.clw.bean.ClwReplytocomments;
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.biz.ActiveAndpageBiz;
 import com.yc.clw.biz.BizException;
-import com.yc.clw.biz.ClwCount;
-import com.yc.clw.biz.ClwCountBiz;
 import com.yc.clw.biz.CommentaryBiz;
 import com.yc.clw.biz.MergingmethoBiz;
 import com.yc.clw.biz.MovielistBiz;
@@ -52,7 +50,7 @@ public class IndexAction {
 		mmb.common(mav);
 		mav.addObject("getgareaterratmovie", gaca.getgareaterratmovie());
 		mav.addObject("getnewmovie", gaca.getnewmovie());
-		mav.addObject("getMostpopular", gaca.getMostpopular());
+		mav.addObject("getMostpopular", gaca.getMostpopular(1));
 		mav.setViewName("index");
 		return mav;
 	}
@@ -109,7 +107,7 @@ public class IndexAction {
 	}
 
 	@PostMapping("tologin")
-	public ModelAndView tologin(ModelAndView mav, @RequestParam("uri") String uri) {
+	public ModelAndView tologin(ModelAndView mav, @SessionAttribute(name = "uri", required = false) String uri) {
 		mav.addObject("uri", uri);
 		mav.setViewName("Login");
 		return mav;
@@ -179,9 +177,8 @@ public class IndexAction {
 
 	@GetMapping("logout")
 	public ModelAndView logout(ModelAndView mav) {
-		ClwUser user = null;
+		mav.clear();
 		mmb.common(mav);
-		mav.addObject("loginedUser", user);
 		mav.setViewName("index");
 		return mav;
 	}
@@ -248,21 +245,9 @@ public class IndexAction {
 		return mav;
 	}
 
-	@Resource
-	ClwCountBiz ccbz;
-
 	@GetMapping("admin")
 	public ModelAndView getadmin(ModelAndView mav, @SessionAttribute("loginedUser") ClwUser user) {
-		ClwCount cct = new ClwCount();
-		cct = ccbz.getcount();
-		mav.addObject("cct", cct);
-		if (user.getType().equals("1") == true) {
-			mav.addObject("getusenumber", gaca.getusenumber());
-		} else {
-			mav.addObject("getusenumber", user);
-		}
-		mav.setViewName("Administrator");
-		return mav;
+		return mmb.getinformation(mav, user);
 	}
 
 	@GetMapping("user_basic")
@@ -448,30 +433,31 @@ public class IndexAction {
 	@GetMapping("comedy")
 	public ModelAndView getcomedy(ModelAndView mav) {
 		mav.addObject("gae", gaca.getalmovie(1));
-		mav.addObject("page",1);
+		mav.addObject("page", 1);
 		mav.setViewName("back-stagemanagement/basic-table");
 		return mav;
 	}
-	
+
 	@GetMapping("comedy1")
-	public ModelAndView getcomedy1(@RequestParam("page") Integer page,ModelAndView mav) {
+	public ModelAndView getcomedy1(@RequestParam("page") Integer page, ModelAndView mav) {
 		page = page - 1;
-		if(page < 1) {
+		if (page < 1) {
 			page = 1;
 		}
 		mav.addObject("gae", gaca.getalmovie(page));
-		mav.addObject("page",page);
+		mav.addObject("page", page);
 		mav.setViewName("back-stagemanagement/basic-table");
 		return mav;
 	}
+
 	@GetMapping("comedy2")
-	public ModelAndView getcomedy2(@RequestParam("page") Integer page,ModelAndView mav) {
+	public ModelAndView getcomedy2(@RequestParam("page") Integer page, ModelAndView mav) {
 		page = page + 1;
-		if(page > mb.getpage()) {
-			page =  (int) mb.getpage();
+		if (page > mb.getpage()) {
+			page = (int) mb.getpage();
 		}
 		mav.addObject("gae", gaca.getalmovie(page));
-		mav.addObject("page",page);
+		mav.addObject("page", page);
 		mav.setViewName("back-stagemanagement/basic-table");
 		return mav;
 	}
@@ -481,26 +467,47 @@ public class IndexAction {
 		mav.setViewName("msg");
 		return mav;
 	}
-	
+
 	@GetMapping("usercomment")
-	public ModelAndView usercomment(@RequestParam("id") Integer id,ModelAndView mav) {
+	public ModelAndView usercomment(@RequestParam("id") Integer id, ModelAndView mav) {
 		mav.addObject("gmi", gaca.getidmovie(id));
 		mav.setViewName("back-stagemanagement/Usercomments");
 		return mav;
 	}
-	
+
 	@PostMapping("send")
 	@ResponseBody
 	public String msend(ClwCommentary ccy) {
 		String msg = "";
-		if(ccy.getCommentary() == null) {
+		if (ccy.getCommentary() == null) {
 			msg = "请填写内容";
-		}else {
+		} else {
 			msg = ctb.crete(ccy);
 		}
 		return msg;
 	}
-	
-	
+
+	@GetMapping("series")
+	public ModelAndView getseries(ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
+		int page = 1;
+		return mmb.getserise(mav, page,user.getId());
+
+	}
+
+	@GetMapping("series1")
+	public ModelAndView getseries1(@RequestParam("page") Integer page, ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
+		if (page < 1) {
+			page = 1;
+		}
+		return mmb.getserise(mav, page,user.getId());
+	}
+
+	@GetMapping("series2")
+	public ModelAndView getseries2(@RequestParam("page") Integer page, ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
+		if (page > 2) {
+			page = 2;
+		}
+		return mmb.getserise(mav, page,user.getId());
+	}
 
 }

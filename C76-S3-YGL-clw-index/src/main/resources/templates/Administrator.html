@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>一部电影 - 后台管理</title>
+<title>一部电影 - 用户中心</title>
 <!-- base:css -->
 <link rel="stylesheet"
 	href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
@@ -37,6 +37,7 @@ margin: 0 auto;
 
 </style>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
 </head>
 <body>
 	<div class="container-scroller d-flex">
@@ -113,41 +114,43 @@ margin: 0 auto;
 								<div class="col-md-12 grid-margin stretch-card">
 									<div class="card">
 										<div class="card-body">
-											<p class="card-title">网站观众指标</p>
-											<p class="text-muted">比前一周增加25％的流量</p>
+											<p class="card-title">按近几个月的比较</p>
+											<p class="text-muted">比前一月增加25％的流量</p>
 											<div class="row mb-3">
 												<div class="col-md-7">
 													<div class="d-flex justify-content-between traffic-status">
 														<div class="item">
-															<p class="mb-">用户数</p>
-															<h5 class="font-weight-bold mb-0">93,956</h5>
+															<p class="mb-">评论数</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyCommentarycount}">93,956</h5>
 															<div class="colorll-border"></div>
 														</div>
 														<div class="item">
-															<p class="mb-">跳出率</p>
-															<h5 class="font-weight-bold mb-0">58,605</h5>
+															<p class="mb-">新闻数</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyNewsCount}">58,605</h5>
 															<div class="colorll-border"></div>
 														</div>
 														<div class="item">
-															<p class="mb-">页面浏览量</p>
-															<h5 class="font-weight-bold mb-0">78,254</h5>
+															<p class="mb-">收藏量</p>
+															<h5 class="font-weight-bold mb-0" th:text="${getMyCollectionCount}">78,254</h5>
 															<div class="colorll-border"></div>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-5">
+												<!-- <div th:each="gut : ${getusercount}">
+														<input type="hidden" id="thismouthnews" th:value="${gut.thismouthnews}">
+														<input type="hidden" id="lastmouthnews" th:value="${gut.lastmouthnews}">
+														<input type="hidden" id="3" th:value="${gut.fristmouthnews}">
+														<input type="hidden" id="4" th:value="${gut.thismouthcommentry}">
+														<input type="hidden" id="5" th:value="${gut.lastmouthcommentry}">
+														<input type="hidden" id="6" th:value="${gut.fristmouthcommentry}">
+														<input type="hidden" id="7" th:value="${gut.thismouthcollection}">
+														<input type="hidden" id="8" th:value="${gut.lastmouthcollection}">
+														<input type="hidden" id="9" th:value="${gut.fristmouthollection}">
+														</div> -->
 													<ul
 														class="nav nav-pills nav-pills-custom justify-content-md-end"
 														id="pills-tab-custom" role="tablist">
-														<li class="nav-item"><a class="nav-link active"
-															id="pills-home-tab-custom" data-toggle="pill"
-															href="#pills-health" role="tab"
-															aria-controls="pills-home" aria-selected="true"> 天 </a></li>
-														<li class="nav-item"><a class="nav-link"
-															id="pills-profile-tab-custom" data-toggle="pill"
-															href="#pills-career" role="tab"
-															aria-controls="pills-profile" aria-selected="false">
-																周 </a></li>
 														<li class="nav-item"><a class="nav-link"
 															id="pills-contact-tab-custom" data-toggle="pill"
 															href="#pills-music" role="tab"
@@ -442,14 +445,107 @@ margin: 0 auto;
 	<script src="ubui_2_SpicaAdmin/vendors/chart.js/Chart.min.js"></script>
 	<!-- End plugin js for this page-->
 	<!-- inject:js -->
-	<script src="ubui_2_SpicaAdmin/js/off-canvas.js"></script>
-	<script src="ubui_2_SpicaAdmin/js/hoverable-collapse.js"></script>
-	<script src="ubui_2_SpicaAdmin/js/template.js"></script>
+	<script src="jssa/off-canvas.js"></script>
+	<script src="jssa/hoverable-collapse.js"></script>
+	<script src="jssa/template.js"></script>
 	<!-- endinject -->
 	<!-- plugin js for this page -->
 	<!-- End plugin js for this page -->
 	<!-- Custom js for this page-->
-	<script src="ubui_2_SpicaAdmin/js/dashboard.js"></script>
+	<script  src="jssa/dashboard.js">
+	</script>
+	
+	<script type="text/javascript"  th:inline="javascript"  >
+	 // <![CDATA[
+	  if ($("#audience-chart").length) {
+		  var date=new Date;
+		  var month=date.getMonth()+1;
+		  var month1= date.getMonth();
+		  var month2= date.getMonth() - 1;
+	      var AudienceChartCanvas = $("#audience-chart").get(0).getContext("2d");
+	      var AudienceChart = new Chart(AudienceChartCanvas, {
+	        type: 'bar',
+	        data: {
+	          labels: [  month2 + '月', month1 + '月',"本月"],
+	          datasets: [
+	            {
+	              type: 'line',
+	              fill: false,
+	              data: [ [[${getusercount.fristmouthnews}]],[[${getusercount.lastmouthnews}]],[[${getusercount.thismouthnews}]]],
+	              borderColor: '#ff4c5b'
+	            },
+	            {
+	              label: 'Offline Sales',
+	              data: [ [[${getusercount.fristmouthcommentry}]],[[${getusercount.lastmouthcommentry}]],[[${getusercount.thismouthcommentry}]] ],
+	              backgroundColor: '#6640b2'
+	            },
+	            {
+	              label: 'Online Sales',
+	              data: [ [[${getusercount.fristmouthollection}]],[[${getusercount.lastmouthcollection}]] ,[[${getusercount.thismouthcollection}]]],
+	              backgroundColor: '#1cbccd'
+	            }
+	          ]
+	        },
+	        options: {
+	          responsive: true,
+	          maintainAspectRatio: true,
+	          layout: {
+	            padding: {
+	              left: 0,
+	              right: 0,
+	              top: 20,
+	              bottom: 0
+	            }
+	          },
+	          scales: {
+	            yAxes: [{
+	              display: true,
+	              gridLines: {
+	                display: true,
+	                drawBorder: false,
+	                color: "#f8f8f8",
+	                zeroLineColor: "#f8f8f8"
+	              },
+	              ticks: {
+	                display: true,
+	                min: 0,
+	                max: 50,
+	                stepSize: 10,
+	                fontColor: "#b1b0b0",
+	                fontSize: 10,
+	                padding: 10
+	              }
+	            }],
+	            xAxes: [{
+	              stacked: false,
+	              ticks: {
+	                beginAtZero: true,
+	                fontColor: "#b1b0b0",
+	                fontSize: 10
+	              },
+	              gridLines: {
+	                color: "rgba(0, 0, 0, 0)",
+	                display: false
+	              },
+	              barPercentage: .9,
+	              categoryPercentage: .7,
+	            }]
+	          },
+	          legend: {
+	            display: false
+	          },
+	          elements: {
+	            point: {
+	              radius: 3,
+	              backgroundColor: '#ff4c5b'
+	            }
+	          }
+	        },
+	      });
+	    }
+	  // ]]>
+
+	</script>
 	<!-- End custom js for this page-->
 	<script>
 		var currentUrl = window.location.href; //获取当前页面地址
@@ -476,7 +572,7 @@ margin: 0 auto;
 			}
 		}
 	</script>
-	<script src="ubui_2_SpicaAdmin/js/chart.js"></script>
+	<script src="jssa/chart.js"></script>
 
 	<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 </body>

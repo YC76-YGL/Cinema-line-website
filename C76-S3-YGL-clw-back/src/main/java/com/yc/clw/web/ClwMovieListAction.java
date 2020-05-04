@@ -46,13 +46,14 @@ public class ClwMovieListAction {
 	 * @return
 	 */
 	@GetMapping("getMostpopular")
-	public List<ClwMovielist> getMostpopular(){
+	public List<ClwMovielist> getMostpopular(@RequestParam("page")Integer page){
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.setOrderByClause(" RAND() ");
-		PageHelper.startPage(1,6);
-		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		PageHelper.startPage(page,6);
+		Page<ClwMovielist> list = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
 		return list;
 	}
+	
 	
 	/**
 	 * 最近的电影
@@ -156,6 +157,17 @@ public class ClwMovieListAction {
 		ClwMovielistExample cmle =new ClwMovielistExample();
 		cmle.createCriteria().andIsHotEqualTo("2");
 		List<ClwMovielist> list = cmlm.selectByExample(cmle);
+		return list;
+	}
+	
+	
+	@GetMapping("getcommentmost")
+	public List<ClwMovielist> getcommentmost(){
+		ClwMovielistExample cmle =new ClwMovielistExample();
+		cmle.createCriteria().andIdIsNotNull();
+		cmle.setOrderByClause("  score desc ");
+		PageHelper.startPage(1,10);
+		Page<ClwMovielist> list = (Page<ClwMovielist>) cmlm.selectByExample(cmle);
 		return list;
 	}
 	

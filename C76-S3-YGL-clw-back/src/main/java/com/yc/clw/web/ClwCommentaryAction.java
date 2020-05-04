@@ -33,4 +33,18 @@ public class ClwCommentaryAction {
 		List<ClwCommentary> list = ccMapper.selectByExample(cce);
 		return list;
 	}
+	
+	@GetMapping("MyCommentarycount")
+	public Integer getMyCommentarycount(@RequestParam("userid")Integer userid) {
+		ClwCommentaryExample cce =new ClwCommentaryExample();
+		cce.createCriteria().andUserEqualTo(userid);
+		return (int) ccMapper.countByExample(cce);
+	}
+	
+	@GetMapping("AllUserCommentarycount")
+	public Integer getAllUserCommentarycount() {
+		ClwCommentaryExample cce =new ClwCommentaryExample();
+		cce.createCriteria().andIdIsNotNull();
+		return (int) ccMapper.countByExample(cce);
+	}
 }

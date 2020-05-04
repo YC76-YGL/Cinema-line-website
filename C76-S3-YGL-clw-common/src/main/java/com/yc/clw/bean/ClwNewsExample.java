@@ -594,9 +594,39 @@ public class ClwNewsExample {
             addCriterion("user is not null");
             return (Criteria) this;
         }
+        
+        public Criteria andUserUserThismouthnewsIsNotNull() {
+            addCriterion("DATE_FORMAT( createtime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and user is not null");
+            return (Criteria) this;
+        }
+        
+        public Criteria andUserLastmouthnewsIsNotNull() {
+            addCriterion("PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 1 and user is not null");
+            return (Criteria) this;
+        }
+        
+        public Criteria andUserFirstmouthnewsIsNotNull() {
+            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 2 and user is not null");
+            return (Criteria) this;
+        }
 
         public Criteria andUserEqualTo(Integer value) {
             addCriterion("user =", value, "user");
+            return (Criteria) this;
+        }
+        
+        public Criteria andUserThismouthnewsEqualTo(Integer value) {
+            addCriterion(" DATE_FORMAT( createtime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and user =", value, "user");
+            return (Criteria) this;
+        }
+        
+        public Criteria andUserLastmouthnewsEqualTo(Integer value) {
+            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 1 and user =", value, "user");
+            return (Criteria) this;
+        }
+        
+        public Criteria andUserFirstmouthnewsEqualTo(Integer value) {
+            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 2 and user =", value, "user");
             return (Criteria) this;
         }
 

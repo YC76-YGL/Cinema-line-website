@@ -26,6 +26,9 @@ public class ClwUser implements Serializable {
     
     private ClwCount newsnumber;
     
+    
+    
+    
     public Integer getId() {
         return id;
     }
@@ -90,9 +93,6 @@ public class ClwUser implements Serializable {
         this.look = look == null ? null : look.trim();
     }
     
-    
-    
-
 
 	public ClwUser(Integer id, String username) {
 		super();
@@ -116,9 +116,8 @@ public class ClwUser implements Serializable {
 	public void setNewsnumber(ClwCount newsnumber) {
 		this.newsnumber = newsnumber;
 	}
+
 	
-
-
 	
     
 }

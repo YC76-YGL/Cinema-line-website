@@ -1,18 +1,16 @@
 package com.yc.clw.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-
-public class ClwCommentaryExample {
+public class ClwNewscommentaryExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ClwCommentaryExample() {
+    public ClwNewscommentaryExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -166,6 +164,126 @@ public class ClwCommentaryExample {
             return (Criteria) this;
         }
 
+        public Criteria andNewsIsNull() {
+            addCriterion("news is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIsNotNull() {
+            addCriterion("news is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsEqualTo(Integer value) {
+            addCriterion("news =", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsNotEqualTo(Integer value) {
+            addCriterion("news <>", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsGreaterThan(Integer value) {
+            addCriterion("news >", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("news >=", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsLessThan(Integer value) {
+            addCriterion("news <", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsLessThanOrEqualTo(Integer value) {
+            addCriterion("news <=", value, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsIn(List<Integer> values) {
+            addCriterion("news in", values, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsNotIn(List<Integer> values) {
+            addCriterion("news not in", values, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsBetween(Integer value1, Integer value2) {
+            addCriterion("news between", value1, value2, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsNotBetween(Integer value1, Integer value2) {
+            addCriterion("news not between", value1, value2, "news");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIsNull() {
+            addCriterion("user is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIsNotNull() {
+            addCriterion("user is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserEqualTo(Integer value) {
+            addCriterion("user =", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotEqualTo(Integer value) {
+            addCriterion("user <>", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThan(Integer value) {
+            addCriterion("user >", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user >=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThan(Integer value) {
+            addCriterion("user <", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserLessThanOrEqualTo(Integer value) {
+            addCriterion("user <=", value, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIn(List<Integer> values) {
+            addCriterion("user in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotIn(List<Integer> values) {
+            addCriterion("user not in", values, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserBetween(Integer value1, Integer value2) {
+            addCriterion("user between", value1, value2, "user");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserNotBetween(Integer value1, Integer value2) {
+            addCriterion("user not between", value1, value2, "user");
+            return (Criteria) this;
+        }
+
         public Criteria andCommentaryIsNull() {
             addCriterion("commentary is null");
             return (Criteria) this;
@@ -233,216 +351,6 @@ public class ClwCommentaryExample {
 
         public Criteria andCommentaryNotBetween(String value1, String value2) {
             addCriterion("commentary not between", value1, value2, "commentary");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIsNull() {
-            addCriterion("user is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIsNotNull() {
-            addCriterion("user is not null");
-            return (Criteria) this;
-        }
-        
-        public Criteria andAllUserThisIsNotNull() {
-            addCriterion(" DATE_FORMAT( createtime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and user is not null");
-            return (Criteria) this;
-        }
-        
-        public Criteria andAllUserLastIsNotNull() {
-            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 1 and user is not null");
-            return (Criteria) this;
-        }
-        
-        public Criteria andAllUserTowlastIsNotNull() {
-            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 2 and user is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserEqualTo(Integer value) {
-            addCriterion("user =", value, "user");
-            return (Criteria) this;
-        }
-        
-        public Criteria andUserThismouthCommentaryEqualTo(Integer value) {
-            addCriterion(" DATE_FORMAT( createtime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ) and user =", value, "user");
-            return (Criteria) this;
-        }
-        
-        public Criteria andUserLastmouthCommentaryEqualTo(Integer value) {
-            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 1 and user =", value, "user");
-            return (Criteria) this;
-        }
-        
-        public Criteria andUserFirstmouthCommentaryEqualTo(Integer value) {
-            addCriterion(" PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( createtime, '%Y%m' ) ) = 2 and user =", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserNotEqualTo(Integer value) {
-            addCriterion("user <>", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserGreaterThan(Integer value) {
-            addCriterion("user >", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user >=", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserLessThan(Integer value) {
-            addCriterion("user <", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserLessThanOrEqualTo(Integer value) {
-            addCriterion("user <=", value, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIn(List<Integer> values) {
-            addCriterion("user in", values, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserNotIn(List<Integer> values) {
-            addCriterion("user not in", values, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserBetween(Integer value1, Integer value2) {
-            addCriterion("user between", value1, value2, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserNotBetween(Integer value1, Integer value2) {
-            addCriterion("user not between", value1, value2, "user");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistIsNull() {
-            addCriterion("movielist is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistIsNotNull() {
-            addCriterion("movielist is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistEqualTo(Integer value) {
-            addCriterion("movielist =", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistNotEqualTo(Integer value) {
-            addCriterion("movielist <>", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistGreaterThan(Integer value) {
-            addCriterion("movielist >", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistGreaterThanOrEqualTo(Integer value) {
-            addCriterion("movielist >=", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistLessThan(Integer value) {
-            addCriterion("movielist <", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistLessThanOrEqualTo(Integer value) {
-            addCriterion("movielist <=", value, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistIn(List<Integer> values) {
-            addCriterion("movielist in", values, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistNotIn(List<Integer> values) {
-            addCriterion("movielist not in", values, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistBetween(Integer value1, Integer value2) {
-            addCriterion("movielist between", value1, value2, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andMovielistNotBetween(Integer value1, Integer value2) {
-            addCriterion("movielist not between", value1, value2, "movielist");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeIsNull() {
-            addCriterion("createtime is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeIsNotNull() {
-            addCriterion("createtime is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeEqualTo(Date value) {
-            addCriterion("createtime =", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeNotEqualTo(Date value) {
-            addCriterion("createtime <>", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeGreaterThan(Date value) {
-            addCriterion("createtime >", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("createtime >=", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeLessThan(Date value) {
-            addCriterion("createtime <", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
-            addCriterion("createtime <=", value, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeIn(List<Date> values) {
-            addCriterion("createtime in", values, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeNotIn(List<Date> values) {
-            addCriterion("createtime not in", values, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeBetween(Date value1, Date value2) {
-            addCriterion("createtime between", value1, value2, "createtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
-            addCriterion("createtime not between", value1, value2, "createtime");
             return (Criteria) this;
         }
     }

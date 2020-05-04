@@ -98,7 +98,7 @@
 	<!-- banner -->
 	<div id="slidey" style="display: none;">
 		<ul>
-			<li th:each="ml:${getgareaterratmovie}"><img th:src="${#strings.substringAfter(ml.image,'-') == null ? ml.image : #strings.substringBefore(ml.image,'-')}" alt=" ">
+			<li th:each="ml:${getgareaterratmovie}"><img th:src="${#strings.substringAfter(ml.image,'-') eq null}? ${ml.image} : ${#strings.substringBefore(ml.image,'-')}" alt=" ">
 			<p class='title' ><a th:href="'single?id=' + ${ml.id}" th:text="${ml.name}"></a></p>
 				<p class='description' th:text="${#strings.abbreviate(ml.description,40)}">泰山,
 					适应了伦敦生活的泰山(Tarzan)被召回他在丛林的故居,以调查采矿营地的活动.</p></li>
@@ -132,7 +132,7 @@
 							<div class="mid-1 agileits_w3layouts_mid_1_home">
 								<div class="w3l-movie-text">
 									<h6>
-										<a th:text="${gnm.name}" href="single.html">Peter</a>
+										<a th:text="${gnm.name}" th:href="'single?id=' + ${gnm.id}">Peter</a>
 									</h6>
 								</div>
 								<div class="mid-2 agile_mid_2_home">
