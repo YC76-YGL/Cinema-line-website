@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>一部电影 - 修改电影</title>
+  <title>一部电影 - 发布电影</title>
   <!-- base:css -->
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/vendors/css/vendor.bundle.base.css">
@@ -16,6 +16,26 @@
   <link rel="stylesheet" href="ubui_2_SpicaAdmin/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="ubui_2_SpicaAdmin/images/favicon.png" />
+  
+  <script type="text/javascript">
+  	function submitform(){
+  		
+  		$.post("sumbitmovie",
+  				{name: $("input[name='name']").val(),
+  				director: $("input[name='director']").val(),
+  				geners: $("input[name='geners']").val(),
+  				country:$("input[name='country']").val(),
+  				description: $("input[name='description']").val(),
+  				file: $("input[name='file']").val()
+  				},
+  				function (msg){
+  					var obj = document.getElementById("msg");
+  					obj.innerText= msg 
+  				}
+  			)
+  	}
+  
+  </script>
 </head>
 
 <body>
@@ -31,50 +51,51 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">修改错误</h4>
+                  <h4 class="card-title" id="msg">上传影片</h4>
                   <p class="card-description">
                    	 请您确认
                   </p>
                   <form class="forms-sample">
                     <div class="form-group">
                       <label for="exampleInputName1">影名</label>
-                      <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="Name">
+                      <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="影名">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">导演</label>
-                      <input type="text" class="form-control" name="director" id="exampleInputEmail3" placeholder="Email">
+                      <input type="text" class="form-control" name="director" id="exampleInputEmail3" placeholder="导演">
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                       <label for="exampleSelectGender">影片类型</label>
                         <select class="form-control" name="geners" id="exampleSelectGender">
-                        <div th:each="gg : ${getgenres}">
-                          <option th:text="${gg.name}">Male</option>
+                          <div th:each="gs : ${getgenres}">
+                          <option th:text="${gs.name}" th:value="${gs.id}">Male</option>
                           </div>
                         </select>
-                      </div>
+                      </div> 
                     <div class="form-group">
-                      <label>上传文件</label>
-                      <input type="file" name="image" class="file-upload-default">
+                      <label>上传图片</label>
+                      <input type="file" name="file" id="file" class="file-upload-default">
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="上传图片">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="请选择要上传的图片">
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">上传</button>
                         </span>
                       </div>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                      <label for="exampleSelectGender">影片国家</label>
-                        <select class="form-control" name="geners" id="exampleSelectGender">
-                          <div th:each="gc : ${getcountary}">
-                          <option th:text="${gc.name}">Male</option>
-                          </div>
+                        <select  class="form-control" name="country" id="exampleSelectGender">
+                          <p th:each="gc : ${getcountary}">
+                          <option th:text="${gc.name}" th:value="${gc.id}">Male</option>
+                          </p>
                         </select>
-                    </div>
+                        
+                    </div> 
                     <div class="form-group">
                       <label for="exampleTextarea1">故事情节</label>
                       <textarea class="form-control" name="description" id="exampleTextarea1" rows="4"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">修改</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="submitform()">创建</button>
                     <button class="btn btn-light">取消</button>
                   </form>
                 </div>

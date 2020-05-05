@@ -1,8 +1,9 @@
 package com.yc.clw.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class ClwReplytocomments implements Serializable{
+public class ClwReplytocomments implements Serializable {
     /**
 	 * 
 	 */
@@ -10,14 +11,13 @@ public class ClwReplytocomments implements Serializable{
 
 	private Integer id;
 
-    private String replytocomments;
+    private String type;
 
-    private Integer commentary;
+    private String describe;
 
     private Integer user;
 
-    private Integer byreply;
-    
+    private Date createtime;
 
     public Integer getId() {
         return id;
@@ -27,20 +27,20 @@ public class ClwReplytocomments implements Serializable{
         this.id = id;
     }
 
-    public String getReplytocomments() {
-        return replytocomments;
+    public String getType() {
+        return type;
     }
 
-    public void setReplytocomments(String replytocomments) {
-        this.replytocomments = replytocomments == null ? null : replytocomments.trim();
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
-    public Integer getCommentary() {
-        return commentary;
+    public String getDescribe() {
+        return describe;
     }
 
-    public void setCommentary(Integer commentary) {
-        this.commentary = commentary;
+    public void setDescribe(String describe) {
+        this.describe = describe == null ? null : describe.trim();
     }
 
     public Integer getUser() {
@@ -51,14 +51,26 @@ public class ClwReplytocomments implements Serializable{
         this.user = user;
     }
 
-    public Integer getByreply() {
-        return byreply;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setByreply(Integer byreply) {
-        this.byreply = byreply;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
+	public ClwReplytocomments(Integer id, String type, String describe, Integer user, Date createtime) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.describe = describe;
+		this.user = user;
+		this.createtime = createtime;
+	}
+
+	public ClwReplytocomments() {
+		super();
+	}
     
     
 }

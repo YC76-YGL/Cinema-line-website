@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.clw.bean.ClwCollection;
 import com.yc.clw.bean.ClwUser;
 import com.yc.clw.web.IclwalltableAction;
 
@@ -100,6 +101,18 @@ public class MergingmethoBiz {
 			mav.addObject("getMyCommentarycount", gaca.getMyCommentarycount(user.getId()));
 			mav.setViewName("Administrator");
 		}
+		return mav;
+	}
+	
+	public ModelAndView addcollection(ClwCollection cn,ModelAndView mav) {
+		if(ccz.getc(cn) > 0) {
+			mav.addObject("msg", "您已经收藏了");
+		}else {
+			int i = ccz.create(cn);
+			System.out.println(i+"==============");
+			mav.addObject("msg", "收藏成功");
+		}
+		getserise(mav, 1,cn.getUser());
 		return mav;
 	}
 	

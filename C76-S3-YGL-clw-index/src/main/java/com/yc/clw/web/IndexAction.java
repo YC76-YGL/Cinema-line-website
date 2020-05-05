@@ -1,6 +1,7 @@
 package com.yc.clw.web;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.clw.bean.ClwCollection;
 import com.yc.clw.bean.ClwCommentary;
 import com.yc.clw.bean.ClwMovielist;
 import com.yc.clw.bean.ClwNews;
@@ -75,6 +77,7 @@ public class IndexAction {
 		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id, page, msg, (int) getpage);
 		mav.addObject("getmovie", gaca.getgenresmovie(page, id));
 		mav.addObject("genresid", cgape);
+		mav.addObject("getcommentmost", gaca.getcommentmost());
 		mav.setViewName("genres");
 		return mav;
 	}
@@ -85,7 +88,7 @@ public class IndexAction {
 		mav.addObject("genresid", "");
 		mmb.common(mav);
 		String msg = null;
-		double getpage = mb.getgenrespage(id);
+		double getpage = mb.getgenrespage(id) + 1;
 		if (page >= getpage) {
 			page = (int) getpage;
 			msg = "已经是这个类型的全部电影了";
@@ -96,22 +99,18 @@ public class IndexAction {
 		ActiveAndpageBiz cgape = new ActiveAndpageBiz(id, page, msg, (int) getpage);
 		mav.addObject("genresid", cgape);
 		mav.addObject("getmovie", gaca.getcountrmovie(page, id));
+		mav.addObject("getcommentmost", gaca.getcommentmost());
 		mav.setViewName("genres");
 		return mav;
 	}
 
 	@GetMapping("tologin")
-	public ModelAndView tologin(ModelAndView mav) {
-		mav.setViewName("Login");
-		return mav;
-	}
-
-	@PostMapping("tologin")
-	public ModelAndView tologin(ModelAndView mav, @SessionAttribute(name = "uri", required = false) String uri) {
+	public ModelAndView tologin(ModelAndView mav,@RequestParam(name = "uri", required = false) String uri) {
 		mav.addObject("uri", uri);
 		mav.setViewName("Login");
 		return mav;
 	}
+
 
 	@PostMapping("Unlockpassword")
 	public ModelAndView Unlockpassword(@RequestParam("pwd") String pwd, ModelAndView mav, HttpSession session) {
@@ -133,7 +132,7 @@ public class IndexAction {
 			mav.addObject("loginedUser", dbuser);
 			mmb.common(mav);
 			if (uri != null) {
-				mav.setViewName("redirect:" + uri);
+				mav.setViewName("redirect:http://127.0.0.1" + uri);
 			} else {
 				index(mav);
 				mav.setViewName("index");
@@ -193,10 +192,16 @@ public class IndexAction {
 	}
 
 	@GetMapping("contact")
-	public ModelAndView contanct(ModelAndView mav) {
+	public ModelAndView contanct(ModelAndView mav,HttpSession session) {
 		mmb.common(mav);
-		mav.addObject("Modificationtips", "");
-		mav.setViewName("contact");
+		ClwUser user = (ClwUser) session.getAttribute("loginedUser");
+		if(user == null) {
+			mav.setViewName("Login");
+		}else {
+			mav.addObject("Modificationtips", "");
+			mav.setViewName("contact");
+		}
+		
 		return mav;
 	}
 
@@ -277,6 +282,7 @@ public class IndexAction {
 		double getpage = mb.getnamepage(Search);
 		ActiveAndpageBiz cgape = new ActiveAndpageBiz(1, (int) getpage, Search);
 		mav.addObject("genresid", cgape);
+		mav.addObject("getcommentmost", gaca.getcommentmost());
 		mav.addObject("getSearch", gaca.getseachmovie(Search));
 		mav.setViewName("horror");
 		return mav;
@@ -349,19 +355,17 @@ public class IndexAction {
 
 	@Resource
 	ReplytocommentsBiz rtb;
+	
+	
 
-	@PostMapping("replytocomments")
-	public ModelAndView replytocomments(ClwReplytocomments record, ModelAndView mav) {
-		String msg = null;
-		if (record.getUser() == null) {
-			msg = "发送失败!!!请先登录";
-		} else {
-			msg = rtb.CreateClwReply(record);
-		}
-		mmb.common(mav);
-		mav.addObject("Modificationtips", msg);
-		mav.setViewName("contact");
-		return mav;
+	@PostMapping("reply")
+	@ResponseBody
+	public String replytocomments(ClwReplytocomments record,HttpSession session) {
+			ClwUser user = (ClwUser) session.getAttribute("loginedUser");
+			
+			record.setUser(user.getId());
+			String msg = rtb.CreateClwReply(record);
+			return msg;
 	}
 
 	@GetMapping("mytypography")
@@ -385,6 +389,28 @@ public class IndexAction {
 			e.printStackTrace();
 			return msg;
 		}
+	}
+	
+	@PostMapping("Createreg")
+	@ResponseBody
+	public String Createreg(String email, HttpSession session) {
+		String msg;
+		try {
+			msg = "发送成功";
+			String vcode = uBiz.create(email);
+			session.setAttribute("vcode", vcode);
+			return msg;
+		} catch (BizException e) {
+			msg = "发送失败";
+			e.printStackTrace();
+			return msg;
+		}
+	}
+	
+	@PostMapping("sendname")
+	@ResponseBody
+	public String selectname(String name) {
+		return uBiz.selectname(name);
 	}
 
 	@PostMapping("CPassword")
@@ -514,6 +540,7 @@ public class IndexAction {
 	public ModelAndView getFilmmanagement(@RequestParam(defaultValue = "1")Integer page,ModelAndView mav,@SessionAttribute("loginedUser") ClwUser user) {
 		if(user.getType().equals("1") ) {
 			mav.addObject("getalmovie", gaca.getalmovie(page));
+			mav.addObject("page", page);
 			mav.setViewName("back-stagemanagement/Filmmanagement");
 		}else {
 			index(mav);
@@ -533,7 +560,57 @@ public class IndexAction {
 		mav.addObject("getnamemovie", gaca.getnamemovie(id));
 		mav.addObject("getcountary", gaca.getcountary());
 		mav.addObject("getgenres", gaca.getgenres());
-		mav.setViewName("update");
+		mav.setViewName("back-stagemanagement/update");
+		return mav;
+	}
+	
+	
+	
+	@PostMapping("updatemovie")
+	@ResponseBody
+	public String updatemovie(ClwMovielist list) {
+		String msg ;
+		msg = mb.update(list);
+		return msg;
+	}
+	
+	@GetMapping("add")
+	public ModelAndView add(ModelAndView mav) {
+		mav.addObject("getcountary", gaca.getcountary());
+		mav.addObject("getgenres", gaca.getgenres());
+		mav.setViewName("back-stagemanagement/Add");
+		return mav;
+	}
+	
+	@Value("${moviePath}")
+	private String moviePath;
+	
+	@PostMapping("sumbitmovie")
+	@ResponseBody
+	public String sumbitmovie(ClwMovielist list,@RequestParam("file") MultipartFile file) {
+		String msg ;
+		try {
+			file.transferTo(new File(userlookPath + file.getOriginalFilename()));
+			// 定义用户头像的图片的 web 路径
+			String head = "userlook/" + file.getOriginalFilename();
+			list.setImage(head);
+			msg = mb.add(list);
+		} catch (IllegalStateException e) {
+			msg = "失败";
+			e.printStackTrace();
+		} catch (IOException e) {
+			msg = "失败";
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	@GetMapping("collection")
+	public ModelAndView collection(@RequestParam("id")Integer id,HttpSession session,ModelAndView mav) {
+		ClwUser user = (ClwUser)session.getAttribute("loginedUser") ;
+		ClwCollection collection = new ClwCollection(null,id,user.getId(),new Date());
+		System.out.println(collection);
+		mmb.addcollection(collection,mav);
 		return mav;
 	}
 

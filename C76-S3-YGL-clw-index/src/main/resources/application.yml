@@ -6,6 +6,8 @@ myUploadPath: E:/上课资料/Cinema-line-website/C76-S3-YGL-clw-index/src/main/
    
 userlookPath: E:/上课资料/Cinema-line-website/C76-S3-YGL-clw-index/src/main/resources/static/userlook/
 
+moviePath: E:/上课资料/Cinema-line-website/C76-S3-YGL-clw-index/src/main/resources/static/movieimg/
+
 spring:
    application:
       name: clw-index

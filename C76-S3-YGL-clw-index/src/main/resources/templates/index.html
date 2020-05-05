@@ -155,7 +155,7 @@
 								</div>
 							</div>
 							<div class="ribben">
-								<p>最新</p>
+								<p th:text="${#dates.format(new java.util.Date(),'yyyy年')} == ${#dates.format(gnm.createtime,'yyyy年')}? '最新' : '经典'">最新</p>
 							</div>
 						</div>
 					</div>

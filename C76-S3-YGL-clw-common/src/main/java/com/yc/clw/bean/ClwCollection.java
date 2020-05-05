@@ -60,6 +60,19 @@ public class ClwCollection implements Serializable {
 	public void setCml(ClwMovielist cml) {
 		this.cml = cml;
 	}
+
+
+	public ClwCollection(Integer id, Integer movie, Integer user, Date createtime) {
+		super();
+		this.id = id;
+		this.movie = movie;
+		this.user = user;
+		this.createtime = createtime;
+	}
+
+	public ClwCollection() {
+		super();
+	}
     
     
 }

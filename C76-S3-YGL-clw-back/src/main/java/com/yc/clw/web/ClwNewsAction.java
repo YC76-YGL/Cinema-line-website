@@ -54,7 +54,7 @@ public class ClwNewsAction {
 	@GetMapping("getbyidQuerySingular")
 	public List<ClwNews> getbyidQuerySingular(@RequestParam("id") Integer id){
 		ClwNewsExample cne = new ClwNewsExample();
-		cne.setOrderByClause("createtime asc");
+		cne.setOrderByClause("createtime desc");
 		cne.createCriteria().andUserEqualTo(id);
 		List<ClwNews> lsit = cnm.selectByExample(cne);
 		return lsit;

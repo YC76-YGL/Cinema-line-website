@@ -39,14 +39,15 @@
             <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">任何操作都是不可撤销的!!!</h4>
+                  <h4 class="card-title" th:text="${msg eq null}? '任何操作都是不可撤销的!!!' : ${msg}"></h4>
                   <p class="card-description">
                     	请选择 <code>您的操作</code>
                   </p>
-                  <button type="button" class="btn btn-danger btn-icon-text">
+                  <a href="add"  class="btn btn-danger btn-icon-text">
+                 
                           <i class="mdi mdi-upload btn-icon-prepend"></i>                                                    
                           	上传电影	
-                        </button>
+                        </a>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
@@ -95,6 +96,8 @@
                         </tr>
                       </tbody>
                     </table>
+                     <a th:href="'Filmmanagement?page='+${page - 1}" class="btn btn-primary" >上一页</a>
+                    <a th:href="'Filmmanagement?page='+${page + 1}" style="float: right;" class="btn btn-primary" >下一页</a>
                   </div>
                 </div>
               </div>

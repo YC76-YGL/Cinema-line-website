@@ -1,6 +1,7 @@
 package com.yc.clw.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ClwReplytocommentsExample {
@@ -164,133 +165,143 @@ public class ClwReplytocommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsIsNull() {
-            addCriterion("replytocomments is null");
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsIsNotNull() {
-            addCriterion("replytocomments is not null");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsEqualTo(String value) {
-            addCriterion("replytocomments =", value, "replytocomments");
+        public Criteria andTypeEqualTo(String value) {
+            addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsNotEqualTo(String value) {
-            addCriterion("replytocomments <>", value, "replytocomments");
+        public Criteria andTypeNotEqualTo(String value) {
+            addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsGreaterThan(String value) {
-            addCriterion("replytocomments >", value, "replytocomments");
+        public Criteria andTypeGreaterThan(String value) {
+            addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsGreaterThanOrEqualTo(String value) {
-            addCriterion("replytocomments >=", value, "replytocomments");
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsLessThan(String value) {
-            addCriterion("replytocomments <", value, "replytocomments");
+        public Criteria andTypeLessThan(String value) {
+            addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsLessThanOrEqualTo(String value) {
-            addCriterion("replytocomments <=", value, "replytocomments");
+        public Criteria andTypeLessThanOrEqualTo(String value) {
+            addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsLike(String value) {
-            addCriterion("replytocomments like", value, "replytocomments");
+        public Criteria andTypeLike(String value) {
+            addCriterion("type like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsNotLike(String value) {
-            addCriterion("replytocomments not like", value, "replytocomments");
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("type not like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsIn(List<String> values) {
-            addCriterion("replytocomments in", values, "replytocomments");
+        public Criteria andTypeIn(List<String> values) {
+            addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsNotIn(List<String> values) {
-            addCriterion("replytocomments not in", values, "replytocomments");
+        public Criteria andTypeNotIn(List<String> values) {
+            addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsBetween(String value1, String value2) {
-            addCriterion("replytocomments between", value1, value2, "replytocomments");
+        public Criteria andTypeBetween(String value1, String value2) {
+            addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andReplytocommentsNotBetween(String value1, String value2) {
-            addCriterion("replytocomments not between", value1, value2, "replytocomments");
+        public Criteria andTypeNotBetween(String value1, String value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryIsNull() {
-            addCriterion("commentary is null");
+        public Criteria andDescribeIsNull() {
+            addCriterion("describe is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryIsNotNull() {
-            addCriterion("commentary is not null");
+        public Criteria andDescribeIsNotNull() {
+            addCriterion("describe is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryEqualTo(Integer value) {
-            addCriterion("commentary =", value, "commentary");
+        public Criteria andDescribeEqualTo(String value) {
+            addCriterion("describe =", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryNotEqualTo(Integer value) {
-            addCriterion("commentary <>", value, "commentary");
+        public Criteria andDescribeNotEqualTo(String value) {
+            addCriterion("describe <>", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryGreaterThan(Integer value) {
-            addCriterion("commentary >", value, "commentary");
+        public Criteria andDescribeGreaterThan(String value) {
+            addCriterion("describe >", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryGreaterThanOrEqualTo(Integer value) {
-            addCriterion("commentary >=", value, "commentary");
+        public Criteria andDescribeGreaterThanOrEqualTo(String value) {
+            addCriterion("describe >=", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryLessThan(Integer value) {
-            addCriterion("commentary <", value, "commentary");
+        public Criteria andDescribeLessThan(String value) {
+            addCriterion("describe <", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryLessThanOrEqualTo(Integer value) {
-            addCriterion("commentary <=", value, "commentary");
+        public Criteria andDescribeLessThanOrEqualTo(String value) {
+            addCriterion("describe <=", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryIn(List<Integer> values) {
-            addCriterion("commentary in", values, "commentary");
+        public Criteria andDescribeLike(String value) {
+            addCriterion("describe like", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryNotIn(List<Integer> values) {
-            addCriterion("commentary not in", values, "commentary");
+        public Criteria andDescribeNotLike(String value) {
+            addCriterion("describe not like", value, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryBetween(Integer value1, Integer value2) {
-            addCriterion("commentary between", value1, value2, "commentary");
+        public Criteria andDescribeIn(List<String> values) {
+            addCriterion("describe in", values, "describe");
             return (Criteria) this;
         }
 
-        public Criteria andCommentaryNotBetween(Integer value1, Integer value2) {
-            addCriterion("commentary not between", value1, value2, "commentary");
+        public Criteria andDescribeNotIn(List<String> values) {
+            addCriterion("describe not in", values, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeBetween(String value1, String value2) {
+            addCriterion("describe between", value1, value2, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeNotBetween(String value1, String value2) {
+            addCriterion("describe not between", value1, value2, "describe");
             return (Criteria) this;
         }
 
@@ -354,63 +365,63 @@ public class ClwReplytocommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andByreplyIsNull() {
-            addCriterion("byreply is null");
+        public Criteria andCreatetimeIsNull() {
+            addCriterion("createtime is null");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyIsNotNull() {
-            addCriterion("byreply is not null");
+        public Criteria andCreatetimeIsNotNull() {
+            addCriterion("createtime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyEqualTo(Integer value) {
-            addCriterion("byreply =", value, "byreply");
+        public Criteria andCreatetimeEqualTo(Date value) {
+            addCriterion("createtime =", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyNotEqualTo(Integer value) {
-            addCriterion("byreply <>", value, "byreply");
+        public Criteria andCreatetimeNotEqualTo(Date value) {
+            addCriterion("createtime <>", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyGreaterThan(Integer value) {
-            addCriterion("byreply >", value, "byreply");
+        public Criteria andCreatetimeGreaterThan(Date value) {
+            addCriterion("createtime >", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("byreply >=", value, "byreply");
+        public Criteria andCreatetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("createtime >=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyLessThan(Integer value) {
-            addCriterion("byreply <", value, "byreply");
+        public Criteria andCreatetimeLessThan(Date value) {
+            addCriterion("createtime <", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyLessThanOrEqualTo(Integer value) {
-            addCriterion("byreply <=", value, "byreply");
+        public Criteria andCreatetimeLessThanOrEqualTo(Date value) {
+            addCriterion("createtime <=", value, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyIn(List<Integer> values) {
-            addCriterion("byreply in", values, "byreply");
+        public Criteria andCreatetimeIn(List<Date> values) {
+            addCriterion("createtime in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyNotIn(List<Integer> values) {
-            addCriterion("byreply not in", values, "byreply");
+        public Criteria andCreatetimeNotIn(List<Date> values) {
+            addCriterion("createtime not in", values, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyBetween(Integer value1, Integer value2) {
-            addCriterion("byreply between", value1, value2, "byreply");
+        public Criteria andCreatetimeBetween(Date value1, Date value2) {
+            addCriterion("createtime between", value1, value2, "createtime");
             return (Criteria) this;
         }
 
-        public Criteria andByreplyNotBetween(Integer value1, Integer value2) {
-            addCriterion("byreply not between", value1, value2, "byreply");
+        public Criteria andCreatetimeNotBetween(Date value1, Date value2) {
+            addCriterion("createtime not between", value1, value2, "createtime");
             return (Criteria) this;
         }
     }

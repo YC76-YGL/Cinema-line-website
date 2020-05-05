@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.yc.clw.bean.ClwCollection;
 import com.yc.clw.bean.ClwCollectionExample;
 import com.yc.clw.dao.ClwCollectionMapper;
 
@@ -79,6 +80,17 @@ public class ClwCollectionBiz {
 	public Integer getCollectionTwomonths() {
 		ClwCollectionExample cce = new ClwCollectionExample();
 		cce.createCriteria().andUserCollectionTwoIsNotNull();
+		return (int) ccr.countByExample(cce);
+	}
+	
+	
+	public Integer create(ClwCollection collection) {
+		return ccr.insert(collection);
+	}
+	
+	public Integer getc(ClwCollection cn) {
+		ClwCollectionExample cce = new ClwCollectionExample();
+		cce.createCriteria().andUserEqualTo(cn.getUser()).andMovieEqualTo(cn.getMovie());
 		return (int) ccr.countByExample(cce);
 	}
 }

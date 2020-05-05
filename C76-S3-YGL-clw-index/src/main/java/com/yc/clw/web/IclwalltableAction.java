@@ -162,4 +162,5 @@ public interface IclwalltableAction {
 	
 	@GetMapping("getgenres")
 	public List<ClwGeners> getgenres();
+	
 }

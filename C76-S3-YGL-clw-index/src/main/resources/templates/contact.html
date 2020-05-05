@@ -26,6 +26,21 @@
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
+function sende() {
+	$.post("reply",
+		{type: $("input[name='tp']").val(),
+		describe: $("textarea[name='describe']").val()
+		},
+		function (msg){
+			var obj = document.getElementById("msg");
+			obj.innerText= msg 
+		}
+	)
+}
+
+</script>
+ 
+<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
 			event.preventDefault();
@@ -102,11 +117,11 @@
 					</ul>
 				</div>
 				<div class="clearfix"></div>
-				<form action="replytocomments" method="post">
-				<h3 th:text="${session.Modificationtips}" style="color: red ">我们的邮箱是</h3>
-				<input type="hidden" name="user" th:value="${session.loginedUser} == null ? null : ${session.loginedUser.id}">
-					<textarea  name="replytocomments" placeholder="您的问题是?" required=""></textarea>
-					<input type="submit" value="发送">
+				<form method="post" >
+				<h3 id="msg" style="color: red ">我们的邮箱是</h3>
+				<input type="text" name="tp" placeholder="请输入您的问题描述?" >
+					<textarea  name="describe" placeholder="您的问题是?" ></textarea>
+					<button type="submit" onclick="sende()" value="发送"></button>
 				</form>
 			</div>
 		</div>

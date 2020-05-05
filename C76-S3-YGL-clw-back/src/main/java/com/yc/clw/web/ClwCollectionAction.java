@@ -41,5 +41,7 @@ public class ClwCollectionAction {
 		ccExample.createCriteria().andIdIsNotNull();
 		return (int) ccMapper.countByExample(ccExample);
 	}
+	
+	
 
 }

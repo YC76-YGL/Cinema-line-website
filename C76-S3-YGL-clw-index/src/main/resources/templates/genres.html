@@ -121,7 +121,8 @@
 						<div class="browse-inner">
 						<!-- 图片大小必须是182 * 268 ${#strings.substringAfter(name,prefix)} -->
 							<div th:each="gm : ${getmovie}" class="col-md-2 w3l-movie-gride-agile">
-								<a th:href="'single?id=' + ${gm.id}" class="hvr-shutter-out-horizontal"><img
+								<a th:href="'single?id=' + ${gm.id}" class="hvr-shutter-out-horizontal">
+								<img width="182px" height="268px"
 									th:src="${#strings.substringAfter(gm.image,'-') eq null}? ${gm.image} : ${#strings.substringAfter(gm.image,'-')}" title="album-name" alt=" " />
 									<div class="w3l-action-icon">
 										<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -129,7 +130,7 @@
 								<div class="mid-1">
 									<div class="w3l-movie-text">
 										<h6>
-											<a th:text="${gm.name}" href="single">The BFG</a>
+											<a th:text="${gm.name}" th:href="'single?id=' + ${gm.id}">The BFG</a>
 										</h6>
 									</div>
 									<div class="mid-2">
@@ -155,7 +156,7 @@
 
 								</div>
 								<div class="ribben two">
-									<p>最新</p>
+									<p th:text="${#dates.format(new java.util.Date(),'yyyy年')} == ${#dates.format(gm.createtime,'yyyy年')}? '最新' : '经典'">最新</p>
 								</div>
 							</div>
 							<div class="clearfix"></div>
@@ -167,11 +168,11 @@
 				</div>
 				<!--//browse-agile-w3ls -->
 				<div class="blog-pagenat-wthree">
-					<ul>
-						<li><a class="frist"th:href="'genres?page=1&id=' + ${session.genresid.id}" >首页</a></li>
-						<li><a href="previous" th:href="'genres?page=' + ${--session.genresid.page} + '&id=' + ${session.genresid.id}">上一页</a></li>
-						<li><a class="next" th:href="'genres?page=' + ${session.genresid.page +1} + '&id=' + ${session.genresid.id}">下一页</a></li>
-						<li><a href="last" th:href="'genres?page='+${session.genresid.last}+'&id=' + ${session.genresid.id}">尾页</a></li>
+					<ul th:each="s : ${genresid}">
+						<li><a class="frist"th:href="|genres?page=1&id=${s.id}|" >首页</a></li>
+						<li><a class="previous" th:href="|genres?page= ${--genresid.page} &id= ${s.id}|">上一页</a></li>
+						<li><a class="next" th:href="|genres?page= ${s.page +1}&id= ${s.id}|">下一页</a></li>
+						<li><a class="last" th:href="|genres?page=${s.last}&id=${s.id}|">尾页</a></li>
 					</ul>
 				</div>
 			</div>
@@ -179,14 +180,14 @@
 			<!--body wrapper start-->
 			<!--body wrapper start-->
 			<div class="review-slider">
-				<h4 class="latest-text">影评</h4>
+				<h4 class="latest-text">相关电影</h4>
 				<div class="container">
 					<div class="w3_agile_banner_bottom_grid">
 						<div id="owl-demo" class="owl-carousel owl-theme">
-							<div class="item">
+							<div class="item" th:each="t : ${getcommentmost}">
 								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m13.jpg" title="album-name" class="img-responsive"
+									<a th:href="|single?id=${t.id}|" class="hvr-shutter-out-horizontal"><img
+										th:src="${#strings.substringAfter(t.image,'-')} == null ? ${t.image} : ${#strings.substringAfter(t.image,'-')}" height="182px" width="268px" title="album-name" class="img-responsive"
 										alt=" " />
 										<div class="w3l-action-icon">
 											<i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -194,49 +195,11 @@
 									<div class="mid-1 agileits_w3layouts_mid_1_home">
 										<div class="w3l-movie-text">
 											<h6>
-												<a href="single">Citizen Soldier</a>
+												<a href="|single?id=${t.id}|" th:text="${t.name}">X-Men</a>
 											</h6>
 										</div>
 										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m11.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">X-Men</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
+											<p th:text="${#dates.format(t.createtime,'yyyy年')}">2016</p>
 											<div class="block-stars">
 												<ul class="w3l-ratings">
 													<li><a href="#"><i class="fa fa-star"
@@ -255,273 +218,7 @@
 										</div>
 									</div>
 									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m12.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">Greater</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m7.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">Light B/t Oceans</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m8.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">The BFG</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m9.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">Central Intelligence</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m10.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">Don't Think Twice</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m17.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">Peter</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-									<a href="single" class="hvr-shutter-out-horizontal"><img
-										src="images/m15.jpg" title="album-name" class="img-responsive"
-										alt=" " />
-										<div class="w3l-action-icon">
-											<i class="fa fa-play-circle" aria-hidden="true"></i>
-										</div> </a>
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="single">God’s Compass</a>
-											</h6>
-										</div>
-										<div class="mid-2 agile_mid_2_home">
-											<p>2016</p>
-											<div class="block-stars">
-												<ul class="w3l-ratings">
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"
-															aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o"
-															aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="ribben">
-										<p>最新</p>
+										<p th:text="${#dates.format(new java.util.Date(),'yyyy年')} == ${#dates.format(t.createtime,'yyyy年')}? '最新' : '经典'">最新</p>
 									</div>
 								</div>
 							</div>

@@ -56,6 +56,18 @@ public class UserBiz {
 		}
 	}
 	
+	public String create(String email) throws BizException {
+		if (email != null) {
+			String vcode = System.currentTimeMillis() + "";
+			vcode = vcode.substring(vcode.length() - 4, vcode.length());
+			String content = "您创建账号的验证码是: " + vcode;
+			ms.sendSimpleMail(email, "注册", content);
+			return vcode;
+		} else {
+			throw new BizException("请填写正确的邮箱");
+		}
+	}
+	
 	public String updatepassword(ClwUser user) throws BizException {
 		String msg = "修改成功";
 		ClwUserExample cue = new ClwUserExample();
@@ -77,6 +89,20 @@ public class UserBiz {
 		}else {
 			System.out.println(list);
 			msg="请换个文件名";
+		}
+		return msg;
+	}
+	
+	
+	public String selectname(String name) {
+		String msg;
+		ClwUserExample cExample = new ClwUserExample();
+		cExample.createCriteria().andUsernameEqualTo(name);
+		List<ClwUser> user = cum.selectByExample(cExample);
+		if(user != null) {
+			msg = "该用户名已经被注册";
+		}else {
+			msg = "您的格式输入正确";
 		}
 		return msg;
 	}

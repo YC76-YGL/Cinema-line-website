@@ -6,14 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/single.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="css/contactstyle.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/faqstyle.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/contactstyle.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" href="css/faqstyle.css" type="text/css"
+	media="all" />
 <link href="css/medile.css" rel='stylesheet' type='text/css' />
 <!-- font-awesome icons -->
 <link rel="stylesheet" href="css/font-awesome.min.css" />
@@ -27,197 +32,236 @@
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
+		$(".scroll").click(function(event) {
 			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);
 		});
 	});
 </script>
 <!-- start-smoth-scrolling -->
-<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/owl.carousel.css" rel="stylesheet" type="text/css"
+	media="all">
 <script src="js/owl.carousel.js"></script>
 <script>
-	$(document).ready(function() { 
+	$(document).ready(function() {
 		$("#owl-demo").owlCarousel({
-	 
-		  autoPlay: 3000, //Set AutoPlay to 3 seconds
-	 
-		  items : 5,
-		  itemsDesktop : [640,5],
-		  itemsDesktopSmall : [414,4]
-	 
+
+			autoPlay : 3000, //Set AutoPlay to 3 seconds
+
+			items : 5,
+			itemsDesktop : [ 640, 5 ],
+			itemsDesktopSmall : [ 414, 4 ]
+
 		});
-	 
-	}); 
-</script> 
+
+	});
+</script>
 </head>
-	
+
 <body>
-<!-- header -->
-<div th:replace="common/common::.header"></div>
+	<!-- header -->
+	<div th:replace="common/common::.header"></div>
 	<script>
-		$('.toggle').click(function(){
-		  // Switches the Icon
-		  $(this).children('i').toggleClass('fa-pencil');
-		  // Switches the forms  
-		  $('.form').animate({
-			height: "toggle",
-			'padding-top': 'toggle',
-			'padding-bottom': 'toggle',
-			opacity: "toggle"
-		  }, "slow");
+		$('.toggle').click(function() {
+			// Switches the Icon
+			$(this).children('i').toggleClass('fa-pencil');
+			// Switches the forms  
+			$('.form').animate({
+				height : "toggle",
+				'padding-top' : 'toggle',
+				'padding-bottom' : 'toggle',
+				opacity : "toggle"
+			}, "slow");
 		});
 	</script>
-<!-- //bootstrap-pop-up -->
-<!-- nav -->
-<div th:replace="common/common::.movies_nav"></div>
-<!-- //nav -->
-<div th:replace="common/common::.general_social_icons"></div>
+	<!-- //bootstrap-pop-up -->
+	<!-- nav -->
+	<div th:replace="common/common::.movies_nav"></div>
+	<!-- //nav -->
+	<div th:replace="common/common::.general_social_icons"></div>
 	<div class="faq">
-<!-- general -->
-	<div class="general_agileits_genres">
-		<h4 class="latest-text w3_latest_text">每日推荐</h4>
-		<div class="container">
-            <div class="agileits-single-top">
-				<ol class="breadcrumb">
-				  <li><a href="index">首页</a></li>
-				  <li class="active">今日推荐</li>
-				</ol>
+		<!-- general -->
+		<div class="general_agileits_genres">
+			<h4 class="latest-text w3_latest_text">每日推荐</h4>
+			<div class="container">
+				<div class="agileits-single-top">
+					<ol class="breadcrumb">
+						<li><a href="index">首页</a></li>
+						<li class="active">今日推荐</li>
+						<li th:text="${msg}"></li>
+					</ol>
+				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-				<ul id="myTab" class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">力荐</a></li>
-					<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">个人收藏</a></li>
-				</ul>
-				<div id="myTabContent" class="tab-content">
-					<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-						<div class="w3_agile_featured_movies">
-							<div class="col-md-2 w3l-movie-gride-agile" th:each="g : ${getMostpopular}">
-								<a th:href="'single?id=' + ${g.id}" class="hvr-shutter-out-horizontal"><img th:src="${#strings.substringAfter(g.image,'-') eq null}? ${g.image} : ${#strings.substringAfter(g.image,'-')}" title="album-name" class="img-responsive" alt=" " />
-									<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-								</a>
-								<div class="mid-1 agileits_w3layouts_mid_1_home">
-									<div class="w3l-movie-text">
-										<h6><a href="single.html" th:text="${g.name}">God’s Compass</a></h6>							
-									</div>
-									<div class="mid-2 agile_mid_2_home">
-										<p th:text="${#dates.format(g.createtime,('yyyy年'))}">2016</p>
-										<div class="block-stars">
-											<ul class="w3l-ratings">
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-											</ul>
+			<div class="container">
+				<div class="bs-example bs-example-tabs" role="tabpanel"
+					data-example-id="togglable-tabs">
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#home"
+							id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+							aria-expanded="true">力荐</a></li>
+						<li role="presentation"><a href="#profile" role="tab"
+							id="profile-tab" data-toggle="tab" aria-controls="profile"
+							aria-expanded="false">个人收藏</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane fade active in" id="home"
+							aria-labelledby="home-tab">
+							<div class="w3_agile_featured_movies">
+								<div class="col-md-2 w3l-movie-gride-agile"
+									th:each="g : ${getMostpopular}">
+									<a th:href="'single?id=' + ${g.id}"
+										class="hvr-shutter-out-horizontal"><img
+										th:src="${#strings.substringAfter(g.image,'-') eq null}? ${g.image} : ${#strings.substringAfter(g.image,'-')}"
+										title="album-name" class="img-responsive" alt=" " />
+										<div class="w3l-action-icon">
+											<i class="fa fa-play-circle" aria-hidden="true"></i>
+										</div> </a>
+									<div class="mid-1 agileits_w3layouts_mid_1_home">
+										<div class="w3l-movie-text">
+											<h6>
+												<a href="single.html" th:text="${g.name}">God’s Compass</a>
+											</h6>
 										</div>
-										<div class="clearfix"></div>
+										<div class="mid-2 agile_mid_2_home">
+											<p th:text="${#dates.format(g.createtime,('yyyy年'))}">2016</p>
+											<div class="block-stars">
+												<ul class="w3l-ratings">
+													<li><a href="#"><i class="fa fa-star"
+															aria-hidden="true"></i></a></li>
+													<li><a href="#"><i class="fa fa-star"
+															aria-hidden="true"></i></a></li>
+													<li><a href="#"><i class="fa fa-star"
+															aria-hidden="true"></i></a></li>
+													<li><a href="#"><i class="fa fa-star"
+															aria-hidden="true"></i></a></li>
+													<li><a href="#"><i class="fa fa-star-half-o"
+															aria-hidden="true"></i></a></li>
+												</ul>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="ribben">
+										<p
+											th:text="${#dates.format(new java.util.Date(),'yyyy年') eq #dates.format(g.createtime,'yyyy年')}? '最新' : '经典'">NEW</p>
 									</div>
 								</div>
-								<div class="ribben">
-									<p th:text="${#dates.format(new java.util.Date(),'yyyy年') eq #dates.format(g.createtime,'yyyy年')}? '最新' : '经典'">NEW</p>
-								</div>
+								<div class="clearfix"></div>
+								<h1>
+									<a th:href="'series1?page=' + ${page - 1}" style="float: left;"><span
+										class="label label-primary">上页</span></a> <a
+										th:href="'series2?page=' + ${page + 1}" style="float: right;"><span
+										class="label label-primary">下页</span></a>
+								</h1>
 							</div>
-							<div class="clearfix"> </div>
-							<h1>
-							<a th:href="'series1?page=' + ${page - 1}" style="float: left;"><span class="label label-primary">上页</span></a>
-							<a th:href="'series2?page=' + ${page + 1}" style="float: right;"><span class="label label-primary">下页</span></a>
-							</h1>
 						</div>
-					</div>
-					<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-						<div class="bs-docs-example">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-						  <th>电影名</th>
-						  <th>电影图片</th>
-						  <th>导演</th>
-						  <th>时间</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="c : ${getcollection}">
-						<div th:each="m : ${c.cml}">
-						  <td ><a th:href="|single?id=${m.id}|" th:text="${m.name}" > </a></td>
-						  <td ><img width="50px" height="40px" th:src="${#strings.substringAfter(m.image,'-') eq null}? ${m.image} : ${#strings.substringBefore(m.image,'-')}"></td>
-						  <td th:text="${m.director eq null}? '未知' : ${m.director}">Otto</td>
-						  <td th:text="${#dates.format(m.createtime,'yyyy年')}">@mdo</td>
-						  </div>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="clearfix"> </div>
+						<div role="tabpanel" class="tab-pane fade" id="profile"
+							aria-labelledby="profile-tab">
+							<div class="bs-docs-example">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>电影名</th>
+											<th>电影图片</th>
+											<th>导演</th>
+											<th>时间</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="c : ${getcollection}">
+											<div th:each="m : ${c.cml}">
+												<td><a th:href="|single?id=${m.id}|"
+													th:text="${m.name}"> </a></td>
+												<td><img width="50px" height="40px"
+													th:src="${#strings.substringAfter(m.image,'-') eq null}? ${m.image} : ${#strings.substringBefore(m.image,'-')}"></td>
+												<td th:text="${m.director eq null}? '未知' : ${m.director}">Otto</td>
+												<td th:text="${#dates.format(m.createtime,'yyyy年')}">@mdo</td>
+											</div>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="clearfix"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-<!--body wrapper start-->
-	<div class="review-slider">
-		 <h4 class="latest-text">影迷都在说</h4>
-			   <div class="container">
+		<!--body wrapper start-->
+		<div class="review-slider">
+			<h4 class="latest-text">影迷都在说</h4>
+			<div class="container">
 				<div class="w3_agile_banner_bottom_grid">
 					<div id="owl-demo" class="owl-carousel owl-theme">
 						<div class="item" th:each="t : ${getcommentmost}">
 							<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-								<a th:href="'single?id=' + ${t.id}" class="hvr-shutter-out-horizontal"><img th:src="${#strings.substringAfter(t.image,'-')} == null ? ${t.image} : ${#strings.substringAfter(t.image,'-')}" height="182px" width="268px" title="album-name" class="img-responsive" alt=" " />
-									<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-								</a>
+								<a th:href="'single?id=' + ${t.id}"
+									class="hvr-shutter-out-horizontal"><img
+									th:src="${#strings.substringAfter(t.image,'-')} == null ? ${t.image} : ${#strings.substringAfter(t.image,'-')}"
+									height="182px" width="268px" title="album-name"
+									class="img-responsive" alt=" " />
+									<div class="w3l-action-icon">
+										<i class="fa fa-play-circle" aria-hidden="true"></i>
+									</div> </a>
 								<div class="mid-1 agileits_w3layouts_mid_1_home">
 									<div class="w3l-movie-text">
-										<h6><a th:href="'single?id=' + ${t.id}" th:text="${t.name}">Citizen Soldier</a></h6>							
+										<h6>
+											<a th:href="'single?id=' + ${t.id}" th:text="${t.name}">Citizen
+												Soldier</a>
+										</h6>
 									</div>
 									<div class="mid-2 agile_mid_2_home">
 										<p th:text="${#dates.format(t.createtime,'yyyy年')}">2016</p>
 										<div class="block-stars">
 											<ul class="w3l-ratings">
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star"
+														aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-half-o"
+														aria-hidden="true"></i></a></li>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
 									</div>
 								</div>
 								<div class="ribben">
-									<p th:text="${#dates.format(new java.util.Date(),'yyyy年') eq #dates.format(t.createtime,'yyyy年')}? '最新' : '经典'">NEW</p>
+									<p
+										th:text="${#dates.format(new java.util.Date(),'yyyy年') eq #dates.format(t.createtime,'yyyy年')}? '最新' : '经典'">NEW</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-		<!--body wrapper end-->
-	</div>	
-<!-- //general -->
+				<!--body wrapper end-->
+			</div>
+			<!-- //general -->
+		</div>
 	</div>
-	</div>
-<!-- footer -->
-<div th:replace="common/common::.footer"></div>
-<!-- //footer -->
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');       
-        }
-    );
-});
-</script>
-<!-- //Bootstrap Core JavaScript -->
-<!-- here stars scrolling icon -->
+	<!-- footer -->
+	<div th:replace="common/common::.footer"></div>
+	<!-- //footer -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".dropdown").hover(function() {
+				$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+				$(this).toggleClass('open');
+			}, function() {
+				$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+				$(this).toggleClass('open');
+			});
+		});
+	</script>
+	<!-- //Bootstrap Core JavaScript -->
+	<!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			/*
@@ -227,12 +271,14 @@ $(document).ready(function(){
 				scrollSpeed: 1200,
 				easingType: 'linear' 
 				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
+			 */
+
+			$().UItoTop({
+				easingType : 'easeOutQuart'
 			});
+
+		});
 	</script>
-<!-- //here ends scrolling icon -->
+	<!-- //here ends scrolling icon -->
 </body>
 </html>
